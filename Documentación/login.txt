@@ -1,0 +1,12 @@
+interbank < nro de tarjeta (candado, supongo que para recordar valor ingresado)
+tipo de doc, nro de doc
+clave web. (olvidaste la clave)
+ingresar (y parece que huella)
+
+3 botones, registro, telefono de contacto, locales (oficinas de interbank creería) en ese orden.
+
+
+
+bcp > nro de tarjeta.
+clave web.  (ayuda que es clave internet?)
+siguiente - cancelar (cancelar al inicio??) 

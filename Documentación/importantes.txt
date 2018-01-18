@@ -1,0 +1,9 @@
+sección 4 - 17, habla de herramienta que permite ver compatibilidad de proyecto PCL (Biblioteca de clases),
+con eso se podrían aprovechar la biblioteca de clases de HB o de WT.
+
+seccion 4 - 18, beneficio del .net standard, para usar proyectos usando librerias con mucha antiguedad, como las de
+WT y HB
+
+https://www.udemy.com/aprende-xamarin-forms-para-desarrollar-apps-multiplataforma/
+
+https://bloginspanish.wordpress.com/2017/03/05/lenovo-v310-14isk-fotos-y-como-entrar-al-bios/
