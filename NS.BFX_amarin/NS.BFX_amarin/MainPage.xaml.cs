@@ -38,7 +38,7 @@ namespace NS.BFX_amarin
 
             layout.Children.Add(myImage,
                 Constraint.Constant(0),
-                Constraint.Constant(0),
+                Constraint.Constant(0), 
                 Constraint.RelativeToParent((parent) => { return parent.Width; }),
                 Constraint.RelativeToParent((parent) => { return parent.Height; }));
 
