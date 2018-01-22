@@ -8,7 +8,7 @@ Entregables
 2) Login
 3) Pantalla principal / Consulta de saldos
 
-1) 
+1) Registro
 > 
 - Botón informativo:
 
@@ -24,7 +24,7 @@ Texto: Recuerda que primero debes cambiar la clave de cajero automátio que se t
 > Flag de tratamiento de datos personales
 > Botón siguiente
 > link para enviar correo (¿Tienes algún inconveniente con tu registro?)
-
+-------------------------------------------------------------------------------------------------------------------------------------
 
 1.1) Para clave nueva:
 > Formulario: INGRESA TUS DATOS:
@@ -40,7 +40,9 @@ Texto: Recuerda que primero debes cambiar la clave de cajero automátio que se t
 - junto a etiqueta informativa (Entre 6 y 16 caracteres y al menos un número y una letra.)
 
 > ...
-
+> Flag de tratamiento de datos personales (Acepto los Términos y Condiciones |Términos y Condiciones abre pantalla de texto con términos y condiciones|)
+> Botón Crear clave web.
+-------------------------------------------------------------------------------------------------------------------------------------
 
 1.2.1) Para clave olvidada
 > Formulario: INGRESA TUS DATOS:
@@ -48,6 +50,7 @@ Texto: Recuerda que primero debes cambiar la clave de cajero automátio que se t
 > Tipo Doc
 > Nro Doc
 > Botón siguiente
+-------------------------------------------------------------------------------------------------------------------------------------
 
 1.2.2)
 > Formulario: INGRESA LA CLAVE SMS:
@@ -56,7 +59,7 @@ Texto: Recuerda que primero debes cambiar la clave de cajero automátio que se t
 > Campo clave SMS
 > 
 > Botón siguiente
-
+-------------------------------------------------------------------------------------------------------------------------------------
 
 2) Login:
 > Imagen logo y versión app
@@ -76,7 +79,7 @@ Título: Clave cajero automático (BORRADOR)
 Texto: Recuerda que primero debes cambiar la clave de cajero automátio que se te entregó al abrir tu cuenta. Este cambio se realiza en un cajero GlobalNet. (BORRADOR)
 
 - junto a etiqueta informativa (Si ya no utilizas el número de celular que se muestra, desafílialo a través de Banca por Internet. Luego afilia tu nuevo número en un cajero Global Net.)
-
+-------------------------------------------------------------------------------------------------------------------------------------
 
 Las actividades acordadas son las siguientes:
 
