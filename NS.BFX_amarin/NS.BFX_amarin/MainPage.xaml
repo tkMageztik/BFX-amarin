@@ -6,7 +6,7 @@
 
     <AbsoluteLayout BackgroundColor="Blue">
 
-        <Image x:Name="BgImage" Source="fondo.jpg"
+        <Image x:Name="bgImage" Source="fondo.jpg"
                Aspect="AspectFill"
                AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
                AbsoluteLayout.LayoutFlags="All"/>
@@ -39,7 +39,7 @@
                     <!--<Button x:Name="btnRecordarPass" Text="¿Lo olvidaste?" VerticalOptions="Start" HorizontalOptions="End"></Button>-->
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Text="Ingresar" Clicked="BtnIngresar_OnClicked"/>
+                    <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" />
                 </StackLayout>
                 <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="End">
                     <Button x:Name="btnRegistrar" HorizontalOptions="FillAndExpand"></Button>
