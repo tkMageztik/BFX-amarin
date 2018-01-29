@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NS.MBX_amarin"
              xmlns:behaviors="clr-namespace:NS.MBX_amarin"
-             x:Class="NS.MBX_amarin.MainPage">
+             x:Class="NS.MBX_amarin.MainPage" NavigationPage.HasNavigationBar="False">
 
     <AbsoluteLayout BackgroundColor="Blue">
 
@@ -18,7 +18,7 @@
             <Image Source="logo.png"></Image>
 
         </StackLayout >
-        <Frame CornerRadius="10" OutlineColor="Transparent" 
+        <Frame CornerRadius="10" OutlineColor="Transparent"  Padding="5,5,5,5"
                BackgroundColor="White" Opacity="0.9" 
                AbsoluteLayout.LayoutBounds="0.5,0.8,0.8,0.5"
                      AbsoluteLayout.LayoutFlags="All">
@@ -48,11 +48,10 @@
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
                     <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" />
                 </StackLayout>
-                <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="End">
-                    <Button x:Name="btnRegistrar" Scale="0.5" Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
-                    <Button x:Name="btnContacto" Scale="0.5"  Text="Contacto" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
+                <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                    <Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
+                    <Button x:Name="btnContacto" Text="Contacto" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
                 </StackLayout>
-
             </StackLayout>
         </Frame>
 

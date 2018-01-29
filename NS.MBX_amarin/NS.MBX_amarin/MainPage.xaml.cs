@@ -30,8 +30,10 @@ namespace NS.MBX_amarin
 
         private void BtnRegistrar_OnClicked(object sender, EventArgs args)
         {
-            //Navigation.PushAsync(new Registro());
-            App.Current.MainPage = new NavigationPage(new Registro());
+            //var navPage = new NavigationPage(new Registro());
+
+            Navigation.PushAsync(new Registro());
+            //App.Current.MainPage = new NavigationPage(new Registro);
         }
         private void BtnContacto_OnClicked(object sender, EventArgs args)
         {

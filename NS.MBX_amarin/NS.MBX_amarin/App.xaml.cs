@@ -12,9 +12,10 @@ namespace NS.MBX_amarin
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new NS.MBX_amarin.MainPage();
-        }
+			//MainPage = new MainPage();
+            var navPage = new NavigationPage(new MainPage());
+            MainPage = navPage;
+		}
 
 		protected override void OnStart ()
 		{
