@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace NS.BFX_amarin.iOS
+namespace NS.MBX_amarin.iOS
 {
     public class Application
     {

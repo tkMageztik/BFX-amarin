@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:NS.BFX_amarin"
-             x:Class="NS.BFX_amarin.MainPage">
+             xmlns:local="clr-namespace:NS.MBX_amarin"
+             xmlns:behaviors="clr-namespace:NS.MBX_amarin"
+             x:Class="NS.MBX_amarin.MainPage">
 
     <AbsoluteLayout BackgroundColor="Blue">
 
@@ -23,8 +24,14 @@
                      AbsoluteLayout.LayoutFlags="All">
             <StackLayout BackgroundColor="Transparent" Spacing="0">
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Entry x:Name="txtNroTarjeta" InputTransparent="False" Placeholder="N° de Tarjeta" 
-                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
+                    <Entry x:Name="txtNroTarjeta" Keyboard="Numeric" InputTransparent="False" Placeholder="N° de Tarjeta" 
+                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand">
+
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthValidatorBehavior MaxLength="16" />
+                        </Entry.Behaviors>
+
+                    </Entry>
                     <Switch x:Name="swtNroTarjeta" VerticalOptions="Center" HorizontalOptions="End"></Switch>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">

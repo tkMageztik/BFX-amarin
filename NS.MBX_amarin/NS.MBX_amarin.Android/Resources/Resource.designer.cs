@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("NS.BFX_amarin.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("NS.MBX_amarin.Droid.Resource", IsApplication=true)]
 
-namespace NS.BFX_amarin.Droid
+namespace NS.MBX_amarin.Droid
 {
 	
 	
@@ -26,7 +26,7 @@ namespace NS.BFX_amarin.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::NS.BFX_amarin.Droid.Resource.Attribute.actionBarSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::NS.MBX_amarin.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

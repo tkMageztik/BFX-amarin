@@ -5,7 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace NS.BFX_amarin
+namespace NS.MBX_amarin
 {
 	public partial class App : Application
 	{
@@ -13,7 +13,7 @@ namespace NS.BFX_amarin
 		{
 			InitializeComponent();
 
-			MainPage = new NS.BFX_amarin.MainPage();
+			MainPage = new NS.MBX_amarin.MainPage();
 		}
 
 		protected override void OnStart ()

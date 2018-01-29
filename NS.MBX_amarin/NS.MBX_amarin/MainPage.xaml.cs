@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace NS.BFX_amarin
+namespace NS.MBX_amarin
 {
-	public partial class MainPage : ContentPage
-	{
+    public partial class MainPage : ContentPage
+    {
         public MainPage()
         {
             InitializeComponent();
             //GetMainPage();
-		}
+        }
 
-        private void BtnIngresar_OnClicked(object sender,EventArgs args)
+        //public async Task<ImageSource> GetImageFromStream(string url)
+        //{ var resp = await obj_Client.GetStreamAsync(url); return Xamarin.Forms.ImageSource.FromStream(() => { return resp; }); }
+
+        private void BtnIngresar_OnClicked(object sender, EventArgs args)
         {
             DisplayAlert("Mensaje", "Hola nena JM", "ok");
         }
@@ -28,6 +31,14 @@ namespace NS.BFX_amarin
                     ? thisNum
                     : ((thisNum *= 2) > 9 ? thisNum - 9 : thisNum)
                 ).Sum() % 10 == 0;
+        }
+
+        private bool ValidarIngreso()
+        {
+            if (!Luhn(txtNroTarjeta.Text)) return false;
+
+            return true;
+
         }
 
         //public static Page GetMainPage()
