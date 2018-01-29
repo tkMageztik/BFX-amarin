@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.Registro">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Spacing="0">
+                <StackLayout BackgroundColor="Blue" VerticalOptions="Start">
+                    <Label Text="Registro" HorizontalOptions="Start" Margin="20"></Label>
+                </StackLayout>
+                <StackLayout BackgroundColor="White" Spacing="0" VerticalOptions="FillAndExpand" >
+                    <Label Text="Solo debes registrarte si nunca has ingresado a la Banca por Internet" 
+                       TextColor="Black" VerticalOptions="Start" Margin="10,10"></Label>
+                    <Entry PlaceholderColor="Gray" Placeholder="Número de tarjeta" VerticalOptions="Start"
+                       Margin="10,10"></Entry>
+                    <StackLayout BackgroundColor="Transparent" Margin="10,10" Orientation="Horizontal" VerticalOptions="Start">
+                        <Picker x:Name="picTipDoc" SelectedItem="DNI"  HorizontalOptions="Start" VerticalOptions="Center"></Picker>
+                        <Entry x:Name="txtNroDoc" InputTransparent="False" Placeholder="N° de documento" 
+                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
+                    </StackLayout>
+                    <Entry PlaceholderColor="Gray" Placeholder="E-mail" VerticalOptions="Start"
+                       Margin="10,10"></Entry>
+                    <StackLayout BackgroundColor="Transparent" Margin="10,10" Orientation="Horizontal" VerticalOptions="Start">
+                        <Label Text="He leído y autorizo el Tratamiento de Datos Personales" 
+                       TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+
+                        <Switch VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Switch>
+                    </StackLayout>
+                    <Button VerticalOptions="EndAndExpand" Text="Siguiente" HorizontalOptions="FillAndExpand" Margin="20,20,20,20"></Button>
+                    <Label Text="¿Tienes algún inconveniente en tu registro?" Margin="20,20"
+                       TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+
+                </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

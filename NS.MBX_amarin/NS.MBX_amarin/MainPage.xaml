@@ -22,7 +22,7 @@
                BackgroundColor="White" Opacity="0.9" 
                AbsoluteLayout.LayoutBounds="0.5,0.8,0.8,0.5"
                      AbsoluteLayout.LayoutFlags="All">
-            <StackLayout BackgroundColor="Transparent" Spacing="0">
+            <StackLayout BackgroundColor="Transparent" Spacing="0" >
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
                     <Entry x:Name="txtNroTarjeta" Keyboard="Numeric" InputTransparent="False" Placeholder="N° de Tarjeta" 
                    PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand">
@@ -36,7 +36,7 @@
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
                     <Picker x:Name="picTipDoc" SelectedItem="DNI" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
-                    <Entry x:Name="txtTipDoc" InputTransparent="False" Placeholder="N° de documento" 
+                    <Entry x:Name="txtNroDoc" InputTransparent="False" Placeholder="N° de documento" 
                    PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
                     <Switch x:Name="swtTipNroDoc" VerticalOptions="Center" HorizontalOptions="End"></Switch>
                 </StackLayout>
@@ -49,8 +49,8 @@
                     <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" />
                 </StackLayout>
                 <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="End">
-                    <Button x:Name="btnRegistrar" HorizontalOptions="FillAndExpand"></Button>
-                    <Button x:Name="btnContacto" HorizontalOptions="FillAndExpand"></Button>
+                    <Button x:Name="btnRegistrar" Scale="0.5" Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
+                    <Button x:Name="btnContacto" Scale="0.5"  Text="Contacto" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
                 </StackLayout>
 
             </StackLayout>

@@ -14,7 +14,7 @@ namespace NS.MBX_amarin
 			InitializeComponent();
 
 			MainPage = new NS.MBX_amarin.MainPage();
-		}
+        }
 
 		protected override void OnStart ()
 		{

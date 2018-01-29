@@ -20,7 +20,23 @@ namespace NS.MBX_amarin
 
         private void BtnIngresar_OnClicked(object sender, EventArgs args)
         {
-            DisplayAlert("Mensaje", "Hola nena JM", "ok");
+            string msg = ValidarIngreso();
+            if (msg == "")
+            {
+                DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+            }
+            else { DisplayAlert("Banco X", msg, "Aceptar"); }
+        }
+
+        private void BtnRegistrar_OnClicked(object sender, EventArgs args)
+        {
+            //Navigation.PushAsync(new Registro());
+            App.Current.MainPage = new NavigationPage(new Registro());
+        }
+        private void BtnContacto_OnClicked(object sender, EventArgs args)
+        {
+            DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+
         }
 
         public static bool Luhn(string digits)
@@ -33,11 +49,13 @@ namespace NS.MBX_amarin
                 ).Sum() % 10 == 0;
         }
 
-        private bool ValidarIngreso()
+        private string ValidarIngreso()
         {
-            if (!Luhn(txtNroTarjeta.Text)) return false;
-
-            return true;
+            if (txtNroTarjeta.Text == "" || txtNroTarjeta.Text is null) return "Por favor, ingresa tu número de tarjeta.";
+            if (!Luhn(txtNroTarjeta.Text)) return "El número de tarjeta, no es válido.";
+            if (txtNroDoc.Text == "" || txtNroDoc.Text is null) return "Por favor, ingrese su número de documento.";
+            if (txtClaveWeb.Text == "" || txtClaveWeb.Text is null) return "Por favor, ingrese su clave web.";
+            return "";
 
         }
 
