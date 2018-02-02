@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NS.MBX_amarin"
+             xmlns:behaviors="clr-namespace:NS.MBX_amarin"
+             x:Class="NS.MBX_amarin.MainPage" NavigationPage.HasNavigationBar="False">
+
+    <AbsoluteLayout BackgroundColor="Blue">
+
+        <Image x:Name="bgImage" Source="fondo.jpg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+               AbsoluteLayout.LayoutFlags="All"/>
+
+        <StackLayout BackgroundColor="Transparent"
+                     AbsoluteLayout.LayoutBounds="0.5,0.1,0.5,0.1"
+                     AbsoluteLayout.LayoutFlags="All">
+            <Image Source="logo.png"></Image>
+
+        </StackLayout >
+        <Frame CornerRadius="10" OutlineColor="Transparent"  Padding="5,5,5,5"
+               BackgroundColor="White" Opacity="0.9" 
+               AbsoluteLayout.LayoutBounds="0.5,0.8,0.8,0.5"
+                     AbsoluteLayout.LayoutFlags="All">
+            <StackLayout BackgroundColor="Transparent" Spacing="0" >
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Entry x:Name="txtNroTarjeta" Text="{Binding User.NroTarjeta}" Keyboard="Numeric" InputTransparent="False" Placeholder="N° de Tarjeta" 
+                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand">
+
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthValidatorBehavior MaxLength="16" />
+                        </Entry.Behaviors>
+
+                    </Entry>
+                    <Switch x:Name="swtNroTarjeta" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtNroTarjeta_OnToggled" ></Switch>
+                </StackLayout>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Picker x:Name="picTipDoc" SelectedItem="DNI" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
+                    <Entry x:Name="txtNroDoc" InputTransparent="False" Placeholder="N° de documento" 
+                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
+                    <Switch x:Name="swtTipNroDoc" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtTipNroDoc_OnToggled"></Switch>
+                </StackLayout>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <!--<Button x:Name="btnInfClaveWeb"  VerticalOptions="Start" HorizontalOptions="Start"></Button>-->
+                    <Entry x:Name="txtClaveWeb" Placeholder="Clave Web" IsPassword="True" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand"></Entry>
+                    <!--<Button x:Name="btnRecordarPass" Text="¿Lo olvidaste?" VerticalOptions="Start" HorizontalOptions="End"></Button>-->
+                </StackLayout>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" />
+                </StackLayout>
+                <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                    <Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
+                    <Button x:Name="btnContacto" Text="Contacto" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+    </AbsoluteLayout>
+</ContentPage>
