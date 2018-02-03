@@ -13,7 +13,10 @@ namespace NS.MBX_amarin
     public partial class MainPage : ContentPage
     {
 
-        private User User { get; set; }
+        private User user { get; set; }
+        private bool eraseNroTarjeta { get; set; }
+        private bool eraseTipNroDoc { get; set; }
+
         public ObservableCollection
            <Grouping<string, User>> Users
         { get; set; }
@@ -22,20 +25,67 @@ namespace NS.MBX_amarin
         {
             InitializeComponent();
             //GetMainPage();
+            LoadTipDoc();
             LoadUser();
+            txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
+            picTipDoc.SelectedIndexChanged += TxtTipNroDoc_OnChanged;
+            txtNroDoc.TextChanged += TxtTipNroDoc_OnChanged;
 
+            UserRepository repository = new UserRepository();
+            //repository.Delete();
+
+        }
+
+        private void TxtTipNroDoc_OnChanged (object sender, EventArgs args)
+        {
+            SaveTipNroDoc();
+        }
+
+        private void TxtNroTarjeta_OnChanged(object sender, EventArgs args)
+        {
+            SaveNroTarjeta();
+        }
+
+        private void LoadTipDoc()
+        {
+            List<string> lstTipDoc = new List<string>();
+            lstTipDoc.Add("DNI");
+            lstTipDoc.Add("Pasaporte");
+            lstTipDoc.Add("CE");
+
+            picTipDoc.ItemsSource = lstTipDoc;
+            picTipDoc.SelectedItem = "DNI";
         }
         private void LoadUser()
         {
-
             UserRepository repository = new UserRepository();
             if (repository.Users != null && repository.Users.Count > 0)
             {
-                User = repository.Users[0];
+                user = repository.Users[0];
 
-                txtNroTarjeta.Text = User.NroTarjeta;
-                picTipDoc.SelectedItem = User.TipDoc;
-                txtNroDoc.Text = User.NroDoc;
+                if (user.NroTarjeta != null)
+                {
+                    swtNroTarjeta.Toggled -= SwtNroTarjeta_OnToggled;
+                    swtNroTarjeta.IsToggled = true;
+                    swtNroTarjeta.Toggled += SwtNroTarjeta_OnToggled;
+                }
+                txtNroTarjeta.Text = user.NroTarjeta;
+
+                if (user.TipDoc != null || user.NroDoc != null)
+                {
+                    swtTipNroDoc.Toggled -= SwtTipNroDoc_OnToggled;
+                    swtTipNroDoc.IsToggled = true;
+                    swtTipNroDoc.Toggled += SwtTipNroDoc_OnToggled;
+                }
+
+                if (user.TipDoc != null)
+                {
+                    picTipDoc.SelectedItem = user.TipDoc;
+                }
+                if (user.NroDoc != null)
+                {
+                    txtNroDoc.Text = user.NroDoc;
+                }
             };
         }
 
@@ -50,7 +100,7 @@ namespace NS.MBX_amarin
             //{
             //    txtNroTarjeta.Text = U
             //}
-            User = repository.Users[0];
+            user = repository.Users[0];
         }
 
         //public async Task<ImageSource> GetImageFromStream(string url)
@@ -68,33 +118,110 @@ namespace NS.MBX_amarin
 
         private void SwtTipNroDoc_OnToggled(object sender, ToggledEventArgs args)
         {
-            SaveUser();
+            if (args.Value)
+            {
+                SaveTipNroDoc();
+            }
+            else
+            {
+                EraseTipNroDoc();
+                EraseDatabase();
+            }
+        }
 
+        private void EraseDatabase()
+        {
+            if (eraseNroTarjeta && eraseTipNroDoc)
+            {
+                App.Database.DeleteItemAsync(user);
+            }
         }
 
         private void SwtNroTarjeta_OnToggled(object sender, ToggledEventArgs args)
         {
-
-        }
-        public async Task SaveUser()
-        {
-            if (User != null)
+            if (args.Value)
             {
-                User.NroTarjeta = txtNroTarjeta.Text;
-                User.TipDoc = picTipDoc.SelectedItem.ToString();
-                User.NroDoc = txtNroDoc.Text;
+                SaveNroTarjeta();
             }
             else
             {
-                User = new User()
+                EraseNroTarjeta();
+                EraseDatabase();
+            }
+
+        }
+
+        public async Task SaveTipNroDoc()
+        {
+            if (user != null)
+            {
+                user.TipDoc = picTipDoc.SelectedItem.ToString();
+                user.NroDoc = txtNroDoc.Text;
+            }
+            else
+            {
+                user = new User()
                 {
-                    NroTarjeta = txtNroTarjeta.Text,
                     TipDoc = picTipDoc.SelectedItem.ToString(),
                     NroDoc = txtNroDoc.Text
                 };
             }
 
-            await App.Database.SaveItemAsync(this.User);
+            await App.Database.SaveItemAsync(this.user);
+        }
+
+        public async Task EraseTipNroDoc()
+        {
+            if (user != null)
+            {
+                user.TipDoc = null;
+                user.NroDoc = null;
+            }
+            //else
+            //{
+            //    user = new User()
+            //    {
+            //        TipDoc = picTipDoc.SelectedItem.ToString(),
+            //        NroDoc = txtNroDoc.Text
+            //    };
+            //}
+            eraseTipNroDoc = true;
+            await App.Database.SaveItemAsync(this.user);
+        }
+
+        public async Task SaveNroTarjeta()
+        {
+            if (user != null)
+            {
+                user.NroTarjeta = txtNroTarjeta.Text;
+            }
+            else
+            {
+                user = new User()
+                {
+                    NroTarjeta = txtNroTarjeta.Text
+                };
+            }
+
+            await App.Database.SaveItemAsync(this.user);
+        }
+
+        public async Task EraseNroTarjeta()
+        {
+            if (user != null)
+            {
+                user.NroTarjeta = null;
+            }
+            //else
+            //{
+            //    user = new User()
+            //    {
+            //        NroTarjeta = null
+            //    };
+            //}
+
+            eraseNroTarjeta = true;
+            await App.Database.SaveItemAsync(this.user);
         }
 
         private void BtnRegistrar_OnClicked(object sender, EventArgs args)

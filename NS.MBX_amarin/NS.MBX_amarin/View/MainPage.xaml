@@ -35,7 +35,7 @@
                     <Switch x:Name="swtNroTarjeta" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtNroTarjeta_OnToggled" ></Switch>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Picker x:Name="picTipDoc" SelectedItem="DNI" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
+                    <Picker x:Name="picTipDoc" WidthRequest="38" SelectedItem="DNI" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
                     <Entry x:Name="txtNroDoc" InputTransparent="False" Placeholder="N° de documento" 
                    PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
                     <Switch x:Name="swtTipNroDoc" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtTipNroDoc_OnToggled"></Switch>

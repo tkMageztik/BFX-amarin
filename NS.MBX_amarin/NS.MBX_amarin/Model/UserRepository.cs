@@ -20,6 +20,13 @@ namespace NS.MBX_amarin.Model
 
         }
 
+        //TODO: Para borrar luego.
+        public async Task Delete()
+        {
+            await App.Database.DeleteItemAsync(Users[0]);
+            //Users.Clear();
+        }
+
         public ObservableCollection<Grouping<string, User>> GetAllGrouped()
         {
             IEnumerable<Grouping<string, User>> sorted = new Grouping<string, User>[0];
