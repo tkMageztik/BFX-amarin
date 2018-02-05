@@ -28,8 +28,8 @@ namespace NS.MBX_amarin
             //GetMainPage();
 
 
-            //Task.Run(async () => await LoadTipDoc()).Wait();
-            LoadTipDoc().ConfigureAwait(false);
+            Task.Run(async () => await LoadTipDoc()).Wait();
+            //LoadTipDoc().ConfigureAwait(false);
 
             LoadUser();
             txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
