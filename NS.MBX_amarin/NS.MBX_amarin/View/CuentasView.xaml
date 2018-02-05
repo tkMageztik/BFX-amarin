@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.View.CuentasView">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout VerticalOptions="Start">
+                <Label Text="Tipo de Cambio ref. Compra: 3.135 Venta: 3.305"></Label>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <ListView x:Name="lsvCtas" ItemSelected="LstvCtas_OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout BackgroundColor="Blue" HorizontalOptions="Start"></StackLayout>
+                                        <StackLayout BackgroundColor="Green" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                                            <Label Text="{Binding NombreCta}" VerticalOptions="Start"></Label>
+                                            <Label Text="{Binding SaldoDisponible}" VerticalOptions="CenterAndExpand"></Label>
+                                            <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                                        </StackLayout>
+                                        <StackLayout BackgroundColor="Red" HorizontalOptions="End"></StackLayout>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout VerticalOptions="End"></StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

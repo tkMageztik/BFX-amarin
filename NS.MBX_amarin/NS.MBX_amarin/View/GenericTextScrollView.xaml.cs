@@ -18,11 +18,12 @@ namespace NS.MBX_amarin.View
             lblSubtitulo.Text = subtitulo;
             lblTexto.Text = texto;
             btn.Text = textoBoton;
+            //TOD: incluir un delegate para el comportamiento del botón.
         }
 
         private void Btn_OnClicked(object sender, EventArgs args)
         {
-
+            Navigation.PopAsync();
         }
     }
 }

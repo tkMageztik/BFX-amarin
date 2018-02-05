@@ -1,5 +1,6 @@
 ﻿using NS.MBX_amarin.Helpers;
 using NS.MBX_amarin.Model;
+using NS.MBX_amarin.View;
 using NS.MBX_amarin.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -245,7 +246,8 @@ namespace NS.MBX_amarin
         }
         private void BtnContacto_OnClicked(object sender, EventArgs args)
         {
-            DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+            //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+            Navigation.PushAsync(new CuentasView());
 
         }
 
