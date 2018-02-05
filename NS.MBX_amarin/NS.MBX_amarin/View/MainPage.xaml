@@ -9,7 +9,7 @@
 
         <Image x:Name="bgImage" Source="fondo.jpg"
                Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+               AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0"
                AbsoluteLayout.LayoutFlags="All"/>
 
         <StackLayout BackgroundColor="Transparent"
@@ -24,7 +24,7 @@
                      AbsoluteLayout.LayoutFlags="All">
             <StackLayout BackgroundColor="Transparent" Spacing="0" >
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Entry x:Name="txtNroTarjeta" Text="{Binding User.NroTarjeta}" Keyboard="Numeric" InputTransparent="False" Placeholder="N° de Tarjeta" 
+                    <Entry x:Name="txtNroTarjeta" Keyboard="Numeric" InputTransparent="False" Placeholder="N° de Tarjeta" 
                    PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand">
 
                         <Entry.Behaviors>
@@ -35,10 +35,10 @@
                     <Switch x:Name="swtNroTarjeta" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtNroTarjeta_OnToggled" ></Switch>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Picker x:Name="picTipDoc" WidthRequest="38" SelectedItem="DNI" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
+                    <Picker x:Name="picTipDoc" WidthRequest="38" TextColor="Gray" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
                     <Entry x:Name="txtNroDoc" InputTransparent="False" Placeholder="N° de documento" 
                    PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
-                    <Switch x:Name="swtTipNroDoc" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtTipNroDoc_OnToggled"></Switch>
+                    <Switch x:Name="swtTipNroDoc" VerticalOptions="Center" HorizontalOptions="End"></Switch>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
                     <!--<Button x:Name="btnInfClaveWeb"  VerticalOptions="Start" HorizontalOptions="Start"></Button>-->
@@ -46,11 +46,12 @@
                     <!--<Button x:Name="btnRecordarPass" Text="¿Lo olvidaste?" VerticalOptions="Start" HorizontalOptions="End"></Button>-->
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" />
+                    <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" BackgroundColor="Blue" />
                 </StackLayout>
-                <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                    <Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
-                    <Button x:Name="btnContacto" Text="Contacto" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
+                <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="25,10.0,25.5,10.0">
+                    <Button x:Name="btnRegistrar" Text="Registrar" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
+                    <Button x:Name="btnContacto" Text="Contacto" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
+                    <!--<Button x:Name="btnUbicanos" Text="Ubícanos" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" ></Button>-->
                 </StackLayout>
             </StackLayout>
         </Frame>

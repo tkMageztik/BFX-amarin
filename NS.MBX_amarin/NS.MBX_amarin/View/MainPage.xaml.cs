@@ -1,5 +1,6 @@
 ﻿using NS.MBX_amarin.Helpers;
 using NS.MBX_amarin.Model;
+using NS.MBX_amarin.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,18 +26,23 @@ namespace NS.MBX_amarin
         {
             InitializeComponent();
             //GetMainPage();
-            LoadTipDoc();
+
+
+            //Task.Run(async () => await LoadTipDoc()).Wait();
+            LoadTipDoc().ConfigureAwait(false);
+
             LoadUser();
             txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
             picTipDoc.SelectedIndexChanged += TxtTipNroDoc_OnChanged;
             txtNroDoc.TextChanged += TxtTipNroDoc_OnChanged;
+            swtTipNroDoc.Toggled += SwtTipNroDoc_OnToggled;
 
-            UserRepository repository = new UserRepository();
+            //UserRepository repository = new UserRepository();
             //repository.Delete();
 
         }
 
-        private void TxtTipNroDoc_OnChanged (object sender, EventArgs args)
+        private void TxtTipNroDoc_OnChanged(object sender, EventArgs args)
         {
             SaveTipNroDoc();
         }
@@ -46,14 +52,20 @@ namespace NS.MBX_amarin
             SaveNroTarjeta();
         }
 
-        private void LoadTipDoc()
+        private async Task LoadTipDoc()
         {
-            List<string> lstTipDoc = new List<string>();
-            lstTipDoc.Add("DNI");
-            lstTipDoc.Add("Pasaporte");
-            lstTipDoc.Add("CE");
+            //List<string> lstTipDoc = new List<string>();
+            //lstTipDoc.Add("DNI");
+            //lstTipDoc.Add("Pasaporte");
+            //lstTipDoc.Add("CE");
 
-            picTipDoc.ItemsSource = lstTipDoc;
+            //picTipDoc.ItemsSource = lstTipDoc;
+            //picTipDoc.SelectedItem = "DNI";
+            TipoDocumentoViewModel tipoDocumentoViewModel = new TipoDocumentoViewModel();
+            var t = await tipoDocumentoViewModel.GetTipoDocumentos();
+
+            picTipDoc.ItemsSource = t.ToList().ConvertAll(obj => obj.TipDoc);
+            //picTipDoc.ItemDisplayBinding = new Binding("tipDoc");
             picTipDoc.SelectedItem = "DNI";
         }
         private void LoadUser()

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using NS.MBX.Web.Models;
 
-namespace NS.MBX.Web.Models
+namespace NS.MBX.Web.Data
 {
     public class NSMBXWebContext : DbContext
     {
@@ -12,7 +13,6 @@ namespace NS.MBX.Web.Models
             : base(options)
         {
         }
-
-        public DbSet<NS.MBX.Web.Models.TipoDocumentoViewModel> TipoDocumentoViewModel { get; set; }
+        public DbSet<TipoDocumentoViewModel> TipoDocumentoViewModel { get; set; }
     }
 }

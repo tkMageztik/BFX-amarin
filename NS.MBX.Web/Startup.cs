@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using NS.MBX.Web.Models;
+using NS.MBX.Web.Data;
 
 namespace NS.MBX.Web
 {

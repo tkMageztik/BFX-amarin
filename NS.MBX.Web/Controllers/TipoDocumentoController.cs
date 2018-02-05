@@ -5,26 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NS.MBX.Web.Data;
 using NS.MBX.Web.Models;
 
 namespace NS.MBX.Web.Controllers
 {
-    public class TipoDocumentoViewModelsController : Controller
+    public class TipoDocumentoController : Controller
     {
         private readonly NSMBXWebContext _context;
 
-        public TipoDocumentoViewModelsController(NSMBXWebContext context)
+        public TipoDocumentoController(NSMBXWebContext context)
         {
             _context = context;
         }
 
-        // GET: TipoDocumentoViewModels
+        // GET: TipoDocumento
         public async Task<IActionResult> Index()
         {
             return View(await _context.TipoDocumentoViewModel.ToListAsync());
         }
 
-        // GET: TipoDocumentoViewModels/Details/5
+        // GET: TipoDocumento/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -42,13 +43,13 @@ namespace NS.MBX.Web.Controllers
             return View(tipoDocumentoViewModel);
         }
 
-        // GET: TipoDocumentoViewModels/Create
+        // GET: TipoDocumento/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TipoDocumentoViewModels/Create
+        // POST: TipoDocumento/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +65,7 @@ namespace NS.MBX.Web.Controllers
             return View(tipoDocumentoViewModel);
         }
 
-        // GET: TipoDocumentoViewModels/Edit/5
+        // GET: TipoDocumento/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -80,7 +81,7 @@ namespace NS.MBX.Web.Controllers
             return View(tipoDocumentoViewModel);
         }
 
-        // POST: TipoDocumentoViewModels/Edit/5
+        // POST: TipoDocumento/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +116,7 @@ namespace NS.MBX.Web.Controllers
             return View(tipoDocumentoViewModel);
         }
 
-        // GET: TipoDocumentoViewModels/Delete/5
+        // GET: TipoDocumento/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -133,7 +134,7 @@ namespace NS.MBX.Web.Controllers
             return View(tipoDocumentoViewModel);
         }
 
-        // POST: TipoDocumentoViewModels/Delete/5
+        // POST: TipoDocumento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

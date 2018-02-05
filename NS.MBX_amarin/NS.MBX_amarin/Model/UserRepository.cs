@@ -16,6 +16,8 @@ namespace NS.MBX_amarin.Model
         {
             //Hydrator<User> _userHydrator = new Hydrator<User>();
             //Users = _userHydrator.GetList(50);
+
+            //TODO: a cambiar, puede ser peligroso.
             Task.Run(async () => Users = await App.Database.GetItemsAsync()).Wait();
 
         }
