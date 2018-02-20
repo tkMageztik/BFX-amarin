@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace NS.MBX_amarin.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopUpOperacionesVarias : ContentPage
+    public partial class PopUpOperacionesView : ContentPage
     {
-        public PopUpOperacionesVarias()
+        public PopUpOperacionesView()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace NS.MBX_amarin.View
             //await Navigation.PopToRootAsync();
 
             
-            await Navigation.PushAsync(new SeleccionaCtaCargo("Transferencia Ctas mismo banco"));
+            await Navigation.PushAsync(new CtaCargoView("Transferencia Ctas mismo banco"));
         }
     }
 }

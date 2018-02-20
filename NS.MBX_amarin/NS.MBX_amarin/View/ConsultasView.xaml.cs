@@ -25,7 +25,7 @@ namespace NS.MBX_amarin.View
             //ShowPopup();
             
              
-            await Navigation.PushModalAsync(new PopUpOperacionesVarias(), false);
+            await Navigation.PushModalAsync(new PopUpOperacionesView(), false);
         }
 
         private async void ShowPopup()

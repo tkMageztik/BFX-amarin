@@ -24,8 +24,17 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="View\MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\PopUpOperacionesView.xaml.cs">
+      <DependentUpon>PopUpOperacionesView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\RegistroView.xaml.cs">
       <DependentUpon>RegistroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\CtaCargoView.xaml.cs">
+      <DependentUpon>CtaCargoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\CtaDestinoView.xaml.cs">
+      <DependentUpon>CtaDestinoView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -45,16 +54,16 @@
     <EmbeddedResource Update="View\MovimientosView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\PopUpOperacionesVarias.xaml">
+    <EmbeddedResource Update="View\PopUpOperacionesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\RegistroView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SeleccionaCtaCargo.xaml">
+    <EmbeddedResource Update="View\CtaCargoView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SeleccionaCtaDestino.xaml">
+    <EmbeddedResource Update="View\CtaDestinoView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

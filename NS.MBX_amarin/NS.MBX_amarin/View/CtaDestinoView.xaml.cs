@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace NS.MBX_amarin.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeleccionaCtaDestino : ContentPage
+    public partial class CtaDestinoView : ContentPage
     {
         public ObservableCollection<string> Items { get; set; }
         private string origen { get; set; }
-        public SeleccionaCtaDestino(string origen)
+        public CtaDestinoView(string origen)
         {
 
             InitializeComponent();

@@ -11,11 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace NS.MBX_amarin.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeleccionaCtaCargo : ContentPage
+    public partial class CtaCargoView : ContentPage
     {
         public ObservableCollection<Cuenta> Items { get; set; }
         private string origen { get; set; }
-        public SeleccionaCtaCargo(string origen)
+        public CtaCargoView(string origen)
         {
             InitializeComponent();
             this.origen = origen;
@@ -43,7 +43,7 @@ namespace NS.MBX_amarin.View
 
             if (origen == "Transferencia Ctas mismo banco")
             {
-                await Navigation.PushAsync(new SeleccionaCtaDestino(origen));
+                await Navigation.PushAsync(new CtaDestinoView(origen));
             }
 
             //Deselect Item
