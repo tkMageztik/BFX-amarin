@@ -3,10 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NS.MBX_amarin.View.ConsultasView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="lblTitulo" Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,0.4" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Red">
+                <AbsoluteLayout BackgroundColor="DarkBlue" VerticalOptions="FillAndExpand">
+                    <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,0.2,1.0" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Yellow">
+                        <Label Text="hola"></Label>
+                    </StackLayout>
+                    <StackLayout AbsoluteLayout.LayoutBounds="1.0,0.0,0.8,1.0" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Orange" Orientation="Vertical">
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label Text="Cuenta Simple Soles" VerticalOptions="FillAndExpand"></Label>
+                                <Label Text="388309793406" VerticalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+                            <Button HorizontalOptions="End" Text="..." Clicked="BtnMovimientos_OnClicked"></Button>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical">
+                            <Label Text="Número de cuenta interbancario (CCI):" VerticalOptions="FillAndExpand"></Label>
+                            <Label Text="003-388-013097934026-67" VerticalOptions="FillAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical">
+                            <Label Text="S/ 0.10"></Label>
+                            <Label Text="Saldo disponible"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </AbsoluteLayout>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0.0,1.0,1.0,0.6" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Blue">
+                <AbsoluteLayout>
+                    <Frame CornerRadius="10" OutlineColor="Transparent"  Padding="5,5,5,5"
+               BackgroundColor="White" Opacity="0.9" 
+               AbsoluteLayout.LayoutBounds="0.5,0.8,0.8,0.5"
+                     AbsoluteLayout.LayoutFlags="All">
+                        
+                    </Frame>
+                </AbsoluteLayout>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0.0,1.0,1.0,0.2" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Green" Orientation="Horizontal">
+                <Button Text="Mis cuentas"></Button>
+                <Button Text="Operaciones"></Button>
+                <Button Text="Ubícanos"></Button>
+                <Button Text="Más"></Button>
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -4,11 +4,11 @@
              x:Class="NS.MBX_amarin.View.CuentasView">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <StackLayout VerticalOptions="Start">
+            <StackLayout VerticalOptions="CenterAndExpand">
                 <Label Text="Tipo de Cambio ref. Compra: 3.135 Venta: 3.305"></Label>
             </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand">
-                <ListView x:Name="lsvCtas" ItemSelected="LstvCtas_OnItemSelected">
+                <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

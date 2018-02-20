@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.View.SeleccionaCtaDestino">
+  <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement" IsVisible="False">
+            
+    <!--Built in Cells-->
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell Text="{Binding .}" />
+        </DataTemplate>
+    </ListView.ItemTemplate>
+    
+    <!--Custom View Cells-->
+    <!--
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+  </ListView>
+    <StackLayout VerticalOptions="Start">
+        
+    </StackLayout>
+    <StackLayout VerticalOptions="FillAndExpand" Padding="5,5,5,5">
+        <Label Text="Número de cuenta destino"></Label>
+        <Entry HorizontalOptions="FillAndExpand"></Entry>
+        <Button Text="Siguiente" VerticalOptions="End" Clicked="BtnSgt_OnClicked"></Button>
+    </StackLayout>
+</ContentPage>

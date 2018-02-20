@@ -22,6 +22,8 @@ namespace NS.MBX_amarin.View
             //lstprueba.Add("Cuenta Ahorros Dólares");
 
             InitializeComponent();
+            Title = "Mis cuentas";
+            //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
             List<Cuenta> lstCtas = new List<Cuenta>
             {
                 new Cuenta { NombreCta = "Cuenta Simple Soles", SaldoDisponible = 0.10M, Moneda = "S/" },
@@ -32,14 +34,31 @@ namespace NS.MBX_amarin.View
 
             lsvCtas.ItemsSource = lstCtas;
 
-            lsvCtas.GestureRecognizers.Clear();
-            lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
+            //lsvCtas.GestureRecognizers.Clear();
+            //lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
         }
 
         private void LstvCtas_OnItemSelected(object sender, EventArgs args)
         {
-            DisplayAlert("TEST", "TEST2", "TEST3");
+            //DisplayAlert("TEST", "TEST2", "TEST3");
             Navigation.PushAsync(new ConsultasView(""));
+
+            //lsvCtas.ItemSelected -= LstvCtas_OnItemSelected;
+            //((ListView)sender).SelectedItem = null;
+            //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
+        }
+
+        async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+            await Navigation.PushAsync(new ConsultasView(""));
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
         }
 
 

@@ -41,6 +41,8 @@ namespace NS.MBX_amarin
             //UserRepository repository = new UserRepository();
             //repository.Delete();
 
+            txtClaveWeb.Text = "Cualquier_Clave";
+
         }
 
         private void TxtTipNroDoc_OnChanged(object sender, EventArgs args)
@@ -124,7 +126,11 @@ namespace NS.MBX_amarin
             string msg = ValidarIngreso();
             if (msg == "")
             {
-                DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+                //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+                if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
+                {
+                    Navigation.PushAsync(new CuentasView());
+                }
             }
             else { DisplayAlert("Banco X", msg, "Aceptar"); }
         }
@@ -247,7 +253,7 @@ namespace NS.MBX_amarin
         private void BtnContacto_OnClicked(object sender, EventArgs args)
         {
             //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
-            Navigation.PushAsync(new CuentasView());
+            
 
         }
 
