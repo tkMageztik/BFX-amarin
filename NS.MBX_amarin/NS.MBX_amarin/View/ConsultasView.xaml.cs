@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +25,7 @@ namespace NS.MBX_amarin.View
             //ShowPopup();
             
              
-            await Navigation.PushModalAsync(new PopUpOperacionesView(), false);
+            await Navigation.PushModalAsync(new PopUpOperacionesView(this), false);
         }
 
         private async void ShowPopup()
@@ -72,6 +72,11 @@ namespace NS.MBX_amarin.View
 
             //Show Popup
             await Navigation.PushModalAsync(loginPage, false);
+        }
+
+        public void navegarCtaCargo()
+        {
+            Navigation.PushAsync(new CtaCargoView("Transferencia Ctas mismo banco"), false);
         }
 
 
