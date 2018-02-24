@@ -1,4 +1,4 @@
-﻿using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +13,16 @@ namespace NS.MBX_amarin.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SubOperacionesView : ContentPage
 	{
-		public SubOperacionesView (string idOperacion)
+        public string idOpe;
+        public bool origenMisCuentas;
+
+		public SubOperacionesView (string idOperacion, bool origenMisCuentas)
 		{
 			InitializeComponent ();
-
+            this.origenMisCuentas = origenMisCuentas;
             List<SubOperacion> lstCtas = null;
+
+            idOpe = idOperacion;
 
             if (idOperacion == "1")
             {
@@ -55,6 +60,31 @@ namespace NS.MBX_amarin.View
 
             lsvCtas.GestureRecognizers.Clear();
             lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
+
+            navBar.seleccionarBoton("1");
         }
-	}
+
+        async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            SubOperacion subope = e.Item as SubOperacion;
+
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            if(idOpe == "3" )
+            {
+                await Navigation.PushAsync(new CtaCargoView(subope.Id, origenMisCuentas), false);
+            }
+            else
+            {
+                await Navigation.PushAsync(new SubOperacionesView(subope.Id, false), false);
+            }
+
+            
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
+        }
+    }
 }
