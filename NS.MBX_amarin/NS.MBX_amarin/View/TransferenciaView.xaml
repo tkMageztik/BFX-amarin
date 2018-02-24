@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.View.TransferenciaView">
+    <ContentPage.Content>
+        
+
+        <AbsoluteLayout BackgroundColor="White">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                         AbsoluteLayout.LayoutFlags="All">
+                <StackLayout>
+                    <Label Text="De: " FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+                    <Label x:Name="lblNombreOri"  FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+                    <Label x:Name="lblSaldoOri"  FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+
+                    <Label Text="Para: " FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+                    <Label x:Name="lblNombreDest" FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+
+                    <Label Text="Monto: " FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+                    <Entry x:Name="entMonto" VerticalOptions="CenterAndExpand" />
+                    <Button Text="Transferir" VerticalOptions="CenterAndExpand" Clicked="BtnSgt_OnClicked"></Button>
+
+                </StackLayout>
+            </StackLayout>
+
+            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
