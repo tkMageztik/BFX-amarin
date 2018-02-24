@@ -1,9 +1,56 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:views="clr-namespace:NS.MBX_amarin.View"
              x:Class="NS.MBX_amarin.View.ConsultasView">
     <ContentPage.Content>
-        <AbsoluteLayout>
+
+        <AbsoluteLayout BackgroundColor="White">
+            <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,0.4" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Red">
+                <AbsoluteLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
+                    <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,0.2,1.0" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Yellow">
+                        <Label Text="hola"></Label>
+                    </StackLayout>
+                    <StackLayout AbsoluteLayout.LayoutBounds="1.0,0.0,0.8,1.0" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="Orange" Orientation="Vertical">
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Label x:Name="lblNomCuenta" Text="Cuenta Simple Soles" VerticalOptions="FillAndExpand"></Label>
+                                <Label Text="388309793406" VerticalOptions="FillAndExpand"></Label>
+                            </StackLayout>
+                            <Button HorizontalOptions="End" Text="..." Clicked="BtnMovimientos_OnClicked"></Button>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical">
+                            <Label Text="Número de cuenta interbancario (CCI):" VerticalOptions="FillAndExpand"></Label>
+                            <Label Text="003-388-013097934026-67" VerticalOptions="FillAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical">
+                            <Label x:Name="lblSaldo" Text="S/ 0.10"></Label>
+                            <Label Text="Saldo disponible"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </AbsoluteLayout>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0.0,1.0,1.0,0.6" 
+                             AbsoluteLayout.LayoutFlags="All" BackgroundColor="White">
+                <AbsoluteLayout>
+                    <Frame CornerRadius="10" OutlineColor="Transparent"  Padding="5,5,5,5"
+               BackgroundColor="White" Opacity="0.9" 
+               AbsoluteLayout.LayoutBounds="0.5,0.8,0.8,0.5"
+                     AbsoluteLayout.LayoutFlags="All">
+
+                    </Frame>
+                </AbsoluteLayout>
+            </StackLayout>
+
+            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>
+        
+        <!--<AbsoluteLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,0.4" 
                              AbsoluteLayout.LayoutFlags="All" BackgroundColor="Red">
                 <AbsoluteLayout BackgroundColor="DarkBlue" VerticalOptions="FillAndExpand">
@@ -51,6 +98,6 @@
                 <Button Text="Ubícanos"></Button>
                 <Button Text="Más"></Button>
             </StackLayout>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentPage.Content>
 </ContentPage>
