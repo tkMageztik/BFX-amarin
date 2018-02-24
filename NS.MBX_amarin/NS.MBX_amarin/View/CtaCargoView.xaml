@@ -1,18 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:NS.MBX_amarin.View"
              x:Class="NS.MBX_amarin.View.CtaCargoView">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-            
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                         AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Vertical">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="Start"></StackLayout>
+                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                                                    <Label Text="{Binding NombreCta}" VerticalOptions="Start"></Label>
+                                                    <Label Text="{Binding SaldoDisponible}" VerticalOptions="CenterAndExpand"></Label>
+                                                    <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                                                </StackLayout>
+                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="End"></StackLayout>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End"></StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>
+        <!--Built in Cells-->
+    <!--ListView.ItemTemplate>
         <DataTemplate>
             <TextCell Text="{Binding .}" />
         </DataTemplate>
-    </ListView.ItemTemplate>
+    </ListView.ItemTemplate>-->
     
     <!--Custom View Cells-->
     <!--
@@ -29,5 +58,6 @@
       </DataTemplate>
     </ListView.ItemTemplate>
     -->
-  </ListView>
+            <!--</ListView>-->
+            </ContentPage.Content>
 </ContentPage>
