@@ -1,6 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:NS.MBX_amarin.View"
              x:Class="NS.MBX_amarin.View.OperacionesView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,13 +17,37 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="White">
+        <AbsoluteLayout BackgroundColor="White">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                         AbsoluteLayout.LayoutFlags="All">
+                <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                                            <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand" FontSize="Medium"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>
+        
+        <!--<StackLayout  BackgroundColor="White">
 
             <StackLayout   VerticalOptions="StartAndExpand"  Orientation="Vertical" >
-                <!--<Button  HorizontalOptions="FillAndExpand"  Text="Pagos"  BackgroundColor="Transparent" TextColor="Black"   />
+                --><!--<Button  HorizontalOptions="FillAndExpand"  Text="Pagos"  BackgroundColor="Transparent" TextColor="Black"   />
                 <Button  HorizontalOptions="FillAndExpand"  Text="Recargas"  BackgroundColor="Transparent" TextColor="Black"   />
                 <Button  HorizontalOptions="FillAndExpand"  Text="Transferencias"  BackgroundColor="Transparent" TextColor="Black"   />
-               --> <!-- LISTA OPE-->
+               --> <!-- LISTA OPE--><!--
                 <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -45,6 +70,6 @@
                 <Button  HorizontalOptions="FillAndExpand"  Text="Ubícanos" Style="{StaticResource BtnMenuBar}" />
                 <Button  HorizontalOptions="End"   Text="Más.." Style="{StaticResource BtnMenuBar}" />
             </StackLayout>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
