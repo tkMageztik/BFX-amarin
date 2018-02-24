@@ -29,12 +29,14 @@ namespace NS.MBX_amarin.View
             this.origenMisCuentas = origenMisCuentas;
             this.tipoTransf = tipoTransf;
 
-            lblNombreOri.Text = ctaOrigen.NombreCta;
-            lblSaldoOri.Text = ctaOrigen.SaldoDisponible.ToString();
+            lblNombreOri.Text = "De: " + ctaOrigen.NombreCta;
+            lblSaldoOri.Text = ctaOrigen.Moneda + " " + ctaOrigen.SaldoDisponible.ToString();
 
-            lblNombreDest.Text = ctaDestino.NombreCta;
+            lblNombreDest.Text = "Para: " + ctaDestino.NombreCta;
 
+            lblMonto.Text = "Monto(" + ctaOrigen.Moneda + "):";
 
+            navBar.seleccionarBoton("1");
 		}
 
         private async void BtnSgt_OnClicked(object sender, EventArgs args)
@@ -59,21 +61,21 @@ namespace NS.MBX_amarin.View
                     ctaOrigen.SaldoDisponible -= montoDec;
 
                     if(tipoTransf == "2")
-                {
-                    decimal monto = montoDec;
-                    if (ctaOrigen.idMoneda == "PEN" && ctaDestino.idMoneda == "USD")
                     {
-                        monto = decimal.Round(Decimal.Multiply(montoDec, 3.3M), 2, MidpointRounding.AwayFromZero);
+                        decimal monto = montoDec;
+                        if (ctaOrigen.idMoneda == "PEN" && ctaDestino.idMoneda == "USD")
+                        {
+                            monto = decimal.Round(Decimal.Divide(montoDec, 3.3M), 2, MidpointRounding.AwayFromZero);
                         
-                    }
-                    else if (ctaOrigen.idMoneda == "USD" && ctaDestino.idMoneda == "PEN")
-                    {
-                        monto = decimal.Round(Decimal.Divide(montoDec, 3.3M), 2, MidpointRounding.AwayFromZero);
-                    }
+                        }
+                        else if (ctaOrigen.idMoneda == "USD" && ctaDestino.idMoneda == "PEN")
+                        {
+                            monto = decimal.Round(Decimal.Multiply(montoDec, 3.3M), 2, MidpointRounding.AwayFromZero);
+                        }
 
-                    ctaDestino.SaldoDisponible += monto;
+                        ctaDestino.SaldoDisponible += monto;
 
-                }
+                    }
 
                     await DisplayAlert("Transferencia Exitosa", "Transferido correctamente", "OK");
                 }

@@ -1,6 +1,7 @@
 using NS.MBX_amarin.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace NS.MBX_amarin.View
             //    new Cuenta { NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$" }
             //};
 
-            lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as List<Cuenta>;
+            lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as ObservableCollection<Cuenta>;
 
             //lsvCtas.GestureRecognizers.Clear();
             //lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
@@ -42,13 +43,27 @@ namespace NS.MBX_amarin.View
         //private void LstvCtas_OnItemSelected(object sender, EventArgs args)
         //{
         //    //DisplayAlert("TEST", "TEST2", "TEST3");
-            
+
         //    Navigation.PushAsync(new ConsultasView(""), false);
 
         //    //lsvCtas.ItemSelected -= LstvCtas_OnItemSelected;
         //    //((ListView)sender).SelectedItem = null;
         //    //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
         //}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+            lsvCtas.ItemsSource = null;
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as ObservableCollection<Cuenta>;
+
+            });
+
+        }
 
         async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
         {

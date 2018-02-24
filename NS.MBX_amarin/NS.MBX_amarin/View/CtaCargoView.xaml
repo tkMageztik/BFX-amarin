@@ -8,20 +8,18 @@
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
                          AbsoluteLayout.LayoutFlags="All">
                 <StackLayout Orientation="Vertical">
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
+                    <StackLayout >
+                        <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" HasUnevenRows="True">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <ViewCell.View>
                                             <StackLayout Orientation="Horizontal">
-                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="Start"></StackLayout>
-                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
-                                                    <Label Text="{Binding NombreCta}" VerticalOptions="Start"></Label>
-                                                    <Label Text="{Binding SaldoDisponible}" VerticalOptions="CenterAndExpand"></Label>
-                                                    <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                                                <StackLayout Padding="10,0,0,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                                    <Label Text="{Binding NombreCta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding SaldoDisponible}"  ></Label>
+                                                    <Label Text="Saldo Disponible" ></Label>
                                                 </StackLayout>
-                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="End"></StackLayout>
                                             </StackLayout>
                                         </ViewCell.View>
                                     </ViewCell>

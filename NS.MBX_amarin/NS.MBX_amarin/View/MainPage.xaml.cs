@@ -44,7 +44,7 @@ namespace NS.MBX_amarin
             txtClaveWeb.Text = "Cualquier_Clave";
 
             //inicializar cuentas
-            List<Cuenta> lstCtas = new List<Cuenta>
+            ObservableCollection<Cuenta> lstCtas = new ObservableCollection<Cuenta>
             {
                 new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
                 new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},

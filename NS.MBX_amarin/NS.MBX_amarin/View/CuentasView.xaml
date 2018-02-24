@@ -12,19 +12,24 @@
                         <Label Text="Tipo de Cambio ref. Compra: 3.135 Venta: 3.305"></Label>
                     </StackLayout>
                     <StackLayout VerticalOptions="CenterAndExpand">
-                        <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
+                        <!--<StackLayout Orientation="Horizontal">
+                            <StackLayout Padding="10,0,0,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                <Label Text="saldo soles" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium"></Label>
+                                <Label Text="S. 10.0" VerticalOptions="CenterAndExpand" FontSize="Small"></Label>
+                                <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                            </StackLayout>
+                        </StackLayout>-->
+                        <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" HasUnevenRows="True">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <ViewCell.View>
                                             <StackLayout Orientation="Horizontal">
-                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="Start"></StackLayout>
-                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
-                                                    <Label Text="{Binding NombreCta}" VerticalOptions="Start"></Label>
-                                                    <Label Text="{Binding SaldoDisponible}" VerticalOptions="CenterAndExpand"></Label>
-                                                    <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                                                <StackLayout Padding="10,0,10,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                                    <Label Text="{Binding NombreCta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding SaldoDisponible}"  ></Label>
+                                                    <Label Text="Saldo Disponible" ></Label>
                                                 </StackLayout>
-                                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="End"></StackLayout>
                                             </StackLayout>
                                         </ViewCell.View>
                                     </ViewCell>

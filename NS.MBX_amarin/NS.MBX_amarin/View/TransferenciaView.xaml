@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:NS.MBX_amarin.View"
              x:Class="NS.MBX_amarin.View.TransferenciaView">
     <ContentPage.Content>
         
@@ -8,23 +9,23 @@
         <AbsoluteLayout BackgroundColor="White">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"  
                          AbsoluteLayout.LayoutFlags="All">
-                <StackLayout>
-                    <Label Text="De: " FontSize="Medium"
-                HorizontalOptions="StartAndExpand" />
-                    <Label x:Name="lblNombreOri"  FontSize="Medium"
-                HorizontalOptions="StartAndExpand" />
-                    <Label x:Name="lblSaldoOri"  FontSize="Medium"
-                HorizontalOptions="StartAndExpand" />
+                <StackLayout Padding="10,0,10,0">
+                    <Frame HorizontalOptions="FillAndExpand" >
+                        <StackLayout>
+                            <Label x:Name="lblNombreOri" Text="prue"  FontSize="Small"
+                            HorizontalOptions="StartAndExpand"  />
+                            <Label x:Name="lblSaldoOri" Text="prue"  FontSize="Small"
+                            HorizontalOptions="StartAndExpand" />
+                            <Label x:Name="lblNombreDest" FontSize="Small"
+                            HorizontalOptions="StartAndExpand" />
+                        </StackLayout>
+                    </Frame>
+                    
 
-                    <Label Text="Para: " FontSize="Medium"
+                    <Label x:Name="lblMonto" Text="Monto: " FontSize="Medium"
                 HorizontalOptions="StartAndExpand" />
-                    <Label x:Name="lblNombreDest" FontSize="Medium"
-                HorizontalOptions="StartAndExpand" />
-
-                    <Label Text="Monto: " FontSize="Medium"
-                HorizontalOptions="StartAndExpand" />
-                    <Entry x:Name="entMonto" VerticalOptions="CenterAndExpand" />
-                    <Button Text="Transferir" VerticalOptions="CenterAndExpand" Clicked="BtnSgt_OnClicked"></Button>
+                    <Entry x:Name="entMonto" Keyboard="Numeric" HorizontalOptions="FillAndExpand" />
+                    <Button Text="Transferir" HorizontalOptions="FillAndExpand" Clicked="BtnSgt_OnClicked"></Button>
 
                 </StackLayout>
             </StackLayout>

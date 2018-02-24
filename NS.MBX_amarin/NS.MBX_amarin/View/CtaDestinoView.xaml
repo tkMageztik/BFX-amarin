@@ -5,29 +5,49 @@
              x:Class="NS.MBX_amarin.View.CtaDestinoView">
 
     <AbsoluteLayout BackgroundColor="White">
+        
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
                          AbsoluteLayout.LayoutFlags="All">
-            <StackLayout x:Name="layoutOtrasCuentas" VerticalOptions="CenterAndExpand">
-                <Label Text="Número de cuenta destino"></Label>
-                <Entry x:Name="entNumCuenta" VerticalOptions="CenterAndExpand" />
-                <Button Text="Siguiente" VerticalOptions="End" Clicked="BtnSgt_OnClicked"></Button>
-
+            <StackLayout x:Name="layoutOtrasCuentasFinan" Padding="10,0,10,0" >
+                <Frame HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label x:Name="lblCtaOri" Text="desde:" FontSize="Small"></Label>
+                        <Label Text="a: otra cuenta Financiero" FontSize="Small"></Label>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Número de cuenta destino: " FontSize="Medium"></Label>
+                <Entry x:Name="entNumCuenta" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  />
+                <Label Text="Tipo de cuenta destino: " FontSize="Medium"></Label>
+                <Picker x:Name="picTipoCuenta" HorizontalOptions="FillAndExpand" />
+                <Button Text="Siguiente" Clicked="BtnSgt_OnClicked" HorizontalOptions="FillAndExpand" ></Button>
             </StackLayout>
 
-            <StackLayout x:Name="layoutMisCuentas" VerticalOptions="CenterAndExpand">
-                <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
+            <StackLayout x:Name="layoutOtrosBancos" Padding="10,0,10,0" >
+                <Frame HorizontalOptions="FillAndExpand"  >
+                    <StackLayout >
+                        <Label Text="INGRESA LOS DATOS" FontSize="Small"></Label>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Código de cuenta interbancario (CCI): " FontSize="Medium"></Label>
+                <Entry x:Name="entNumOtroBco" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  />
+                <Label Text="Moneda: " FontSize="Medium"></Label>
+                <Picker x:Name="picMoneda" HorizontalOptions="FillAndExpand" />
+                <Label Text="Tipo de cambio ref. Compra: 3.16 Venta: 3.33 " FontSize="Small"></Label>
+                <Button Text="Transferir" Clicked="BtnTransfOtroBanco_OnClicked" HorizontalOptions="FillAndExpand" ></Button>
+            </StackLayout>
+
+            <StackLayout x:Name="layoutMisCuentas" >
+                <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
                                     <StackLayout Orientation="Horizontal">
-                                        <StackLayout BackgroundColor="Transparent" HorizontalOptions="Start"></StackLayout>
-                                        <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
-                                            <Label Text="{Binding NombreCta}" VerticalOptions="Start"></Label>
-                                            <Label Text="{Binding SaldoDisponible}" VerticalOptions="CenterAndExpand"></Label>
-                                            <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                                        <StackLayout Padding="10,0,10,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                            <Label Text="{Binding NombreCta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                            <Label Text="{Binding SaldoDisponible}"  ></Label>
+                                            <Label Text="Saldo Disponible" ></Label>
                                         </StackLayout>
-                                        <StackLayout BackgroundColor="Transparent" HorizontalOptions="End"></StackLayout>
                                     </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>

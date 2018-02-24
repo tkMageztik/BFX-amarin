@@ -29,17 +29,67 @@ namespace NS.MBX_amarin.View
             this.origenMisCuentas = origenMisCuentas;
             this.cuentaOrigen = cuentaOrigen;
 
-            //otras cuentas
-            if (tipoTransf == "1")
+            //otras cuentas finan
+            if (tipoTransf == "0")
             {
                 layoutMisCuentas.IsVisible = false;
-                layoutOtrasCuentas.IsVisible = true;
-                //entre mis cuentas
-            }else if (tipoTransf == "2")
+                layoutOtrasCuentasFinan.IsVisible = true;
+                layoutOtrosBancos.IsVisible = false;
+
+                lblCtaOri.Text = "Desde: " + cuentaOrigen.NombreCta;
+
+                Dictionary<string, string> nameToCta = new Dictionary<string, string>
+                {
+                    { "Cuenta Simple Soles", "" }, 
+                    { "Cuenta Simple Dólares", "" }, 
+                    { "Cuenta Ahorros Soles", "" }, 
+                    { "Cuenta Ahorros Dólares", "" }
+                };
+
+                foreach (string cuentaName in nameToCta.Keys)
+                {
+                    picTipoCuenta.Items.Add(cuentaName);
+                }
+
+                //otros bancos
+            }else if(tipoTransf == "1")
+            {
+                layoutMisCuentas.IsVisible = false;
+                layoutOtrasCuentasFinan.IsVisible = false;
+                layoutOtrosBancos.IsVisible = true;
+
+                Dictionary<string, string> nameToCta = new Dictionary<string, string>
+                {
+                    { "Soles", "" },
+                    { "Dólares", "" }
+                };
+
+                foreach (string cuentaName in nameToCta.Keys)
+                {
+                    picMoneda.Items.Add(cuentaName);
+                }
+
+            }
+            else if (tipoTransf == "2")
             {
                 layoutMisCuentas.IsVisible = true;
-                layoutOtrasCuentas.IsVisible = false;
-                lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as List<Cuenta>;
+                layoutOtrasCuentasFinan.IsVisible = false;
+                layoutOtrosBancos.IsVisible = false;
+
+                lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as ObservableCollection<Cuenta>;
+
+                ObservableCollection<Cuenta> listaCuentas = Application.Current.Properties["listaCuentas"] as ObservableCollection<Cuenta>;
+                ObservableCollection<Cuenta> listaNueva = new ObservableCollection<Cuenta>();
+
+                foreach(Cuenta cta in listaCuentas)
+                {
+                    if(cta.idCta != cuentaOrigen.idCta)
+                    {
+                        listaNueva.Add(cta);
+                    }
+                }
+
+                lsvCtas.ItemsSource = listaNueva;
             }
                 Items = new ObservableCollection<string>
             {
@@ -81,18 +131,25 @@ namespace NS.MBX_amarin.View
             //await Navigation.PushAsync(new SeleccionaCtaCargo("Transferencia Ctas mismo banco"));
             //ShowPopup();
 
-            await DisplayAlert("Transferencia Exitosa", "Transferido correctamente", "OK");
+            Cuenta cuentaDestino = new Cuenta();
+            cuentaDestino.NombreCta = "otra cuenta Financiero";
+            cuentaDestino.idMoneda = "PEN";
+            cuentaDestino.Moneda = "S.";
+
+            await Navigation.PushAsync(new TransferenciaView(cuentaOrigen, cuentaDestino, origenMisCuentas, tipoTransf), false);
 
 
-            //var page = new NavigationPage(new CuentasView());
+        }
 
-            //await Navigation.PushAsync(page);
+        private async void BtnTransfOtroBanco_OnClicked(object sender, EventArgs args)
+        {
 
-            RemoveBeforeDestination(typeof(CuentasView));
+            Cuenta cuentaDestino = new Cuenta();
+            cuentaDestino.NombreCta = "otros bancos";
+            cuentaDestino.idMoneda = "PEN";
+            cuentaDestino.Moneda = "S.";
 
-            //await Navigation.PushAsync(new CuentasView());
-            //await Navigation.PushAsync(page);
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new TransferenciaView(cuentaOrigen, cuentaDestino, origenMisCuentas, tipoTransf), false);
 
         }
 

@@ -35,7 +35,7 @@ namespace NS.MBX_amarin.View
             Title = "Cuenta Cargo";
             //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
             
-            lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as List<Cuenta>;
+            lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as ObservableCollection<Cuenta>;
             navBar.seleccionarBoton("1");
         }
 
