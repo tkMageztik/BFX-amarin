@@ -1,4 +1,4 @@
-﻿using NS.MBX_amarin.Data;
+using NS.MBX_amarin.Data;
 using NS.MBX_amarin.Services;
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,7 @@ namespace NS.MBX_amarin
             InitializeComponent();
             //MainPage = new MainPage();
             var navPage = new NavigationPage(new MainPage());
+            navPage.BarBackgroundColor = Color.Blue;
             MainPage = navPage;
         }
 
