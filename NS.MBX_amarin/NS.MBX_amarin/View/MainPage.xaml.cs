@@ -1,4 +1,4 @@
-﻿using NS.MBX_amarin.Helpers;
+using NS.MBX_amarin.Helpers;
 using NS.MBX_amarin.Model;
 using NS.MBX_amarin.View;
 using NS.MBX_amarin.ViewModel;
@@ -43,6 +43,16 @@ namespace NS.MBX_amarin
 
             txtClaveWeb.Text = "Cualquier_Clave";
 
+            //inicializar cuentas
+            List<Cuenta> lstCtas = new List<Cuenta>
+            {
+                new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
+                new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
+                new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
+                new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
+            };
+
+            Application.Current.Properties["listaCuentas"] = lstCtas;
         }
 
         private void TxtTipNroDoc_OnChanged(object sender, EventArgs args)
@@ -123,14 +133,15 @@ namespace NS.MBX_amarin
 
         private void BtnIngresar_OnClicked(object sender, EventArgs args)
         {
-            string msg = ValidarIngreso();
+            //string msg = ValidarIngreso();
+            string msg = "";
             if (msg == "")
             {
                 //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
-                if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
-                {
+                //if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
+                //{
                     Navigation.PushAsync(new CuentasView());
-                }
+                //}
             }
             else { DisplayAlert("Banco X", msg, "Aceptar"); }
         }
