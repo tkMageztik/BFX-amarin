@@ -1,5 +1,6 @@
-﻿using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -14,24 +15,28 @@ namespace NS.MBX_amarin.View
     public partial class CtaCargoView : ContentPage
     {
         public ObservableCollection<Cuenta> Items { get; set; }
-        private string origen { get; set; }
-        public CtaCargoView(string origen)
+        private string tipoTransf { get; set; }
+        public bool origenMisCuentas;
+
+        public CtaCargoView(string tipoTransf, bool origenMisCuentas)
         {
             InitializeComponent();
-            this.origen = origen;
+            this.tipoTransf = tipoTransf;
+            this.origenMisCuentas = origenMisCuentas;
 
-            Items = new ObservableCollection<Cuenta>
-            {
-                new Cuenta { NombreCta = "Cuenta Simple Soles", SaldoDisponible = 0.10M, Moneda = "S/" },
-                new Cuenta { NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" },
-                new Cuenta { NombreCta = "Cuenta Ahoros Soles", SaldoDisponible = 155.10M, Moneda = "S/" },
-                new Cuenta { NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$" }
-            };
+            //Items = new ObservableCollection<Cuenta>
+            //{
+            //    new Cuenta { NombreCta = "Cuenta Simple Soles", SaldoDisponible = 0.10M, Moneda = "S/" },
+            //    new Cuenta { NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" },
+            //    new Cuenta { NombreCta = "Cuenta Ahoros Soles", SaldoDisponible = 155.10M, Moneda = "S/" },
+            //    new Cuenta { NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$" }
+            //};
 
-            Title = "Mis cuentas";
+            Title = "Cuenta Cargo";
             //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
-
-            MyListView.ItemsSource = Items;
+            
+            lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as List<Cuenta>;
+            navBar.seleccionarBoton("1");
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -41,10 +46,25 @@ namespace NS.MBX_amarin.View
 
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
-            if (origen == "Transferencia Ctas mismo banco")
-            {
-                await Navigation.PushAsync(new CtaDestinoView(origen));
-            }
+            //if (origen == "Transferencia Ctas mismo banco")
+            //{
+            //    await Navigation.PushAsync(new CtaDestinoView(origen));
+            //}
+
+            await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas));
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
+        }
+
+        async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+            await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas), false);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
