@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -50,11 +50,40 @@ namespace NS.MBX_amarin.View
             await DisplayAlert("Transferencia Exitosa", "Transferido correctamente", "OK");
 
 
-            var page = new NavigationPage(new CuentasView());
+            //var page = new NavigationPage(new CuentasView());
 
-            await Navigation.PushAsync(page);
             //await Navigation.PushAsync(page);
 
+            RemoveBeforeDestination(typeof(CuentasView));
+
+            //await Navigation.PushAsync(new CuentasView());
+            //await Navigation.PushAsync(page);
+            await Navigation.PopAsync();
+
+        }
+
+        public void RemoveBeforeDestination(Type DestinationPage)
+        {
+            int LeastFoundIndex = 0;
+            int PagesToRemove = 0;
+
+            for (int index = Navigation.NavigationStack.Count - 2; index > 0; index--)
+            {
+                if (Navigation.NavigationStack[index].GetType().Equals(DestinationPage))
+                {
+                    break;
+                }
+                else
+                {
+                    LeastFoundIndex = index;
+                    PagesToRemove++;
+                }
+            }
+
+            for (int index = 0; index < PagesToRemove; index++)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[LeastFoundIndex]);
+            }
 
         }
     }
