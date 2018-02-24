@@ -1,4 +1,4 @@
-﻿using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +30,8 @@ namespace NS.MBX_amarin.View
 
             lsvCtas.GestureRecognizers.Clear();
             lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
+
+            navBar.seleccionarBoton("1");
         }
 
         async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -41,7 +43,7 @@ namespace NS.MBX_amarin.View
             
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
-            await Navigation.PushAsync(new SubOperacionesView(ope.Id));
+            await Navigation.PushAsync(new SubOperacionesView(ope.Id, false), false);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
