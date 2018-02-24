@@ -1,4 +1,4 @@
-﻿using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,29 +24,31 @@ namespace NS.MBX_amarin.View
             InitializeComponent();
             Title = "Mis cuentas";
             //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
-            List<Cuenta> lstCtas = new List<Cuenta>
-            {
-                new Cuenta { NombreCta = "Cuenta Simple Soles", SaldoDisponible = 0.10M, Moneda = "S/" },
-                new Cuenta { NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" },
-                new Cuenta { NombreCta = "Cuenta Ahoros Soles", SaldoDisponible = 155.10M, Moneda = "S/" },
-                new Cuenta { NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$" }
-            };
+            //List<Cuenta> lstCtas = new List<Cuenta>
+            //{
+            //    new Cuenta { NombreCta = "Cuenta Simple Soles", SaldoDisponible = 0.10M, Moneda = "S/" },
+            //    new Cuenta { NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" },
+            //    new Cuenta { NombreCta = "Cuenta Ahoros Soles", SaldoDisponible = 155.10M, Moneda = "S/" },
+            //    new Cuenta { NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$" }
+            //};
 
-            lsvCtas.ItemsSource = lstCtas;
+            lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as List<Cuenta>;
 
             //lsvCtas.GestureRecognizers.Clear();
             //lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
+            navBar.seleccionarBoton("0");
         }
 
-        private void LstvCtas_OnItemSelected(object sender, EventArgs args)
-        {
-            //DisplayAlert("TEST", "TEST2", "TEST3");
-            Navigation.PushAsync(new ConsultasView(""));
+        //private void LstvCtas_OnItemSelected(object sender, EventArgs args)
+        //{
+        //    //DisplayAlert("TEST", "TEST2", "TEST3");
+            
+        //    Navigation.PushAsync(new ConsultasView(""), false);
 
-            //lsvCtas.ItemSelected -= LstvCtas_OnItemSelected;
-            //((ListView)sender).SelectedItem = null;
-            //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
-        }
+        //    //lsvCtas.ItemSelected -= LstvCtas_OnItemSelected;
+        //    //((ListView)sender).SelectedItem = null;
+        //    //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
+        //}
 
         async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -55,7 +57,7 @@ namespace NS.MBX_amarin.View
 
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
-            await Navigation.PushAsync(new ConsultasView(""));
+            await Navigation.PushAsync(new ConsultasView(e.Item as Cuenta), false);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
