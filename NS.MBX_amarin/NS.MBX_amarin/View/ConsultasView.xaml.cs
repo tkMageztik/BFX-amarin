@@ -1,3 +1,4 @@
+using NS.MBX_amarin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,18 @@ namespace NS.MBX_amarin.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ConsultasView : ContentPage
     {
-        public ConsultasView(string texto)
+        public Cuenta cuenta;
+        public ConsultasView(Cuenta cta)
         {
             InitializeComponent();
             Title = "Mis consultas";
 
+            cuenta = cta;
+
+            lblNomCuenta.Text = cuenta.NombreCta;
+            lblSaldo.Text = cuenta.Moneda + " " + cuenta.SaldoDisponible.ToString();
+
+            navBar.seleccionarBoton("0");
         }
 
         private async void BtnMovimientos_OnClicked(object sender, EventArgs args)
@@ -74,9 +82,10 @@ namespace NS.MBX_amarin.View
             await Navigation.PushModalAsync(loginPage, false);
         }
 
-        public void navegarCtaCargo()
+
+        public void navegarSubOperaciones(string idOperacion)
         {
-            Navigation.PushAsync(new CtaCargoView("Transferencia Ctas mismo banco"), false);
+            Navigation.PushAsync(new SubOperacionesView(idOperacion, true), false);
         }
 
 
