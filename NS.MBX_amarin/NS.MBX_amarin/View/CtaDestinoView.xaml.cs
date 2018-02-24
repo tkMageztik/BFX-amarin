@@ -1,4 +1,6 @@
+using NS.MBX_amarin.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -14,12 +16,32 @@ namespace NS.MBX_amarin.View
     {
         public ObservableCollection<string> Items { get; set; }
         private string origen { get; set; }
-        public CtaDestinoView(string origen)
-        {
+        public string tipoTransf;
+        public bool origenMisCuentas;
+        public Cuenta cuentaOrigen;
 
+        public CtaDestinoView(string tipoTransf, Cuenta cuentaOrigen, bool origenMisCuentas)
+        {
+            
             InitializeComponent();
-            this.origen = origen;
-            Items = new ObservableCollection<string>
+            Title = "Cuenta Destino";
+            this.tipoTransf = tipoTransf;
+            this.origenMisCuentas = origenMisCuentas;
+            this.cuentaOrigen = cuentaOrigen;
+
+            //otras cuentas
+            if (tipoTransf == "1")
+            {
+                layoutMisCuentas.IsVisible = false;
+                layoutOtrasCuentas.IsVisible = true;
+                //entre mis cuentas
+            }else if (tipoTransf == "2")
+            {
+                layoutMisCuentas.IsVisible = true;
+                layoutOtrasCuentas.IsVisible = false;
+                lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as List<Cuenta>;
+            }
+                Items = new ObservableCollection<string>
             {
                 "Item 1",
                 "Item 2",
@@ -27,8 +49,7 @@ namespace NS.MBX_amarin.View
                 "Item 4",
                 "Item 5"
             };
-
-            MyListView.ItemsSource = Items;
+            navBar.seleccionarBoton("1");
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -37,6 +58,19 @@ namespace NS.MBX_amarin.View
                 return;
 
             await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
+        }
+
+        async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+            await Navigation.PushAsync(new TransferenciaView(cuentaOrigen, e.Item as Cuenta, origenMisCuentas, tipoTransf), false);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
