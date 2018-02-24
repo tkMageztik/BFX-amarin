@@ -28,7 +28,7 @@ namespace NS.MBX_amarin.View
             //await Navigation.PopToRootAsync();
 
             //await Navigation.PushAsync(new CtaCargoView("Transferencia Ctas mismo banco"));
-            consultasView.navegarCtaCargo();
+            consultasView.navegarSubOperaciones("3");
             await Navigation.PopModalAsync();
             
         }
