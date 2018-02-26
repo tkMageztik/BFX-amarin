@@ -263,8 +263,8 @@ namespace NS.MBX_amarin
         }
         private void BtnContacto_OnClicked(object sender, EventArgs args)
         {
-            //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
-            Navigation.PushAsync(new OperacionesView());
+            DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+            //Navigation.PushAsync(new OperacionesView());
 
         }
 

@@ -51,7 +51,7 @@ namespace NS.MBX_amarin.View
 
                 lstCtas = new List<SubOperacion>
                 {
-                    new SubOperacion { Id= "0", Nombre = "A otras cuenta Financiero" },
+                    new SubOperacion { Id= "0", Nombre = "A otra cuenta Financiero" },
                     new SubOperacion { Id= "1", Nombre = "A otro banco" },
                     new SubOperacion { Id= "2", Nombre = "A cuenta propia" }
                 };

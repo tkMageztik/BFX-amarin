@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NS.MBX_amarin.View.PopUpOperacionesView" BackgroundColor="Gray" Padding="20,20,20,20">
+             x:Class="NS.MBX_amarin.View.PopUpOperacionesView" BackgroundColor="Transparent" Padding="20,100,20,100">
     <ContentPage.Content>
         <AbsoluteLayout>
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.0,0.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All" BackgroundColor="Red">
-                <Button Text="Transfiere" AbsoluteLayout.LayoutBounds="0.5,0.5,0.5,0.5"  AbsoluteLayout.LayoutFlags="All" Clicked="BtnSeleccionaCtaCargo_OnClicked"></Button>
+            <AbsoluteLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.0,0.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All">
+                <Button Text="Transfiere" FontSize="Micro" AbsoluteLayout.LayoutBounds="0.5,0.5,0.8,0.5"  AbsoluteLayout.LayoutFlags="All" Clicked="BtnSeleccionaCtaCargo_OnClicked"></Button>
             </AbsoluteLayout>
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="1.0,0.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All" BackgroundColor="Blue">
-                <Button Text="btn3" AbsoluteLayout.LayoutBounds="0.5,0.5,0.5,0.5"  AbsoluteLayout.LayoutFlags="All"></Button>
+            <AbsoluteLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="1.0,0.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All">
+                <Button Text="Paga o recarga"  FontSize="Micro" AbsoluteLayout.LayoutBounds="0.5,0.5,0.8,0.5"  AbsoluteLayout.LayoutFlags="All"></Button>
             </AbsoluteLayout>
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.0,1.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All" BackgroundColor="Yellow">
-                <Button Text="btn4" AbsoluteLayout.LayoutBounds="0.5,0.5,0.5,0.5"  AbsoluteLayout.LayoutFlags="All"></Button>
+            <AbsoluteLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.0,1.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All">
+                <Button Text="Ponle nombre a tu cuenta"  FontSize="Micro" AbsoluteLayout.LayoutBounds="0.5,0.5,0.8,0.5"  AbsoluteLayout.LayoutFlags="All"></Button>
             </AbsoluteLayout>
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="1.0,1.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All" BackgroundColor="Green">
-                <Button Text="btn5" AbsoluteLayout.LayoutBounds="0.5,0.5,0.5,0.5"  AbsoluteLayout.LayoutFlags="All"></Button>
+            <AbsoluteLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="1.0,1.0,0.5,0.5"  AbsoluteLayout.LayoutFlags="All">
+                <Button Text="Comparte tú número de cuenta y CCI"  FontSize="Micro" AbsoluteLayout.LayoutBounds="0.5,0.5,0.8,0.5"  AbsoluteLayout.LayoutFlags="All"></Button>
             </AbsoluteLayout>
             <!--<StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,0.5" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Green">
                 

@@ -1,0 +1,12 @@
+la navegación en interbank inicia después del login, se debería respetar eso o seguir con la navegación desde
+el login?.
+
+tab automático entre elementos del login.
+botón de eliminación de texto en nro de tarjeta, nro de doc yclave de login (x al empezar a escribir)
+
+imagen de candado en los switchs del login.(icono)
+olvidaste clave (¿La olvidaste?)  y signo de admiración con info de que es clave web... .
+
+botonera de login, cuadrada y con iconos.
+
+asegurarse que botonera de login no desaparezca (se vaya más abajo)
