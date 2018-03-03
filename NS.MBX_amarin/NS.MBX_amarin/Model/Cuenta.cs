@@ -7,6 +7,7 @@ namespace NS.MBX_amarin.Model
     public class Cuenta
     {
         public string idCta { get; set; }
+        public string CodigoCta { get; set; }
         public string NombreCta { get; set; }
         public decimal SaldoDisponible { get; set; }
         public string Moneda { get; set; }

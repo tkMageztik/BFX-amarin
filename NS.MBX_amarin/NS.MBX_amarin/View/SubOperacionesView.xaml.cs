@@ -1,6 +1,8 @@
 using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,49 +22,16 @@ namespace NS.MBX_amarin.View
 		{
 			InitializeComponent ();
             this.origenMisCuentas = origenMisCuentas;
-            List<SubOperacion> lstCtas = null;
-
+            ObservableCollection<SubOperacion> lstCtas = OperacionService.ListarSubOperaciones(idOperacion);
             idOpe = idOperacion;
-
-            if (idOperacion == "1")
-            {
-                Title = "Pagos";
-
-                lstCtas = new List<SubOperacion>
-                {
-                    new SubOperacion { Id= "1", Nombre = "Pago de servicios" },
-                    new SubOperacion { Id= "2", Nombre = "Pago de alquiler" },
-                    new SubOperacion { Id= "3", Nombre = "Pago de cuentas" }
-                };
-            }else if (idOperacion == "2")
-            {
-                Title = "Recargas";
-
-                lstCtas = new List<SubOperacion>
-                {
-                    new SubOperacion { Id= "1", Nombre = "Recarga Claro" },
-                    new SubOperacion { Id= "2", Nombre = "Recarga Movistar" },
-                    new SubOperacion { Id= "3", Nombre = "Recarga Entel" }
-                };
-            }
-            else if (idOperacion == "3")
-            {
-                Title = "Transferencias";
-
-                lstCtas = new List<SubOperacion>
-                {
-                    new SubOperacion { Id= "0", Nombre = "A otras cuenta Financiero" },
-                    new SubOperacion { Id= "1", Nombre = "A otro banco" },
-                    new SubOperacion { Id= "2", Nombre = "A cuenta propia" }
-                };
-            }
+            
 
             lsvCtas.ItemsSource = lstCtas;
 
             lsvCtas.GestureRecognizers.Clear();
             lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
 
-            navBar.seleccionarBoton("1");
+            //navBar.seleccionarBoton("1");
         }
 
         async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -73,16 +42,18 @@ namespace NS.MBX_amarin.View
             SubOperacion subope = e.Item as SubOperacion;
 
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-            if(idOpe == "3" )
+            Application.Current.Properties["suboperacionActual"] = subope;
+            if (idOpe == "1")
             {
-                await Navigation.PushAsync(new CtaCargoView(subope.Id, origenMisCuentas), false);
-            }
-            else
+                //pago de servicios
+                if(subope.Id == "0")
+                {
+                    await Navigation.PushAsync(new EmpresaView(), false);
+                }
+            }else if(idOpe == "3" )
             {
-                await Navigation.PushAsync(new SubOperacionesView(subope.Id, false), false);
+                await Navigation.PushAsync(new CtaCargoView(subope.Id, origenMisCuentas, ""), false);
             }
-
-            
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

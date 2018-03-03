@@ -36,7 +36,7 @@ namespace NS.MBX_amarin.View
 
             lblMonto.Text = "Monto(" + ctaOrigen.Moneda + "):";
 
-            navBar.seleccionarBoton("1");
+            //navBar.seleccionarBoton("1");
 		}
 
         private async void BtnSgt_OnClicked(object sender, EventArgs args)

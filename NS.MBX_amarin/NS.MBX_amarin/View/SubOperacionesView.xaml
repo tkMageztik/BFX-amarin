@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:NS.MBX_amarin.View"
-             x:Class="NS.MBX_amarin.View.SubOperacionesView">
+             x:Class="NS.MBX_amarin.View.SubOperacionesView"
+             Title="Operaciones">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button" x:Key="BtnMenuBar">
@@ -17,28 +18,28 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <AbsoluteLayout BackgroundColor="White">
+        <!--<AbsoluteLayout BackgroundColor="White">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
-                         AbsoluteLayout.LayoutFlags="All">
+                         AbsoluteLayout.LayoutFlags="All">-->
                 <ListView x:Name="lsvCtas"  ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
                                     <StackLayout Orientation="Horizontal">
-                                        <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
-                                            <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand" FontSize="Medium"></Label>
-                                        </StackLayout>
-                                    </StackLayout>
+                                <StackLayout Padding="10,0,10,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                    <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand" FontSize="Medium"></Label>
+                                </StackLayout>
+                            </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>
+            <!--</StackLayout>
 
             <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
                            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentPage.Content>
 </ContentPage>

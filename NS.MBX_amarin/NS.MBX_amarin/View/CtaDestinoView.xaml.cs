@@ -99,7 +99,7 @@ namespace NS.MBX_amarin.View
                 "Item 4",
                 "Item 5"
             };
-            navBar.seleccionarBoton("1");
+            //navBar.seleccionarBoton("1");
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
