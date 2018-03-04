@@ -1,6 +1,8 @@
+using BottomBar.XamarinForms;
 using NS.MBX_amarin.Helpers;
 using NS.MBX_amarin.Model;
 using NS.MBX_amarin.View;
+using NS.MBX_amarin.View.NavigationBar;
 using NS.MBX_amarin.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -46,13 +48,14 @@ namespace NS.MBX_amarin
             //inicializar cuentas
             ObservableCollection<Cuenta> lstCtas = new ObservableCollection<Cuenta>
             {
-                new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
-                new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
-                new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
-                new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
+                new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", CodigoCta="00023232445", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
+                new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", CodigoCta="0334343444", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
+                new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", CodigoCta="00665553234", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
+                new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", CodigoCta="00334333434", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
             };
 
             Application.Current.Properties["listaCuentas"] = lstCtas;
+            Application.Current.Properties["pageOrigen"] = "";
         }
 
         private void TxtTipNroDoc_OnChanged(object sender, EventArgs args)
@@ -140,7 +143,8 @@ namespace NS.MBX_amarin
                 //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
                 //if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
                 //{
-                    Navigation.PushAsync(new CuentasView());
+                // Navigation.PushAsync(new NavigationBarView());
+                Application.Current.MainPage = navegarSpecialBar();//new NavigationBarView();
                 //}
             }
             else { DisplayAlert("Banco X", msg, "Aceptar"); }
@@ -157,6 +161,14 @@ namespace NS.MBX_amarin
                 EraseTipNroDoc();
                 EraseDatabase();
             }
+        }
+
+        private NavigationBarView navegarSpecialBar()
+        {
+
+            NavigationBarView bottomBarPage = new NavigationBarView();
+
+            return bottomBarPage;
         }
 
         private void EraseDatabase()

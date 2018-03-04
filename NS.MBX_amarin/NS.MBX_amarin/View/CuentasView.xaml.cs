@@ -37,7 +37,7 @@ namespace NS.MBX_amarin.View
 
             //lsvCtas.GestureRecognizers.Clear();
             //lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
-            navBar.seleccionarBoton("0");
+            //navBar.seleccionarBoton("0");
         }
 
         //private void LstvCtas_OnItemSelected(object sender, EventArgs args)

@@ -6,9 +6,7 @@
     <ContentPage.Content>
         
 
-        <AbsoluteLayout BackgroundColor="White">
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"  
-                         AbsoluteLayout.LayoutFlags="All">
+            <StackLayout BackgroundColor="White">
                 <StackLayout Padding="10,0,10,0">
                     <Frame HorizontalOptions="FillAndExpand" >
                         <StackLayout>
@@ -30,8 +28,8 @@
                 </StackLayout>
             </StackLayout>
 
-            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+            <!--<views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
                            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
     </ContentPage.Content>
 </ContentPage>

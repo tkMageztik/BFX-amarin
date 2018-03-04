@@ -4,10 +4,10 @@ using System.Text;
 
 namespace NS.MBX_amarin.Model
 {
-    public class Operacion
+    public class Servicio
     {
-        public string Id { get; set; }
+        public string IdEmpresa { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public DateTime FechaOperacion { get; set; }
     }
 }

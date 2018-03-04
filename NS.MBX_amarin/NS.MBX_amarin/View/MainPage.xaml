@@ -47,11 +47,11 @@
                     <!--<Button x:Name="btnRecordarPass" Text="¿Lo olvidaste?" VerticalOptions="Start" HorizontalOptions="End"></Button>-->
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                    <Button x:Name="btnIngresar" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" BackgroundColor="Blue" />
+                    <Button x:Name="btnIngresar" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" BackgroundColor="Blue" />
                 </StackLayout>
                 <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="25,10.0,25.5,10.0">
-                    <Button x:Name="btnRegistrar" Text="Registrar" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
-                    <Button x:Name="btnContacto" Text="Contacto" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
+                    <Button x:Name="btnRegistrar" TextColor="White" Text="Registrar" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
+                    <Button x:Name="btnContacto" Text="Contacto" TextColor="White" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
                     <!--<Button x:Name="btnUbicanos" Text="Ubícanos" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" ></Button>-->
                 </StackLayout>
             </StackLayout>

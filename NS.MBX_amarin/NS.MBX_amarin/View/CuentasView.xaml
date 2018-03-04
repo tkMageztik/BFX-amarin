@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:NS.MBX_amarin.View"
-             x:Class="NS.MBX_amarin.View.CuentasView">
+             x:Class="NS.MBX_amarin.View.CuentasView"
+             Title="Mis Cuentas">
     <ContentPage.Content>
-        <AbsoluteLayout BackgroundColor="White">
+        <!--<AbsoluteLayout BackgroundColor="White">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
-                         AbsoluteLayout.LayoutFlags="All">
+                         AbsoluteLayout.LayoutFlags="All">-->
                 <StackLayout Orientation="Vertical">
                     <StackLayout VerticalOptions="CenterAndExpand" Padding="10,10,10,10">
                         <Label Text="Tipo de Cambio ref. Compra: 3.135 Venta: 3.305"></Label>
@@ -46,11 +47,11 @@
                     </StackLayout>
                     <StackLayout VerticalOptions="End"></StackLayout>
                 </StackLayout>
-            </StackLayout>
+            <!--</StackLayout>
 
             <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
                            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
-        </AbsoluteLayout>
+        </AbsoluteLayout>-->
         
         
     </ContentPage.Content>

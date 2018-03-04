@@ -17,12 +17,14 @@ namespace NS.MBX_amarin.View
         public ObservableCollection<Cuenta> Items { get; set; }
         private string tipoTransf { get; set; }
         public bool origenMisCuentas;
+        public string pageOrigen { get; set; }
 
-        public CtaCargoView(string tipoTransf, bool origenMisCuentas)
+        public CtaCargoView(string tipoTransf, bool origenMisCuentas, string pageOrigen)
         {
             InitializeComponent();
             this.tipoTransf = tipoTransf;
             this.origenMisCuentas = origenMisCuentas;
+            this.pageOrigen = pageOrigen;
 
             //Items = new ObservableCollection<Cuenta>
             //{
@@ -36,26 +38,26 @@ namespace NS.MBX_amarin.View
             //lsvCtas.ItemSelected += LstvCtas_OnItemSelected;
             
             lsvCtas.ItemsSource = Application.Current.Properties["listaCuentas"] as ObservableCollection<Cuenta>;
-            navBar.seleccionarBoton("1");
+            //navBar.seleccionarBoton("1");
         }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item == null)
-                return;
+        //async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    if (e.Item == null)
+        //        return;
 
-            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+        //    //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
-            //if (origen == "Transferencia Ctas mismo banco")
-            //{
-            //    await Navigation.PushAsync(new CtaDestinoView(origen));
-            //}
+        //    //if (origen == "Transferencia Ctas mismo banco")
+        //    //{
+        //    //    await Navigation.PushAsync(new CtaDestinoView(origen));
+        //    //}
 
-            await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas));
+        //    await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas));
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
-        }
+        //    //Deselect Item
+        //    ((ListView)sender).SelectedItem = null;
+        //}
 
         async void LsvCtas_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -63,8 +65,16 @@ namespace NS.MBX_amarin.View
                 return;
 
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-            await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas), false);
+            if(pageOrigen == "PagoServicioEmpresaView")
+            {
+                Application.Current.Properties["ctaCargo"] = e.Item;
+                await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
+            }
+            else
+            {
+                await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas), false);
+            }
+            
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

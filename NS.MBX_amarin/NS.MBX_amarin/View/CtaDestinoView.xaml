@@ -4,10 +4,11 @@
               xmlns:views="clr-namespace:NS.MBX_amarin.View"
              x:Class="NS.MBX_amarin.View.CtaDestinoView">
 
-    <AbsoluteLayout BackgroundColor="White">
+    <!--<AbsoluteLayout BackgroundColor="White">
         
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
-                         AbsoluteLayout.LayoutFlags="All">
+                         AbsoluteLayout.LayoutFlags="All">-->
+    <StackLayout>
             <StackLayout x:Name="layoutOtrasCuentasFinan" Padding="10,0,10,0" >
                 <Frame HorizontalOptions="FillAndExpand">
                     <StackLayout>
@@ -57,9 +58,9 @@
             </StackLayout>
         </StackLayout>
 
-        <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+        <!--<views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
                            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
-    </AbsoluteLayout>
+    </AbsoluteLayout>-->
 
     <!--<ListView x:Name="MyListView"
             ItemsSource="{Binding Items}"

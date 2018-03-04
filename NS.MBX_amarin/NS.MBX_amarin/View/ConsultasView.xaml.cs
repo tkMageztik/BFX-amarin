@@ -24,7 +24,7 @@ namespace NS.MBX_amarin.View
             //lblNomCuenta.Text = cuenta.NombreCta;
             //lblSaldo.Text = cuenta.Moneda + " " + cuenta.SaldoDisponible.ToString();
 
-            navBar.seleccionarBoton("0");
+            //navBar.seleccionarBoton("0");
         }
 
         private async void BtnMovimientos_OnClicked(object sender, EventArgs args)

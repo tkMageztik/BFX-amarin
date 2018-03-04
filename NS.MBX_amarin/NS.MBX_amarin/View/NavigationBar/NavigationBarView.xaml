@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bb:BottomBarPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bb="clr-namespace:BottomBar.XamarinForms;assembly=BottomBar.XamarinForms"
+             xmlns:views="clr-namespace:NS.MBX_amarin.View"
+             x:Class="NS.MBX_amarin.View.NavigationBar.NavigationBarView">
+    <!--bb:BottomBarPageExtensions.TabColor="White"-->
+    <!--<views:CuentasView Title="Mis ctas"  Icon="ctas1.png"  />
+    <views:CuentasView Title="Operaciones" Icon="ope2.png"  />
+    <views:CuentasView Title="Ubícanos" Icon="ic_nearby.png"    />
+    <views:CuentasView Title="Más" Icon="menu.png"  />-->
+</bb:BottomBarPage>
