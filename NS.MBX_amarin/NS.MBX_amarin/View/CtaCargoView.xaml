@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:NS.MBX_amarin.View"
+             x:Class="NS.MBX_amarin.View.CtaCargoView">
+    <ContentPage.Content>
+        <!--<AbsoluteLayout BackgroundColor="White">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                         AbsoluteLayout.LayoutFlags="All">-->
+                <StackLayout Orientation="Vertical">
+                    <StackLayout >
+                        <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Padding="10,0,0,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                                    <Label Text="{Binding NombreCta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding SaldoDisponible}"  ></Label>
+                                                    <Label Text="Saldo Disponible" ></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End"></StackLayout>
+                </StackLayout>
+            <!--</StackLayout>
+
+            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>-->
+        <!--Built in Cells-->
+    <!--ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell Text="{Binding .}" />
+        </DataTemplate>
+    </ListView.ItemTemplate>-->
+    
+    <!--Custom View Cells-->
+    <!--
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+            <!--</ListView>-->
+            </ContentPage.Content>
+</ContentPage>

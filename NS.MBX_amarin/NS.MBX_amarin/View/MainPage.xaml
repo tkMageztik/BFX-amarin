@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NS.MBX_amarin"
+             xmlns:behaviors="clr-namespace:NS.MBX_amarin"
+             x:Class="NS.MBX_amarin.MainPage" NavigationPage.HasNavigationBar="False">
+
+    <AbsoluteLayout BackgroundColor="Blue">
+
+        <Image x:Name="bgImage" Source="fondo.jpg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0"
+               AbsoluteLayout.LayoutFlags="All"/>
+
+        <StackLayout BackgroundColor="Transparent"
+                     AbsoluteLayout.LayoutBounds="0.5,0.1,0.7,0.2"
+                     AbsoluteLayout.LayoutFlags="All">
+            <Image Source="logo.png"></Image>
+
+        </StackLayout >
+        <Frame CornerRadius="10" OutlineColor="Transparent"  Padding="5,5,5,5"
+               BackgroundColor="White" Opacity="0.9" 
+               AbsoluteLayout.LayoutBounds="0.5,0.8,0.8,0.5"
+                     AbsoluteLayout.LayoutFlags="All">
+            <StackLayout BackgroundColor="Transparent" Spacing="0" >
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Entry x:Name="txtNroTarjeta" Keyboard="Numeric" InputTransparent="False" Placeholder="N° de Tarjeta" 
+                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand">
+
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthValidatorBehavior MaxLength="16" />
+                        </Entry.Behaviors>
+
+                    </Entry>
+                    <Switch x:Name="swtNroTarjeta" VerticalOptions="Center" HorizontalOptions="End" Toggled="SwtNroTarjeta_OnToggled" ></Switch>
+                </StackLayout>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Picker x:Name="picTipDoc" WidthRequest="38"  TextColor="Gray" HorizontalOptions="Start" VerticalOptions="Center"></Picker>
+                    <!-- TODO: Investigar alguna propiedad para que el placeholder oculte la parte final sobrante en caso de ser muy extenso, sin descuadrar los demas elementos. -->
+                    <Entry x:Name="txtNroDoc" InputTransparent="False" Placeholder="N° Doc." 
+                   PlaceholderColor="Gray" TextColor="Black" HorizontalOptions="FillAndExpand"></Entry>
+                    <Switch x:Name="swtTipNroDoc" VerticalOptions="Center" HorizontalOptions="End"></Switch>
+                </StackLayout>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <!--<Button x:Name="btnInfClaveWeb"  VerticalOptions="Start" HorizontalOptions="Start"></Button>-->
+                    <Entry x:Name="txtClaveWeb" Placeholder="Clave Web" IsPassword="True" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand"></Entry>
+                    <!--<Button x:Name="btnRecordarPass" Text="¿Lo olvidaste?" VerticalOptions="Start" HorizontalOptions="End"></Button>-->
+                </StackLayout>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Button x:Name="btnIngresar" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="BtnIngresar_OnClicked" VerticalOptions="Center" Text="Ingresar" BackgroundColor="Blue" />
+                </StackLayout>
+                <StackLayout BackgroundColor="Black" Opacity="0.8" Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="25,10.0,25.5,10.0">
+                    <Button x:Name="btnRegistrar" TextColor="White" Text="Registrar" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnRegistrar_OnClicked"></Button>
+                    <Button x:Name="btnContacto" Text="Contacto" TextColor="White" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="BtnContacto_OnClicked"></Button>
+                    <!--<Button x:Name="btnUbicanos" Text="Ubícanos" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" ></Button>-->
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+    </AbsoluteLayout>
+</ContentPage>

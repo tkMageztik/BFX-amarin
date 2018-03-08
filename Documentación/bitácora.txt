@@ -1,0 +1,25 @@
+todo inicio lunes 8 de enero.
+
+lunes 8 de enero - reunión de 1 hora. george y juan / conversaciones iniciales de proyecto y sociedad
+martes 9 de enero - reunión de 1 hora. george y juan / entendimien macro, entrega de laptop
+miercoles 10 de enero - demoró 6 horas descargar juan / visual studio, android sdk, java jdk, 
+sábado 13 de enero - 6 horas juan / definición de herramientas de trabajo y registro en curso de xamarin / (15 dólares)
+
+domingo 14 de enero - 2 horas juan:
+
+instalación de:
+- emulador de android
+- visual studio 2017
+- framework 7.1
+
+4 horas curso de xamarin, y 2 creando repositorio en github y y solución.
+
+reunión de 1 hora. george y juan 15 de enero - se revisa arquitectura del desarrollo, se solicita nueva laptop,
+se recepciona equipo móvil y se muestra instalaciones realizadas.
+
+lunes 15 - 2 horas juan / revisión inicial de librerías de HB y Teller para adaptarlas a la solución actual móvil
+
+
+martes 16 de enero - juan 1 hora / creación de bitacora
+
+

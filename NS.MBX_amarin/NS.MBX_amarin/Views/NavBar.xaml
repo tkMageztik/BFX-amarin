@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bb:BottomBarPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bb="clr-namespace:BottomBar.XamarinForms;assembly=BottomBar.XamarinForms"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:views="clr-namespace:NS.MBX_amarin.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.NavBar">
+    <NavigationPage Title="Mis ctas" Icon="ctas1_2.png">
+        <x:Arguments>
+            <views:Cuentas     />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Operaciones" Icon="ope2_2.png">
+        <x:Arguments>
+            <views:Operaciones />
+        </x:Arguments>
+    </NavigationPage>
+
+    <views:Cuentas Title="Ubícanos" Icon="ic_nearby_2.png"    />
+    <views:Cuentas Title="Mas" Icon="menu_2.png"    />
+</bb:BottomBarPage>

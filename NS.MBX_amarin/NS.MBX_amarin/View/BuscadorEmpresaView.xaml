@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.View.BuscadorEmpresaView" Title="Buscador">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+
+            <SearchBar x:Name="sbBuscador"
+            Placeholder="Ingrese empresa o institución" SearchButtonPressed="SearchPressed" TextColor="Gray" FontSize="Small"
+            HorizontalOptions="FillAndExpand"/>
+
+            <ListView x:Name="lsvEmpresas" ItemTapped="ItemTapped"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}" TextColor="Gray" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

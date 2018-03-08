@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.View.ConfPagoServicioEmpresaView"
+             Title="Confirmación">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White" Padding="20,0,20,0">
+
+                <Label  Text="Cuenta Cargo: " FontSize="Small" FontAttributes="Bold" />
+                <Label x:Name="lblNombreCta"  Text="lblNombreCta" FontSize="Small"  />
+                <Label x:Name="lblCodCta"  Text="lblCodCta" FontSize="Small"  />
+
+                <Label  Text="Empresa:" FontSize="Small" FontAttributes="Bold" />
+                <Label x:Name="lblEmpresa"  Text="lblNombreCta" FontSize="Small"  />
+
+                <Label  Text="Datos:" FontSize="Small" FontAttributes="Bold" />
+                <Label x:Name="lblServicio"  Text="lblServicio" FontSize="Small"  />
+                <Label x:Name="lblCodigo"  Text="lblCodigo" FontSize="Small"  />
+
+                <Label x:Name="lblMonedaMonto" Text="lblMonedaMonto:" FontSize="Small" FontAttributes="Bold" />
+                <Label  Text="" FontSize="Small" FontAttributes="Bold" />
+
+                <Label  Text="Clave SMS" FontSize="Small" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label  Text="Hemos enviado una Clave SMS al celular" FontSize="Small" HorizontalOptions="Center" />
+                <Label  Text="5193*****13" FontSize="Small" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                <Entry x:Name="entClave" HorizontalOptions="FillAndExpand" Keyboard="Numeric" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Guardar como operación frecuente" FontSize="Small"  HorizontalOptions="StartAndExpand" />
+                    <Switch x:Name="swtFrecuente"  HorizontalOptions="End" ></Switch>
+                </StackLayout>
+
+                <Button Clicked="EventoConfirmar" Text="Confirmar" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+Las actividades acordadas son las siguientes:
+
+- Abrir cuentas en los siguientes bancos, para probar las buenas prácticas de ambas aplicaciones móviles (18/01 - 20/01) (7 h.):
+> Interbank 
+> bcp
+
+* Revisar Homebanking para analizar como ya se viene trabajando ahí.
+> usuario
+> clave de 6 dígitos
+
+
+- Se revisará propuesta prototipo y definición funcional mínima de login y registro (21/01) (2 h.).
+
+- Cerrada la definición debería estar las dos pantallas el Domingo (28/01) (18 h.)
+> No se tendrá en cuenta la interfaz.
+
+Entregables
+1) Registro app
+2) Login
+3) Pantalla principal / Consulta de saldos
+
+Observaciones
+-------------
+Se tendrá BD propia para la app

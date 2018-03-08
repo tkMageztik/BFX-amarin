@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.View.ServicioEmpresaView"
+             Title="Pago de Servicios">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="LightGray" >
+                <Label  Text="Ingresa los servicios"  TextColor="Black" FontSize="Medium"
+                HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            
+            <StackLayout Padding="20,0,20,0" >
+                <Label Text="Empresa" FontSize="Small" FontAttributes="Bold" />
+                <Label x:Name="lblEmpresa" Text="Empresa" FontSize="Small" HorizontalOptions="FillAndExpand" />
+                <Label Text="Servicio" FontSize="Small" FontAttributes="Bold" />
+                <Picker x:Name="picServicio" HorizontalOptions="FillAndExpand" Title="-- Seleccione --"/>
+                <Label x:Name="lblDato"  Text="Código de cliente" FontSize="Small" FontAttributes="Bold" />
+                <Entry x:Name="entCodigo" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="btnSiguiente" Clicked="EventoSiguiente" Text="Siguiente" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.Cuentas">
+    <ContentPage.Content>
+        <!--<AbsoluteLayout BackgroundColor="White">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                         AbsoluteLayout.LayoutFlags="All">-->
+        <StackLayout Orientation="Vertical">
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="10,10,10,10">
+                <Label Text="Tipo de Cambio ref. Compra: 3.135 Venta: 3.305"></Label>
+            </StackLayout>
+            <StackLayout >
+                <!--VerticalOptions="CenterAndExpand"-->
+                <!--<StackLayout Orientation="Horizontal">
+                            <StackLayout Padding="10,0,0,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                <Label Text="saldo soles" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium"></Label>
+                                <Label Text="S. 10.0" VerticalOptions="CenterAndExpand" FontSize="Small"></Label>
+                                <Label Text="Saldo Disponible" VerticalOptions="End"></Label>
+                            </StackLayout>
+                        </StackLayout>-->
+                <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <AbsoluteLayout>
+                                        <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,0.2,1.0"  AbsoluteLayout.LayoutFlags="All">
+                                            <Label Text="Imagen" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout AbsoluteLayout.LayoutBounds="1.0,0.0,0.8,1.0"  AbsoluteLayout.LayoutFlags="All"
+                                                             Padding="10,0,10,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                            <Label Text="{Binding NombreCta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                            <Label Text="{Binding SaldoDisponible}" ></Label>
+                                            <Label Text="Saldo Disponible" ></Label>
+                                        </StackLayout>
+                                        <StackLayout AbsoluteLayout.LayoutBounds="1.0,0.0,0.2,1.0"  AbsoluteLayout.LayoutFlags="All">
+                                            <Label Text=">" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                    </AbsoluteLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout VerticalOptions="End"></StackLayout>
+        </StackLayout>
+        <!--</StackLayout>
+
+            <views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>-->
+
+
+    </ContentPage.Content>
+</ContentPage>
