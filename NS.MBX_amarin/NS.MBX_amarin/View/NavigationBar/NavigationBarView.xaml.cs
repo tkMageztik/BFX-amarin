@@ -25,7 +25,7 @@ namespace NS.MBX_amarin.View.NavigationBar
             string[] tabColors = { "#0000FF", "#0000FF", "#0000FF", "#0000FF" };
             // int[] tabBadgeCounts = { 0, 1, 5, 3, 4 };
             //string[] tabBadgeColors = { "#000000", "#FF0000", "#000000", "#000000" };
-            Page[] paginas = { new NavigationPage(new CuentasView()), new NavigationPage(new OperacionesView()), new CuentasView(), new CuentasView() };
+            Page[] paginas = { new NavigationPage(new CuentasView()), new NavigationPage(new OperacionesView()), new CuentasView(), new OtrasOpcionesView() };
             string[] imagenes = { "ctas1_2.png", "ope2_2.png", "ic_nearby_2.png", "menu_2.png" };
 
             ((NavigationPage)paginas[0]).BarBackgroundColor = Color.Blue;

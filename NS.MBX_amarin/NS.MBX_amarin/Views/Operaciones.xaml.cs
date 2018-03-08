@@ -1,5 +1,7 @@
-using NS.MBX_amarin.Model;
+﻿using NS.MBX_amarin.Model;
 using NS.MBX_amarin.Services;
+using NS.MBX_amarin.View;
+using NS.MBX_amarin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +11,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace NS.MBX_amarin.View
+namespace NS.MBX_amarin.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OperacionesView : ContentPage
-	{
-		public OperacionesView ()
-		{
-			InitializeComponent ();
+    public partial class Operaciones : ContentPage
+    {
+        public Operaciones()
+        {
+            InitializeComponent();
 
             lsvCtas.ItemsSource = OperacionService.ListarOperaciones();
             lsvCtas.GestureRecognizers.Clear();
@@ -34,10 +35,12 @@ namespace NS.MBX_amarin.View
                 return;
 
             Operacion ope = e.Item as Operacion;
-            
 
-            await Navigation.PushAsync(new SubOperacionesView(ope.Id, false), false);
-            
+            Application.Current.Properties["opeId"] = ope.Id;
+            Application.Current.Properties["origenMisCuentas"] = false;
+            await ((OperacionesViewModel)BindingContext).NavegarSuboperaciones();
+            //await Navigation.PushAsync(new SubOperacionesView(ope.Id, false), false);
+
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -52,7 +55,7 @@ namespace NS.MBX_amarin.View
             Application.Current.Properties["servicio"] = subope.ServicioFrecuente;
             Application.Current.Properties["pageOrigen"] = "OperacionesView";
             await Navigation.PushAsync(new ServicioEmpresaView(), false);
-            
+
             ((ListView)sender).SelectedItem = null;
         }
 

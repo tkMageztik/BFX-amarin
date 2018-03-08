@@ -1,5 +1,7 @@
-using NS.MBX_amarin.Model;
+﻿using NS.MBX_amarin.Model;
 using NS.MBX_amarin.Services;
+using NS.MBX_amarin.View;
+using NS.MBX_amarin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,21 +12,23 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace NS.MBX_amarin.View
+namespace NS.MBX_amarin.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SubOperacionesView : ContentPage
-	{
+    public partial class SubOperaciones : ContentPage
+    {
         public string idOpe;
         public bool origenMisCuentas;
 
-		public SubOperacionesView (string idOperacion, bool origenMisCuentas)
-		{
-			InitializeComponent ();
+        public SubOperaciones()
+        {
+            InitializeComponent();
+            string idOperacion = Application.Current.Properties["opeId"] as string;
+            bool origenMisCuentas = (bool)Application.Current.Properties["origenMisCuentas"];
+
             this.origenMisCuentas = origenMisCuentas;
             ObservableCollection<SubOperacion> lstCtas = OperacionService.ListarSubOperaciones(idOperacion);
             idOpe = idOperacion;
-            
+
 
             lsvCtas.ItemsSource = lstCtas;
 
@@ -46,14 +50,18 @@ namespace NS.MBX_amarin.View
             if (idOpe == "1")
             {
                 //pago de servicios
-                if(subope.Id == "0")
+                if (subope.Id == "0")
                 {
-                    await Navigation.PushAsync(new EmpresaView(), false);
-                }else if(subope.Id == "1") //pago a institucion o empresa
-                {
-                    await Navigation.PushAsync(new BuscadorEmpresaView(), false);
+                    await ((SubOperacionesViewModel)BindingContext).NavegarEmpresa();
+                    //await Navigation.PushAsync(new EmpresaView(), false);
                 }
-            }else if(idOpe == "3" )
+                else if (subope.Id == "1") //pago a institucion o empresa
+                {
+                    await ((SubOperacionesViewModel)BindingContext).NavegarBuscadorEmpresa();
+                    //await Navigation.PushAsync(new BuscadorEmpresaView(), false);
+                }
+            }
+            else if (idOpe == "3")
             {
                 await Navigation.PushAsync(new CtaCargoView(subope.Id, origenMisCuentas, ""), false);
             }
