@@ -17,7 +17,7 @@
                 <Label Text="Número de Celular" Style="{StaticResource lblCont1BoldSm}" />
                 <Entry Text="{Binding NumCelular}"  Style="{StaticResource entCont1NumSm}" />
 
-                <Label Text="Monto" Style="{StaticResource lblCont1BoldSm}" />
+                <Label Text="Monto (S/)" Style="{StaticResource lblCont1BoldSm}" />
                 <Entry Text="{Binding Monto}"  Style="{StaticResource entCont1NumSm}" />
                 <Label Text="{Binding lblTipoCambio}" Style="{StaticResource lblCont1Sm}" />
 

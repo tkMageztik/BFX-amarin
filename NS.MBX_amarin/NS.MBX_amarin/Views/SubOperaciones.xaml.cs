@@ -72,6 +72,10 @@ namespace NS.MBX_amarin.Views
                 {
                     await ((SubOperacionesViewModel)BindingContext).Navegar("RecargaCelular");
                     //await Navigation.PushAsync(new EmpresaView(), false);
+                }else if (subope.Id == "1")
+                {
+                    await ((SubOperacionesViewModel)BindingContext).Navegar("RecargaBim");
+                    //await Navigation.PushAsync(new EmpresaView(), false);
                 }
             }
 

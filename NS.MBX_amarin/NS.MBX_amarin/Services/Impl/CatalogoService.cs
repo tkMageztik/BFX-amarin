@@ -9,7 +9,10 @@ namespace NS.MBX_amarin.Services.Impl
 {
     public class CatalogoService : ICatalogoService
     {
-
+        //constantes para los catalogos
+        private readonly string cOD_OPE_MOVIL = "COD_OPE_MOVIL";
+        public string COD_OPE_MOVIL { get => cOD_OPE_MOVIL; }
+        
         public ObservableCollection<string> ListarOperadoresMovilesString()
         {
             ObservableCollection<Catalogo> listaCat = ListarOperadoresMoviles();
@@ -37,6 +40,49 @@ namespace NS.MBX_amarin.Services.Impl
             return new ObservableCollection<Catalogo>(lista);
         }
 
+        public Catalogo BuscarPorCodigo(string codCatalogo, string codigo)
+        {
+            ObservableCollection<Catalogo> listaCat = ObtenerListaPorCodigo(codCatalogo);
+            
+            foreach (Catalogo cat in listaCat)
+            {
+                if (cat.Codigo == codigo)
+                {
+                    return cat;
+                }
+            }
+
+            return null;
+        }
+
+        public Catalogo BuscarPorNombre(string codCatalogo, string nombre)
+        {
+            ObservableCollection<Catalogo> listaCat = ObtenerListaPorCodigo(codCatalogo);
+
+            foreach (Catalogo cat in listaCat)
+            {
+                if (cat.Nombre == nombre)
+                {
+                    return cat;
+                }
+            }
+
+            return null;
+        }
+
+        public ObservableCollection<Catalogo> ObtenerListaPorCodigo(string codCatalogo)
+        {
+            ObservableCollection<Catalogo> lista = null;
+
+            if (codCatalogo == COD_OPE_MOVIL)
+            {
+                lista = ListarOperadoresMoviles();
+            }
+
+
+            return lista;
+        }
+
         public Catalogo BuscarMonedaPorNombre(string nombre)
         {
             ObservableCollection<Catalogo> listaCat = ListarMonedas();
@@ -44,6 +90,21 @@ namespace NS.MBX_amarin.Services.Impl
             foreach (Catalogo cat in listaCat)
             {
                 if(cat.Nombre == nombre)
+                {
+                    return cat;
+                }
+            }
+
+            return null;
+        }
+
+        public Catalogo BuscarMonedaPorCodigo(string codigo)
+        {
+            ObservableCollection<Catalogo> listaCat = ListarMonedas();
+
+            foreach (Catalogo cat in listaCat)
+            {
+                if (cat.Codigo == codigo)
                 {
                     return cat;
                 }

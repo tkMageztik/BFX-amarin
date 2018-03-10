@@ -28,14 +28,28 @@ namespace NS.MBX_amarin.ViewModels
 
         public override void OnNavigatedTo(NavigationParameters parametros)
         {
-            string codTipoTarjeta = parametros["CodTipoTarjeta"] as string;
-            Cuenta = parametros["CtaCargo"] as Cuenta;
+            string pageOrigen = parametros[Constantes.pageOrigen] as string;
 
+            if(pageOrigen == Constantes.pageDatosPagoTarjeta)
+            {
+                string codTipoTarjeta = parametros["CodTipoTarjeta"] as string;
+                LblDatos1 = CatalogoService.ObtenerTipoTarjetaCredito(codTipoTarjeta).Descripcion;
+                LblDatos2 = parametros["NumTarjeta"] as string;
+            }
+            else if(pageOrigen == Constantes.pageRecargaCelular)
+            {
+                LblDatos1 = parametros["NomOperador"] as string;
+                LblDatos2 = parametros["NumCelular"] as string;
+            }
+            else if (pageOrigen == Constantes.pageRecargaBim)
+            {
+                LblDatos1 = "Recarga de Billetera Móvil";
+                LblDatos2 = parametros["NumBim"] as string;
+            }
+
+            Cuenta = parametros["CtaCargo"] as Cuenta;
             LblNombreCta = Cuenta.NombreCta;
             LblCodCta = Cuenta.CodigoCta;
-
-            LblTipoTarjeta = CatalogoService.ObtenerTipoTarjetaCredito(codTipoTarjeta).Descripcion;
-            LblNumTarjeta = parametros["NumTarjeta"] as string;
 
             Moneda = parametros["Moneda"] as Catalogo;
             Monto = parametros["Monto"] as string;
@@ -57,18 +71,18 @@ namespace NS.MBX_amarin.ViewModels
             set { SetProperty(ref _lblCodCta, value); }
         }
 
-        private string _lblTipoTarjeta;
-        public string LblTipoTarjeta
+        private string _lblDatos1;
+        public string LblDatos1
         {
-            get { return _lblTipoTarjeta; }
-            set { SetProperty(ref _lblTipoTarjeta, value); }
+            get { return _lblDatos1; }
+            set { SetProperty(ref _lblDatos1, value); }
         }
 
-        private string _lblNumTarjeta;
-        public string LblNumTarjeta
+        private string _lblDatos2;
+        public string LblDatos2
         {
-            get { return _lblNumTarjeta; }
-            set { SetProperty(ref _lblNumTarjeta, value); }
+            get { return _lblDatos2; }
+            set { SetProperty(ref _lblDatos2, value); }
         }
 
         private string _lblMonedaMonto;

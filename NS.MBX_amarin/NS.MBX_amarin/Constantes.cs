@@ -17,11 +17,14 @@ namespace NS.MBX_amarin
         public static readonly string pageDatosPagoTarjeta = "DatosPagoTarjeta";
         public static readonly string pageConfPagoServicioEmpresa = "ConfPagoServicioEmpresa";
         public static readonly string pageConfDatosPago = "ConfDatosPago";
+        public static readonly string pageRecargaCelular = "RecargaCelular";
+        public static readonly string pageRecargaBim = "RecargaBim";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";
         public static readonly string MSJ_INFO = "Información";
         public static readonly string MSJ_BOTON_OK = "Ok";
+        public static readonly string MSJ_BOTON_ACEPTAR = "Aceptar";
         public static readonly string MSJ_EXITO = "La operación fue realizada con éxito";
     }
 }

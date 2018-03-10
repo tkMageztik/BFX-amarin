@@ -83,6 +83,22 @@ namespace NS.MBX_amarin.Views
                 await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageDatosPagoTarjeta, navParameters);
                 //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
             }
+            else if (pageOrigen == Constantes.pageRecargaCelular)
+            {
+                Application.Current.Properties["ctaCargo"] = e.Item;
+                var navParameters = ((CtaCargoViewModel)BindingContext).NavParametros;
+                navParameters.Add("CtaCargo", e.Item);
+                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfDatosPago, navParameters);
+                //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
+            }
+            else if (pageOrigen == Constantes.pageRecargaBim)
+            {
+                Application.Current.Properties["ctaCargo"] = e.Item;
+                var navParameters = ((CtaCargoViewModel)BindingContext).NavParametros;
+                navParameters.Add("CtaCargo", e.Item);
+                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfDatosPago, navParameters);
+                //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
+            }
             else
             {
                 Application.Current.Properties["destTipoTransf"] = tipoTransf;
@@ -91,7 +107,6 @@ namespace NS.MBX_amarin.Views
                 await ((CtaCargoViewModel)BindingContext).Navegar("CtaDestino");
                 //await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas), false);
             }
-
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

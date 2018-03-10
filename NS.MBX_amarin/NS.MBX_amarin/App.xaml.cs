@@ -74,6 +74,7 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<Registro>();
             containerRegistry.RegisterForNavigation<GenericTextScrollView>();
             containerRegistry.RegisterForNavigation<RecargaCelular>();
+            containerRegistry.RegisterForNavigation<RecargaBim>();
         }
 
         //public App()

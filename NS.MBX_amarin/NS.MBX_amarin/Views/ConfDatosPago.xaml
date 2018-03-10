@@ -14,8 +14,8 @@
                     <Label Text="{Binding LblCodCta}" Style="{StaticResource lblCont1Sm}"  />
 
                     <Label Text="Datos" Style="{StaticResource lblCont1BoldSm}" />
-                    <Label Text="{Binding LblTipoTarjeta}"  Style="{StaticResource lblCont1Sm}"  />
-                    <Label Text="{Binding LblNumTarjeta}"  Style="{StaticResource lblCont1Sm}"  />
+                    <Label Text="{Binding LblDatos1}"  Style="{StaticResource lblCont1Sm}"  />
+                    <Label Text="{Binding LblDatos2}"  Style="{StaticResource lblCont1Sm}"  />
 
                     <Label Text="{Binding LblMonedaMonto}" Style="{StaticResource lblCont1BoldSm}" />
                     <Label  Text="" Style="{StaticResource lblCont1BoldSm}" />

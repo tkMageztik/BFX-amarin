@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.RecargaBim"
+             Title="Recarga de Billetera Móvil">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource stackContainer}">
+            <StackLayout Style="{StaticResource stackTitulo1}" >
+                <Label Text="Ingresa el número y monto"  Style="{StaticResource lblTitulo1Sm}"  />
+            </StackLayout>
+            <StackLayout Style="{StaticResource stackContent1MarSup20}" >
+                <StackLayout Style="{StaticResource stackBasic}" Orientation="Horizontal">
+                    <Label Text="Número de Billetera Móvil" Style="{StaticResource lblCont1BoldSm}" HorizontalOptions="Start" />
+                    <Label Text=" ( i ) " Style="{StaticResource lblCont1BoldSm}" HorizontalOptions="Start"  TextColor="Blue" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapInfoIC}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <Entry Text="{Binding NumBim}"  Style="{StaticResource entCont1NumSm}" />
+
+                <Label Text="Monto (S/)" Style="{StaticResource lblCont1BoldSm}" />
+                <Entry Text="{Binding Monto}"  Style="{StaticResource entCont1NumSm}" />
+                <Label Text="{Binding lblTipoCambio}" Style="{StaticResource lblCont1Sm}" />
+
+                <Button Text="Recargar" Command="{Binding AccionSiguienteIC}" Style="{StaticResource btnCont1Sm}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

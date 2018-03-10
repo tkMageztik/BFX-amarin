@@ -5,46 +5,28 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 
 namespace NS.MBX_amarin.ViewModels
 {
-	public class RecargaCelularViewModel : ViewModelBase
-    {
+	public class RecargaBimViewModel : ViewModelBase
+	{
         private ICatalogoService CatalogoService { get; set; }
         private ITipoCambioService TipoCambioService { get; set; }
 
-        public RecargaCelularViewModel(ITipoCambioService tipService, ICatalogoService catService, INavigationService navigationService, IPageDialogService dialogService)
+        public RecargaBimViewModel(ITipoCambioService tipService, ICatalogoService catService, INavigationService navigationService, IPageDialogService dialogService)
             : base(navigationService, dialogService)
         {
-            CatalogoService = catService;
             TipoCambioService = tipService;
-
-            ListaOperadores = CatalogoService.ListarOperadoresMovilesString();
-            LbTipoCambio = TipoCambioService.ObtenerDescTipoCambio();
+            CatalogoService = catService;
         }
 
-        private ObservableCollection<string> _listaOperadores;
-        public ObservableCollection<string> ListaOperadores
+        private string _numBim;
+        public string NumBim
         {
-            get { return _listaOperadores; }
-            set { SetProperty(ref _listaOperadores, value); }
-        }
-
-        private string _nomOperador;
-        public string NomOperador
-        {
-            get { return _nomOperador; }
-            set { SetProperty(ref _nomOperador, value); }
-        }
-
-        private string _numCelular;
-        public string NumCelular
-        {
-            get { return _numCelular; }
-            set { SetProperty(ref _numCelular, value); }
+            get { return _numBim; }
+            set { SetProperty(ref _numBim, value); }
         }
 
         private string _monto;
@@ -54,11 +36,20 @@ namespace NS.MBX_amarin.ViewModels
             set { SetProperty(ref _monto, value); }
         }
 
-        private string _lbTipoCambio;
-        public string LbTipoCambio
+        private string _lblTipoCambio;
+        public string LblTipoCambio
         {
-            get { return _lbTipoCambio; }
-            set { SetProperty(ref _lbTipoCambio, value); }
+            get { return _lblTipoCambio; }
+            set { SetProperty(ref _lblTipoCambio, value); }
+        }
+
+        private DelegateCommand _tapInfoIC;
+        public DelegateCommand TapInfoIC =>
+            _tapInfoIC ?? (_tapInfoIC = new DelegateCommand(ExecuteTapInfoIC));
+
+        async void ExecuteTapInfoIC()
+        {
+            await DialogService.DisplayAlertAsync(Constantes.MSJ_INFO, "Ingresa el número de tu billetera móvil u otra que desees recargar.", Constantes.MSJ_BOTON_ACEPTAR);
         }
 
         private DelegateCommand _accionSiguienteIC;
@@ -70,20 +61,19 @@ namespace NS.MBX_amarin.ViewModels
             string msj = ValidarCampos();
             if (msj != "")
             {
-                await DialogService.DisplayAlertAsync(Constantes.MSJ_VALIDACION, msj, Constantes.MSJ_BOTON_OK);
+                await DialogService.DisplayAlertAsync(Constantes.MSJ_VALIDACION, msj, Constantes.MSJ_BOTON_ACEPTAR);
             }
             else
             {
                 var navParametros = new NavigationParameters();
                 navParametros.Add("Monto", Monto);
-                navParametros.Add("NumCelular", NumCelular);
-                navParametros.Add("NomOperador", NomOperador);
-                navParametros.Add(Constantes.pageOrigen, Constantes.pageRecargaCelular);
+                navParametros.Add("NumBim", NumBim);
+                navParametros.Add(Constantes.pageOrigen, Constantes.pageRecargaBim);
                 navParametros.Add("Moneda", CatalogoService.BuscarMonedaPorCodigo("PEN"));
 
                 Application.Current.Properties["strTipoTransf"] = "0";
                 Application.Current.Properties["strOrigenMisCuentas"] = false;
-                Application.Current.Properties["strPageOrigen"] = Constantes.pageRecargaCelular;
+                Application.Current.Properties["strPageOrigen"] = Constantes.pageRecargaBim;
                 await NavigationService.NavigateAsync(Constantes.pageCtaCargo, navParametros);
             }
         }
@@ -92,13 +82,12 @@ namespace NS.MBX_amarin.ViewModels
         {
             string msj = "";
 
-            if (Monto == null || Monto == "")
+            if (string.IsNullOrWhiteSpace(Monto))
             {
                 msj = "Ingrese un monto válido";
             }
 
             return msj;
         }
-
     }
 }

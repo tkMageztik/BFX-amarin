@@ -100,6 +100,7 @@ namespace NS.MBX_amarin.ViewModels
                 parametros.Add("Monto", Monto);
                 parametros.Add("NumTarjeta", NumTarjeta);
                 parametros.Add("Moneda", CatalogoService.BuscarMonedaPorNombre(NomMoneda));
+                parametros.Add(Constantes.pageOrigen, Constantes.pageDatosPagoTarjeta);
 
                 await NavigationService.NavigateAsync(Constantes.pageConfDatosPago, parametros);
             }
