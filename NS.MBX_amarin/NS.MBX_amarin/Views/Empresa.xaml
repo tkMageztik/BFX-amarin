@@ -2,17 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:NS.MBX_amarin.Converters"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="NS.MBX_amarin.Views.Empresa"
              Title="Pago de Servicios">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:NegateBooleanConverter x:Key="negateBooleanConverter" />
+    </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Spacing="0">
+        <StackLayout Style="{StaticResource stackContainer}">
 
-            <StackLayout HorizontalOptions="FillAndExpand" Padding="10,10,10,10" BackgroundColor="LightGray" >
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="10,10,10,10" BackgroundColor="LightGray" IsVisible="{Binding MostrarBuscador, Converter={StaticResource negateBooleanConverter}}">
                 <Label Text="Selecciona el servicio a pagar"  FontSize="Medium" 
                 HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" TextColor="Black"  />
             </StackLayout>
-            <ListView x:Name="lsvData" ItemTapped="EventoItemSeleccionado" >
+            <ListView x:Name="lsvData" ItemTapped="EventoItemSeleccionado" IsVisible="{Binding MostrarBuscador, Converter={StaticResource negateBooleanConverter}}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -28,9 +35,24 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <!--<SearchBar Text="{Binding TxtBuscador}" SearchCommand="{Binding BuscarIC}"
-            Placeholder="Buscar otra empresa" TextColor="Gray" FontSize="Small"
-            HorizontalOptions="FillAndExpand"/>-->
+            <SearchBar Text="{Binding TxtBuscador}" SearchCommand="{Binding BuscarIC}" 
+            Placeholder="Buscar otra empresa" >
+                <SearchBar.Behaviors>
+                    <b:EventToCommandBehavior EventName="Focused" 
+                                      Command="{Binding BuscadorFocusedIC}" />
+                </SearchBar.Behaviors>
+            </SearchBar>
+            <ListView ItemsSource="{Binding ListaEmpresas}" SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}" IsVisible="{Binding MostrarBuscador}">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding ItemTappedIC}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}" TextColor="Gray" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

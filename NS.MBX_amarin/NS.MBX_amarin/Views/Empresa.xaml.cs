@@ -19,7 +19,7 @@ namespace NS.MBX_amarin.Views
         {
             InitializeComponent();
 
-            lsvData.ItemsSource = CatalogoService.ListarEmpresasConServicios();
+            lsvData.ItemsSource = ((EmpresaViewModel)BindingContext).ObtenerCatalogoService().ListarEmpresasConServicios();
 
         }
 

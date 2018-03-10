@@ -1,6 +1,7 @@
 ﻿using NS.MBX_amarin.Model;
 using NS.MBX_amarin.View;
 using NS.MBX_amarin.ViewModels;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -70,12 +71,25 @@ namespace NS.MBX_amarin.Views
             if (pageOrigen == "PagoServicioEmpresaView")
             {
                 Application.Current.Properties["ctaCargo"] = e.Item;
-                await ((CtaCargoViewModel)BindingContext).NavegarConfPagoServicio();
+                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfPagoServicioEmpresa);
+                //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
+            }
+            else if (pageOrigen == Constantes.pageTipoTarjeta)
+            {
+                Application.Current.Properties["ctaCargo"] = e.Item;
+                var navParameters = new NavigationParameters();
+                navParameters.Add("CtaCargo", e.Item);
+                navParameters.Add("CodTipoTarjeta", Application.Current.Properties["CodTipoTarjeta"]);
+                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageDatosPagoTarjeta, navParameters);
                 //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
             }
             else
             {
-                await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas), false);
+                Application.Current.Properties["destTipoTransf"] = tipoTransf;
+                Application.Current.Properties["destCtaOrigen"] = e.Item;
+                Application.Current.Properties["destorigenMisCuentas"] = origenMisCuentas;
+                await ((CtaCargoViewModel)BindingContext).Navegar("CtaDestino");
+                //await Navigation.PushAsync(new CtaDestinoView(tipoTransf, e.Item as Cuenta, origenMisCuentas), false);
             }
 
 

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.Transferencia">
+    <ContentPage.Content>
+
+
+        <StackLayout BackgroundColor="White">
+            <StackLayout Padding="10,0,10,0">
+                <Frame HorizontalOptions="FillAndExpand" >
+                    <StackLayout>
+                        <Label x:Name="lblNombreOri" Text="prue"  FontSize="Small"
+                            HorizontalOptions="StartAndExpand"  />
+                        <Label x:Name="lblSaldoOri" Text="prue"  FontSize="Small"
+                            HorizontalOptions="StartAndExpand" />
+                        <Label x:Name="lblNombreDest" FontSize="Small"
+                            HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+
+                <Label x:Name="lblMonto" Text="Monto: " FontSize="Medium"
+                HorizontalOptions="StartAndExpand" />
+                <Entry x:Name="entMonto" Keyboard="Numeric" HorizontalOptions="FillAndExpand" />
+                <Button Text="Transferir" HorizontalOptions="FillAndExpand" Clicked="BtnSgt_OnClicked"></Button>
+
+            </StackLayout>
+        </StackLayout>
+
+        <!--<views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+        </AbsoluteLayout>-->
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.RecargaCelular"
+             Title="Recarga de Celular">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource stackContainer}">
+            <StackLayout Style="{StaticResource stackTitulo1}" >
+                <Label Text="Seleccione la empresa e ingresa los datos"  Style="{StaticResource lblTitulo1Sm}"  />
+            </StackLayout>
+            <StackLayout Style="{StaticResource stackContent1MarSup20}" >
+                <Label Text="Empresa" Style="{StaticResource lblCont1BoldSm}" />
+                <Picker  ItemsSource="{Binding ListaOperadores}" SelectedItem="{Binding NomOperador, Mode=TwoWay}" Style="{StaticResource picCont1Sm}" />
+
+                <Label Text="Número de Celular" Style="{StaticResource lblCont1BoldSm}" />
+                <Entry Text="{Binding NumCelular}"  Style="{StaticResource entCont1NumSm}" />
+
+                <Label Text="Monto" Style="{StaticResource lblCont1BoldSm}" />
+                <Entry Text="{Binding Monto}"  Style="{StaticResource entCont1NumSm}" />
+                <Label Text="{Binding lblTipoCambio}" Style="{StaticResource lblCont1Sm}" />
+
+                <Button Text="Siguiente" Command="{Binding AccionSiguienteIC}" Style="{StaticResource btnCont1Sm}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

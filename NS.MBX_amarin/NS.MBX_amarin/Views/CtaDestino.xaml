@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.CtaDestino"
+             Title="Cuenta Destino">
+    <StackLayout>
+        <StackLayout x:Name="layoutOtrasCuentasFinan" Padding="10,0,10,0" >
+            <Frame HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label x:Name="lblCtaOri" Text="desde:" FontSize="Small"></Label>
+                    <Label Text="a: otra cuenta Financiero" FontSize="Small"></Label>
+                </StackLayout>
+            </Frame>
+            <Label Text="Número de cuenta destino: " FontSize="Medium"></Label>
+            <Entry x:Name="entNumCuenta" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  />
+            <Label Text="Tipo de cuenta destino: " FontSize="Medium"></Label>
+            <Picker x:Name="picTipoCuenta" HorizontalOptions="FillAndExpand" />
+            <Button Text="Siguiente" Clicked="BtnSgt_OnClicked" HorizontalOptions="FillAndExpand" ></Button>
+        </StackLayout>
+
+        <StackLayout x:Name="layoutOtrosBancos" Padding="10,0,10,0" >
+            <Frame HorizontalOptions="FillAndExpand"  >
+                <StackLayout >
+                    <Label Text="INGRESA LOS DATOS" FontSize="Small"></Label>
+                </StackLayout>
+            </Frame>
+            <Label Text="Código de cuenta interbancario (CCI): " FontSize="Medium"></Label>
+            <Entry x:Name="entNumOtroBco" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  />
+            <Label Text="Moneda: " FontSize="Medium"></Label>
+            <Picker x:Name="picMoneda" HorizontalOptions="FillAndExpand" />
+            <Label Text="Tipo de cambio ref. Compra: 3.16 Venta: 3.33 " FontSize="Small"></Label>
+            <Button Text="Transferir" Clicked="BtnTransfOtroBanco_OnClicked" HorizontalOptions="FillAndExpand" ></Button>
+        </StackLayout>
+
+        <StackLayout x:Name="layoutMisCuentas" >
+            <ListView x:Name="lsvCtas" ItemTapped="LsvCtas_ItemTapped" CachingStrategy="RecycleElement" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Padding="10,0,10,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                        <Label Text="{Binding NombreCta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding SaldoDisponible}"  ></Label>
+                                        <Label Text="Saldo Disponible" ></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+
+    <!--<views:NavBarView x:Name="navBar" AbsoluteLayout.LayoutBounds="0,1,1,60" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"/>
+    </AbsoluteLayout>-->
+
+    <!--<ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement" IsVisible="False">
+            
+    -->
+    <!--Built in Cells-->
+    <!--
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell Text="{Binding .}" />
+        </DataTemplate>
+    </ListView.ItemTemplate>-->
+
+    <!--Custom View Cells-->
+    <!--
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+    <!--</ListView>
+    <StackLayout VerticalOptions="Start">
+        
+    </StackLayout>
+    <StackLayout VerticalOptions="FillAndExpand" Padding="5,5,5,5">
+        <Label Text="Número de cuenta destino"></Label>
+        <Entry HorizontalOptions="FillAndExpand"></Entry>
+        <Button Text="Siguiente" VerticalOptions="End" Clicked="BtnSgt_OnClicked"></Button>
+    </StackLayout>-->
+</ContentPage>

@@ -1,5 +1,6 @@
 ﻿using NS.MBX_amarin.Model;
 using NS.MBX_amarin.View;
+using NS.MBX_amarin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -71,8 +72,9 @@ namespace NS.MBX_amarin.Views
                 return;
 
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-            await Navigation.PushAsync(new ConsultasView(e.Item as Cuenta), false);
+            Application.Current.Properties["objCuenta"] = e.Item;
+            await ((CuentasViewModel)BindingContext).Navegar("Consultas");
+            //await Navigation.PushAsync(new ConsultasView(e.Item as Cuenta), false);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

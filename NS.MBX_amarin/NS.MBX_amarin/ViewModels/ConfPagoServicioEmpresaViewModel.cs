@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using NS.MBX_amarin.Services;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,10 +11,24 @@ namespace NS.MBX_amarin.ViewModels
 {
 	public class ConfPagoServicioEmpresaViewModel : ViewModelBase
 	{
-        public ConfPagoServicioEmpresaViewModel(INavigationService navigationService)
+        private ICuentaService CuentaService { get; set; }
+        private IOperacionService OperacionService { get; set; }
+
+        public ConfPagoServicioEmpresaViewModel(IOperacionService operacionService, ICuentaService cuentaService, INavigationService navigationService)
             : base(navigationService)
         {
+            this.CuentaService = cuentaService;
+            this.OperacionService = operacionService;
+        }
 
+        public ICuentaService ObtenerCuentaService()
+        {
+            return CuentaService;
+        }
+
+        public IOperacionService ObtenerOperacionService()
+        {
+            return OperacionService;
         }
 
         public async Task RetornarInicio()

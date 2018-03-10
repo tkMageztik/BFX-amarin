@@ -2,8 +2,6 @@
 using NS.MBX_amarin.Helpers;
 using NS.MBX_amarin.Model;
 using NS.MBX_amarin.View;
-using NS.MBX_amarin.View.NavigationBar;
-using NS.MBX_amarin.ViewModel;
 using NS.MBX_amarin.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -166,13 +164,13 @@ namespace NS.MBX_amarin.Views
             }
         }
 
-        private NavigationBarView navegarSpecialBar()
-        {
+        //private NavigationBarView navegarSpecialBar()
+        //{
 
-            NavigationBarView bottomBarPage = new NavigationBarView();
+        //    NavigationBarView bottomBarPage = new NavigationBarView();
 
-            return bottomBarPage;
-        }
+        //    return bottomBarPage;
+        //}
 
         private void EraseDatabase()
         {
@@ -269,11 +267,12 @@ namespace NS.MBX_amarin.Views
             await App.Database.SaveItemAsync(this.user);
         }
 
-        private void BtnRegistrar_OnClicked(object sender, EventArgs args)
+        private async void BtnRegistrar_OnClicked(object sender, EventArgs args)
         {
             //var navPage = new NavigationPage(new Registro());
 
-            Navigation.PushAsync(new Registro());
+            await ((MainPageViewModel)BindingContext).Navegar("Registro");
+            //Navigation.PushAsync(new Registro());
             //App.Current.MainPage = new NavigationPage(new Registro);
         }
         private void BtnContacto_OnClicked(object sender, EventArgs args)

@@ -25,7 +25,7 @@ namespace NS.MBX_amarin.Views
             string pageOrigen = Application.Current.Properties["pageOrigen"] as string;
             lblEmpresa.Text = empresa.Nombre;
 
-            ObservableCollection<Servicio> listaServicios = CatalogoService.ListarServiciosxEmpresa(empresa.Codigo);
+            ObservableCollection<Servicio> listaServicios = ((ServicioEmpresaViewModel)BindingContext).ObtenerCatalogoService().ListarServiciosxEmpresa(empresa.Codigo);
 
             foreach (Servicio item in listaServicios)
             {
@@ -48,7 +48,7 @@ namespace NS.MBX_amarin.Views
                 return;
             }
             Catalogo empresa = Application.Current.Properties["empresa"] as Catalogo;
-            ObservableCollection<Servicio> listaServicios = CatalogoService.ListarServiciosxEmpresa(empresa.Codigo);
+            ObservableCollection<Servicio> listaServicios = ((ServicioEmpresaViewModel)BindingContext).ObtenerCatalogoService().ListarServiciosxEmpresa(empresa.Codigo);
             foreach (Servicio ser in listaServicios)
             {
                 if (ser.Nombre == picServicio.SelectedItem.ToString())

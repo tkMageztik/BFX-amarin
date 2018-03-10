@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using NS.MBX_amarin.Services;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,23 +11,33 @@ namespace NS.MBX_amarin.ViewModels
 {
 	public class SubOperacionesViewModel : ViewModelBase
 	{
-        public SubOperacionesViewModel(INavigationService navigationService)
+        private IOperacionService OperacionService { get; set; }
+
+        public SubOperacionesViewModel(IOperacionService operacionService, INavigationService navigationService)
             : base(navigationService)
         {
-            var fal = false;
+            this.OperacionService = operacionService;
+        }
+
+        public IOperacionService ObtenerOperacionService()
+        {
+            return OperacionService;
         }
 
         //cuando se navega hacia aqui
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            var text = false;
             //text = (bool)parameters["model"];
         }
 
         public override void OnNavigatedFrom(NavigationParameters parameters)
         {
-            var text = false;
             //text = (bool)parameters["model"];
+        }
+
+        public async Task Navegar(string destino)
+        {
+            await NavigationService.NavigateAsync(destino);
         }
 
         public async Task NavegarEmpresa()
@@ -37,6 +48,11 @@ namespace NS.MBX_amarin.ViewModels
         public async Task NavegarBuscadorEmpresa()
         {
             await NavigationService.NavigateAsync("BuscadorEmpresa");
+        }
+
+        public async Task NavegarTipoTarjeta()
+        {
+            await NavigationService.NavigateAsync("TipoTarjeta");
         }
     }
 

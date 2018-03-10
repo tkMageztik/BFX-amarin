@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NS.MBX_amarin.ViewModels
 {
@@ -14,9 +15,9 @@ namespace NS.MBX_amarin.ViewModels
 
         }
 
-        public async void NavegarSiguiente()
+        public async Task Navegar(string destino)
         {
-            await NavigationService.NavigateAsync("Consultas");
+            await NavigationService.NavigateAsync(destino);
         }
-	}
+    }
 }

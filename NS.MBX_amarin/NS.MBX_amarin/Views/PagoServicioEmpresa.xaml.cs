@@ -23,7 +23,7 @@ namespace NS.MBX_amarin.Views
             lblServicio.Text = Application.Current.Properties["stringPicServicio"] as string;
             lblCodigo.Text = Application.Current.Properties["stringCodigo"] as string;
 
-            TipoCambio tipo = TipoCambioService.obtenerTipoCambio();
+            TipoCambio tipo = ((PagoServicioEmpresaViewModel)BindingContext).ObtenerTipoCambioService().obtenerTipoCambio();
             lblTipoCambio.Text = "Tipo de cambio ref. Compra: " + tipo.CompraDolares + " Venta: " + tipo.VentaDolares;
         }
 

@@ -10,15 +10,21 @@ namespace NS.MBX_amarin.ViewModels
 {
 	public class CtaCargoViewModel : ViewModelBase
 	{
+        
         public CtaCargoViewModel(INavigationService navigationService)
             : base(navigationService)
         {
 
         }
 
-        public async Task NavegarConfPagoServicio()
+        public async Task Navegar(string ruta)
         {
-            await NavigationService.NavigateAsync("ConfPagoServicioEmpresa");
+            await NavigationService.NavigateAsync(ruta);
+        }
+
+        public async Task Navegar(string ruta, NavigationParameters navParameters)
+        {
+            await NavigationService.NavigateAsync(ruta, navParameters);
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.Views.GenericTextScrollView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label x:Name="lblSubtitulo" Text="TRATAMIENTO DE DATOS PERSONALES" TextColor="Black" BackgroundColor="Gray"></Label>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <AbsoluteLayout VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand"
+                             AbsoluteLayout.LayoutBounds="0.5,0.0,0.9,1.0" 
+                             AbsoluteLayout.LayoutFlags="All">
+                        <ScrollView>
+                            <Label x:Name="lblTexto" TextColor="Black"></Label>
+                        </ScrollView>
+                    </StackLayout>
+                    <!--<Editor Text="1. Se informa que los datos personales proporcionados a Banco X quedan incorporados al banco
+                       de daos de clientes de Banco X y que Banco X utilizará"
+                        AbsoluteLayout.LayoutBounds="0.5,0.1,1.0,1.0" AbsoluteLayout.LayoutFlags="All"
+                        VerticalOptions="FillAndExpand"></Editor>-->
+                    <!--<Label Text="1. Se informa que los datos personales proporcionados a Banco X quedan incorporados al banco
+                       de daos de clientes de Banco X y que Banco X utilizará"
+                       AbsoluteLayout.LayoutBounds="0.1,0.1,1.0,1.0" AbsoluteLayout.LayoutFlags="All"></Label>-->
+                    <!--Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0.5, 0.0, 0.5, 0.5"
+               AbsoluteLayout.LayoutFlags="All"-->
+
+                </AbsoluteLayout>
+                <Button x:Name="btn" TextColor="White" BackgroundColor="Blue" VerticalOptions="End" Text="Siguiente" HorizontalOptions="FillAndExpand" Margin="20,20,20,20" Clicked="Btn_OnClicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -26,7 +26,7 @@ namespace NS.MBX_amarin.Views
             bool origenMisCuentas = (bool)Application.Current.Properties["origenMisCuentas"];
 
             this.origenMisCuentas = origenMisCuentas;
-            ObservableCollection<SubOperacion> lstCtas = OperacionService.ListarSubOperaciones(idOperacion);
+            ObservableCollection<SubOperacion> lstCtas = ((SubOperacionesViewModel)BindingContext).ObtenerOperacionService().ListarSubOperaciones(idOperacion);
             idOpe = idOperacion;
 
 
@@ -60,10 +60,27 @@ namespace NS.MBX_amarin.Views
                     await ((SubOperacionesViewModel)BindingContext).NavegarBuscadorEmpresa();
                     //await Navigation.PushAsync(new BuscadorEmpresaView(), false);
                 }
+                else if (subope.Id == "2") //pago de tarjetas
+                {
+                    await ((SubOperacionesViewModel)BindingContext).NavegarTipoTarjeta();
+                }
             }
+            else if (idOpe == "2")//recargas
+            {
+                //recarga de celular
+                if (subope.Id == "0")
+                {
+                    await ((SubOperacionesViewModel)BindingContext).Navegar("RecargaCelular");
+                    //await Navigation.PushAsync(new EmpresaView(), false);
+                }
+            }
+
             else if (idOpe == "3")
             {
-                await Navigation.PushAsync(new CtaCargoView(subope.Id, origenMisCuentas, ""), false);
+                Application.Current.Properties["strTipoTransf"] = subope.Id;
+                Application.Current.Properties["strOrigenMisCuentas"] = origenMisCuentas;
+                Application.Current.Properties["strPageOrigen"] = "";
+                await ((SubOperacionesViewModel)BindingContext).Navegar("CtaCargo");
             }
 
             //Deselect Item

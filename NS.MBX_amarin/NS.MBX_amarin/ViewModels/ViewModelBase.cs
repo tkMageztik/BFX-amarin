@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,7 @@ namespace NS.MBX_amarin.ViewModels
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+        protected IPageDialogService DialogService { get; private set; }
 
         private string _title;
         public string Title
@@ -23,17 +25,24 @@ namespace NS.MBX_amarin.ViewModels
             NavigationService = navigationService;
         }
 
-        public virtual void OnNavigatedFrom(NavigationParameters parameters)
+        public ViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService)
+        {
+            NavigationService = navigationService;
+            DialogService = pageDialogService;
+        }
+
+        public virtual void OnNavigatedFrom(NavigationParameters parametros)
         {
             
         }
 
-        public virtual void OnNavigatedTo(NavigationParameters parameters)
+        //cuando se navega hacia aqui
+        public virtual void OnNavigatedTo(NavigationParameters parametros)
         {
             
         }
 
-        public virtual void OnNavigatingTo(NavigationParameters parameters)
+        public virtual void OnNavigatingTo(NavigationParameters parametros)
         {
             
         }

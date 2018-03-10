@@ -19,11 +19,11 @@ namespace NS.MBX_amarin.Views
         {
             InitializeComponent();
 
-            lsvCtas.ItemsSource = OperacionService.ListarOperaciones();
+            lsvCtas.ItemsSource = ((OperacionesViewModel)BindingContext).ObtenerOperacionService().ListarOperaciones();
             lsvCtas.GestureRecognizers.Clear();
             lsvCtas.GestureRecognizers.Add(new TapGestureRecognizer());
 
-            lsvOpeFrecuentes.ItemsSource = OperacionService.ListarSuboperacionesFrecuentes();
+            lsvOpeFrecuentes.ItemsSource = ((OperacionesViewModel)BindingContext).ObtenerOperacionService().ListarSuboperacionesFrecuentes();
             lsvOpeFrecuentes.GestureRecognizers.Clear();
             lsvOpeFrecuentes.GestureRecognizers.Add(new TapGestureRecognizer());
 
@@ -51,10 +51,11 @@ namespace NS.MBX_amarin.Views
 
             SubOperacion subope = e.Item as SubOperacion;
 
-            Application.Current.Properties["empresa"] = CatalogoService.BuscarEmpresaConServicios(subope.ServicioFrecuente.IdEmpresa);
+            Application.Current.Properties["empresa"] = ((OperacionesViewModel)BindingContext).ObtenerCatalogoService().BuscarEmpresaConServicios(subope.ServicioFrecuente.IdEmpresa);
             Application.Current.Properties["servicio"] = subope.ServicioFrecuente;
             Application.Current.Properties["pageOrigen"] = "OperacionesView";
-            await Navigation.PushAsync(new ServicioEmpresaView(), false);
+            await ((OperacionesViewModel)BindingContext).Navegar("ServicioEmpresa");
+            //await Navigation.PushAsync(new ServicioEmpresaView(), false);
 
             ((ListView)sender).SelectedItem = null;
         }
@@ -67,7 +68,7 @@ namespace NS.MBX_amarin.Views
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                lsvOpeFrecuentes.ItemsSource = OperacionService.ListarSuboperacionesFrecuentes();
+                lsvOpeFrecuentes.ItemsSource = ((OperacionesViewModel)BindingContext).ObtenerOperacionService().ListarSuboperacionesFrecuentes();
 
             });
 

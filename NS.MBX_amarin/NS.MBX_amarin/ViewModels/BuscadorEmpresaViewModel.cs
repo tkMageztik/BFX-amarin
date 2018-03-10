@@ -13,10 +13,12 @@ namespace NS.MBX_amarin.ViewModels
 {
 	public class BuscadorEmpresaViewModel : ViewModelBase
 	{
-        public BuscadorEmpresaViewModel(INavigationService navigationService)
+        private ICatalogoService CatalogoService { get; set; }
+
+        public BuscadorEmpresaViewModel(ICatalogoService catalogoService, INavigationService navigationService)
             : base(navigationService)
         {
-
+            CatalogoService = catalogoService;
         }
 
         private string _txtBuscador;
@@ -60,10 +62,7 @@ namespace NS.MBX_amarin.ViewModels
             Application.Current.Properties["empresa"] = ItemSeleccionado;
 
             await NavigationService.NavigateAsync("ServicioEmpresa", navParameters);
-            //await((EmpresaViewModel)BindingContext).NavegarServicioEmpresa();
-            //await Navigation.PushAsync(new ServicioEmpresaView(), false);
-
-            //Deselect Item
+            
             ItemSeleccionado = null;
         }
 

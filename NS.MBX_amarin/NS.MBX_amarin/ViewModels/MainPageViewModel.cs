@@ -4,6 +4,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NS.MBX_amarin.ViewModels
 {
@@ -19,6 +20,11 @@ namespace NS.MBX_amarin.ViewModels
         {
             //await NavigationService.NavigateAsync("NavBar");
             await NavigationService.NavigateAsync("app:///NavBar");
+        }
+
+        public async Task Navegar(string destino)
+        {
+            await NavigationService.NavigateAsync(destino);
         }
 	}
 }

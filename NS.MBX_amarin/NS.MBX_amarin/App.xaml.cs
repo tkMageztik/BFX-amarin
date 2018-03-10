@@ -10,6 +10,7 @@ using Prism.Autofac;
 
 using Xamarin.Forms;
 using NS.MBX_amarin.Views;
+using NS.MBX_amarin.Services.Impl;
 
 namespace NS.MBX_amarin
 {
@@ -43,10 +44,16 @@ namespace NS.MBX_amarin
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            ITipoCambioService tipoCambioService = new TipoCambioService();
+            ICuentaService cuentaService = new CuentaService(tipoCambioService);
+            containerRegistry.RegisterInstance<ITipoCambioService>(tipoCambioService);
+            containerRegistry.RegisterInstance<ICuentaService>(cuentaService);
+            containerRegistry.RegisterInstance<ICatalogoService>(new CatalogoService());
+            containerRegistry.RegisterInstance<IOperacionService>(new OperacionService());
+            
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            //containerRegistry.RegisterForNavigation<MainPage>();
-            containerRegistry.RegisterForNavigation<Test>();
-            containerRegistry.RegisterForNavigation<Views.MainPage>();
+            containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<NavBar>();
             containerRegistry.RegisterForNavigation<Cuentas>();
             containerRegistry.RegisterForNavigation<Operaciones>();
@@ -57,6 +64,16 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<PagoServicioEmpresa>();
             containerRegistry.RegisterForNavigation<CtaCargo>();
             containerRegistry.RegisterForNavigation<ConfPagoServicioEmpresa>();
+            containerRegistry.RegisterForNavigation<TipoTarjeta>();
+            containerRegistry.RegisterForNavigation<DatosPagoTarjeta>();
+            containerRegistry.RegisterForNavigation<ConfDatosPago>();
+            containerRegistry.RegisterForNavigation<Consultas>();
+            containerRegistry.RegisterForNavigation<PopUpOperaciones>();
+            containerRegistry.RegisterForNavigation<CtaDestino>();
+            containerRegistry.RegisterForNavigation<Transferencia>();
+            containerRegistry.RegisterForNavigation<Registro>();
+            containerRegistry.RegisterForNavigation<GenericTextScrollView>();
+            containerRegistry.RegisterForNavigation<RecargaCelular>();
         }
 
         //public App()

@@ -42,11 +42,11 @@ namespace NS.MBX_amarin.Views
             string montoStr = Application.Current.Properties["monto"] as string;
             decimal monto = decimal.Parse(montoStr);
 
-            string rpta = CuentaService.efectuarMovimiento(cta, monto, "PEN", false);
+            string rpta = ((ConfPagoServicioEmpresaViewModel)BindingContext).ObtenerCuentaService().efectuarMovimiento(cta, monto, "PEN", false);
 
             if (rpta != "")
             {
-                await DisplayAlert("Mensaje", rpta, "OK");
+                await DisplayAlert(Constantes.MSJ_INFO, rpta, Constantes.MSJ_BOTON_OK);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace NS.MBX_amarin.Views
 
                     Catalogo empresa = Application.Current.Properties["empresa"] as Catalogo;
                     subope.NombreFrecuente = subope.Nombre + ": " + empresa.Nombre;
-                    OperacionService.AgregarSuboperacionFrecuente(subope);
+                    ((ConfPagoServicioEmpresaViewModel)BindingContext).ObtenerOperacionService().AgregarSuboperacionFrecuente(subope);
                 }
                 await DisplayAlert("Mensaje", Constantes.msjExito, "OK");
                 await ((ConfPagoServicioEmpresaViewModel)BindingContext).RetornarInicio();
