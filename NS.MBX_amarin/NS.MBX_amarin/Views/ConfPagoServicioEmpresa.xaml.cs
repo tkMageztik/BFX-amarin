@@ -53,16 +53,21 @@ namespace NS.MBX_amarin.Views
                 if (swtFrecuente.IsToggled)
                 {
                     SubOperacion subope = Application.Current.Properties["suboperacionActual"] as SubOperacion;
-                    subope.FechaOperacion = DateTime.Now;
-                    subope.ServicioFrecuente = Application.Current.Properties["servicio"] as Servicio;
-
                     Catalogo empresa = Application.Current.Properties["empresa"] as Catalogo;
-                    subope.NombreFrecuente = subope.Nombre + ": " + empresa.Nombre;
-                    ((ConfPagoServicioEmpresaViewModel)BindingContext).ObtenerOperacionService().AgregarSuboperacionFrecuente(subope);
+                    OperacionFrecuente opeFrec = new OperacionFrecuente
+                    {
+                        FechaOperacion = DateTime.Now,
+                        SubOperacion = subope,
+                        Operacion = ((ConfPagoServicioEmpresaViewModel)BindingContext).ObtenerOperacionService().BuscarOperacion(subope.IdOperacion),
+                        Servicio = Application.Current.Properties["servicio"] as Servicio,
+                        NombreFrecuente = subope.Nombre + ": " + empresa.Nombre
+                    };
+
+                    ((ConfPagoServicioEmpresaViewModel)BindingContext).ObtenerOperacionService().AgregarOperacionFrecuente(opeFrec);
+                    ((ConfPagoServicioEmpresaViewModel)BindingContext).PublicarEventoOpeFrecuente();
                 }
                 await DisplayAlert("Mensaje", Constantes.msjExito, "OK");
                 await ((ConfPagoServicioEmpresaViewModel)BindingContext).RetornarInicio();
-                //await Navigation.PopToRootAsync();
             }
 
         }

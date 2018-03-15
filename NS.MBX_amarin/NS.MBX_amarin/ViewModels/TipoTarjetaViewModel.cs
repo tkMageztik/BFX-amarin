@@ -14,6 +14,7 @@ namespace NS.MBX_amarin.ViewModels
 	public class TipoTarjetaViewModel : ViewModelBase
 	{
         private ICatalogoService CatalogoService { get; set; }
+        private NavigationParameters NavParameters { get; set; }
 
         public TipoTarjetaViewModel(ICatalogoService catalogoService, INavigationService navigationService)
             : base(navigationService)
@@ -42,16 +43,20 @@ namespace NS.MBX_amarin.ViewModels
 
         async void ExecuteItemTappedIC()
         {
-            var navParameters = new NavigationParameters();
-            navParameters.Add("TipoTarjeta", ItemSeleccionado);
+            NavParameters.Add("TipoTarjeta", ItemSeleccionado);
 
             Application.Current.Properties["strTipoTransf"] = "0";
             Application.Current.Properties["strOrigenMisCuentas"] = false;
             Application.Current.Properties["strPageOrigen"] = Constantes.pageTipoTarjeta;
             Application.Current.Properties["CodTipoTarjeta"] = ItemSeleccionado.Codigo;
-            await NavigationService.NavigateAsync(Constantes.pageCtaCargo, navParameters);
+            await NavigationService.NavigateAsync(Constantes.pageCtaCargo, NavParameters);
 
             ItemSeleccionado = null;
+        }
+
+        public override void OnNavigatingTo(NavigationParameters parameters)
+        {
+            NavParameters = parameters;
         }
     }
 }

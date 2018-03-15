@@ -15,7 +15,7 @@
                 <Entry Text="{Binding NumTarjeta}"  Style="{StaticResource entCont1NumSm}" />
 
                 <Label Text="Moneda" Style="{StaticResource lblCont1BoldSm}" />
-                <Picker  ItemsSource="{Binding ListaMonedas}" SelectedItem="{Binding NomMoneda, Mode=TwoWay}" Style="{StaticResource picCont1Sm}" />
+                <Picker  ItemsSource="{Binding ListaMonedas}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding Moneda, Mode=TwoWay}" Style="{StaticResource picCont1Sm}" />
 
                 <Label Text="Monto" Style="{StaticResource lblCont1BoldSm}" />
                 <Entry Text="{Binding Monto}" Style="{StaticResource entCont1NumSm}" />

@@ -19,7 +19,11 @@
                 <Label Text="Selecciona el servicio a pagar"  FontSize="Medium" 
                 HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" TextColor="Black"  />
             </StackLayout>
-            <ListView x:Name="lsvData" ItemTapped="EventoItemSeleccionado" IsVisible="{Binding MostrarBuscador, Converter={StaticResource negateBooleanConverter}}" >
+            <ListView ItemsSource="{Binding ListaEmpServicios}" SelectedItem="{Binding EmpServicioSelected, Mode=TwoWay}" IsVisible="{Binding MostrarBuscador, Converter={StaticResource negateBooleanConverter}}" >
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding EmpServicioTappedIC}" />
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

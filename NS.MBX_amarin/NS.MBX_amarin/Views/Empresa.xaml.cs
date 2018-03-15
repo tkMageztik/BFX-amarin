@@ -19,22 +19,22 @@ namespace NS.MBX_amarin.Views
         {
             InitializeComponent();
 
-            lsvData.ItemsSource = ((EmpresaViewModel)BindingContext).ObtenerCatalogoService().ListarEmpresasConServicios();
+            //lsvData.ItemsSource = ((EmpresaViewModel)BindingContext).ObtenerCatalogoService().ListarEmpresasConServicios();
 
         }
 
-        async void EventoItemSeleccionado(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item == null)
-                return;
+        //async void EventoItemSeleccionado(object sender, ItemTappedEventArgs e)
+        //{
+        //    if (e.Item == null)
+        //        return;
 
-            Application.Current.Properties["empresa"] = e.Item as Catalogo;
+        //    Application.Current.Properties["empresa"] = e.Item as Catalogo;
 
-            await ((EmpresaViewModel)BindingContext).NavegarServicioEmpresa();
-            //await Navigation.PushAsync(new ServicioEmpresaView(), false);
+        //    await ((EmpresaViewModel)BindingContext).NavegarServicioEmpresa();
+        //    //await Navigation.PushAsync(new ServicioEmpresaView(), false);
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
-        }
+        //    //Deselect Item
+        //    ((ListView)sender).SelectedItem = null;
+        //}
     }
 }

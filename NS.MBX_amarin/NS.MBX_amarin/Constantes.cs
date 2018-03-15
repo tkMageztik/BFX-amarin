@@ -19,6 +19,9 @@ namespace NS.MBX_amarin
         public static readonly string pageConfDatosPago = "ConfDatosPago";
         public static readonly string pageRecargaCelular = "RecargaCelular";
         public static readonly string pageRecargaBim = "RecargaBim";
+        public static readonly string pageEmpresa = "Empresa";
+        public static readonly string pageBuscadorEmpresa = "BuscadorEmpresa";
+        public static readonly string pageOperaciones = "Operaciones";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";

@@ -1,6 +1,8 @@
-﻿using NS.MBX_amarin.Model;
+﻿using NS.MBX_amarin.Events;
+using NS.MBX_amarin.Model;
 using NS.MBX_amarin.Services;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
@@ -14,20 +16,26 @@ namespace NS.MBX_amarin.ViewModels
 	{
         private ICatalogoService CatalogoService { get; set; }
         private ICuentaService CuentaService { get; set; }
+        private IOperacionService OperacionService { get; set; }
+        private IEventAggregator EventAggregator { get; set; }
 
         public Cuenta Cuenta { get; set; }
         public Catalogo Moneda { get; set; }
         public string Monto { get; set; }
 
-        public ConfDatosPagoViewModel(ICuentaService cuentaService, ICatalogoService catalogoService, INavigationService navigationService, IPageDialogService dialogService)
+        public ConfDatosPagoViewModel(IOperacionService operacionService, ICuentaService cuentaService, ICatalogoService catalogoService, INavigationService navigationService, IPageDialogService dialogService, IEventAggregator eventAggregator)
             : base(navigationService, dialogService)
         {
-            CatalogoService = catalogoService;
-            CuentaService = cuentaService;
+            this.CatalogoService = catalogoService;
+            this.CuentaService = cuentaService;
+            this.EventAggregator = eventAggregator;
+            this.OperacionService = operacionService;
         }
 
-        public override void OnNavigatedTo(NavigationParameters parametros)
+        public override void OnNavigatingTo(NavigationParameters parametros)
         {
+            RefNavParameters = parametros;
+
             string pageOrigen = parametros[Constantes.pageOrigen] as string;
 
             if(pageOrigen == Constantes.pageDatosPagoTarjeta)
@@ -112,37 +120,76 @@ namespace NS.MBX_amarin.ViewModels
 
         async void ExecuteAccionConfirmarIC()
         {
-            string msj = ValidarCampos();
-            if (msj != "")
+            try
             {
-                await DialogService.DisplayAlertAsync("Validación", msj, "OK");
-                return;
-            }
-
-            decimal montoDec = decimal.Parse(Monto);
-
-            string rptaTrx = CuentaService.efectuarMovimiento(Cuenta, montoDec, Moneda.Codigo, false);
-
-            if (rptaTrx != "")
-            {
-                await DialogService.DisplayAlertAsync(Constantes.MSJ_INFO, rptaTrx, Constantes.MSJ_BOTON_OK);
-            }
-            else
-            {
-                if (IsOperacionFrecuente)
+                string msj = ValidarCampos();
+                if (msj != "")
                 {
-                    //TODO
+                    await DialogService.DisplayAlertAsync("Validación", msj, "OK");
+                    return;
                 }
-                await DialogService.DisplayAlertAsync(Constantes.MSJ_INFO, Constantes.MSJ_EXITO, Constantes.MSJ_BOTON_OK);
-                await NavigationService.GoBackToRootAsync();
+
+                decimal montoDec = decimal.Parse(Monto);
+
+                string rptaTrx = CuentaService.efectuarMovimiento(Cuenta, montoDec, Moneda.Codigo, false);
+
+                if (rptaTrx != "")
+                {
+                    await DialogService.DisplayAlertAsync(Constantes.MSJ_INFO, rptaTrx, Constantes.MSJ_BOTON_OK);
+                }
+                else
+                {
+                    if (IsOperacionFrecuente)
+                    {
+                        //TODO
+                        SubOperacion subope = RefNavParameters["SubOperacion"] as SubOperacion;
+
+                        string pageOrigen = RefNavParameters[Constantes.pageOrigen] as string;
+
+                        OperacionFrecuente opeFrec = new OperacionFrecuente
+                        {
+                            FechaOperacion = DateTime.Now,
+                            SubOperacion = subope,
+                            Operacion = RefNavParameters["Operacion"] as Operacion,
+                            NombreFrecuente = subope.Nombre + ": " + LblDatos1
+                        };
+
+                        if (pageOrigen == Constantes.pageDatosPagoTarjeta)
+                        {
+                            opeFrec.Picker1 = RefNavParameters["TipoTarjeta"] as Catalogo;
+                            opeFrec.Picker2 = Moneda;
+                            opeFrec.parametro1 = RefNavParameters["NumTarjeta"] as string;
+                            opeFrec.NombreFrecuente = subope.Nombre + ": " + opeFrec.Picker1.Nombre;
+                        }
+                        else if (pageOrigen == Constantes.pageRecargaCelular)
+                        {
+                            opeFrec.Picker1 = RefNavParameters["Operador"] as Catalogo;
+                            opeFrec.parametro1 = RefNavParameters["NumCelular"] as string;
+                        }
+                        else if (pageOrigen == Constantes.pageRecargaBim)
+                        {
+                            opeFrec.parametro1 = RefNavParameters["NumBim"] as string;
+                            opeFrec.NombreFrecuente = subope.Nombre;
+                        }
+
+                        OperacionService.AgregarOperacionFrecuente(opeFrec);
+                        EventAggregator.GetEvent<OpeFrecuenteAddedEvent>().Publish();
+                    }
+                    await DialogService.DisplayAlertAsync(Constantes.MSJ_INFO, Constantes.MSJ_EXITO, Constantes.MSJ_BOTON_OK);
+                    await NavigationService.GoBackToRootAsync();
+                }
+
+                //parametros.Add("Monto", Monto);
+                //parametros.Add("NumTarjeta", NumTarjeta);
+                //parametros.Add("Moneda", CatalogoService.BuscarMonedaPorNombre(NomMoneda));
+
+                //await NavigationService.NavigateAsync(Constantes.pageConfDatosPago, parametros);
             }
-
-            //parametros.Add("Monto", Monto);
-            //parametros.Add("NumTarjeta", NumTarjeta);
-            //parametros.Add("Moneda", CatalogoService.BuscarMonedaPorNombre(NomMoneda));
-
-            //await NavigationService.NavigateAsync(Constantes.pageConfDatosPago, parametros);
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
         }
 
         public string ValidarCampos()
@@ -156,6 +203,7 @@ namespace NS.MBX_amarin.ViewModels
 
             return msj;
         }
+
 
     }
 }

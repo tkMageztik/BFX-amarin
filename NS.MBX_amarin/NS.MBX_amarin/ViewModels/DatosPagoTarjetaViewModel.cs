@@ -1,4 +1,5 @@
-﻿using NS.MBX_amarin.Services;
+﻿using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -14,20 +15,37 @@ namespace NS.MBX_amarin.ViewModels
 	{
         private ICatalogoService CatalogoService { get; set; }
         private ITipoCambioService TipoCambioService { get; set; }
-        public NavigationParameters parametros { get; set; }
+        public NavigationParameters NavParametros { get; set; }
 
         public DatosPagoTarjetaViewModel(ITipoCambioService tipoCambioService, ICatalogoService catalogoService, INavigationService navigationService, IPageDialogService dialogService)
             : base(navigationService, dialogService)
         {
             CatalogoService = catalogoService;
             TipoCambioService = tipoCambioService;
+
+            ListaMonedas = CatalogoService.ListarMonedas();
+            LblTipoCambio = TipoCambioService.ObtenerDescTipoCambio();
+            Monto = null;
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatingTo(NavigationParameters parameters)
         {
-            string codTipoTarjeta = parameters["CodTipoTarjeta"] as string;
-            parametros = parameters;
+            NavParametros = parameters;
+            string pageOrigen = parameters[Constantes.pageOrigen] as string;
+            string codTipoTarjeta = "";
 
+            if (pageOrigen == Constantes.pageOperaciones)//operacion frecuente
+            {
+                OperacionFrecuente opeFrec = parameters["OperacionFrecuente"] as OperacionFrecuente;
+                codTipoTarjeta = opeFrec.Picker1.Codigo;
+                NumTarjeta = opeFrec.parametro1;
+                Moneda = ListaMonedas.Where(p => p.Codigo == opeFrec.Picker2.Codigo).First();
+            }
+            else
+            {
+                codTipoTarjeta = parameters["CodTipoTarjeta"] as string;
+            }
+            
             if(codTipoTarjeta == "2")
             {
                 LblTipoTarjeta = "Número de tarjeta Diners";
@@ -36,10 +54,7 @@ namespace NS.MBX_amarin.ViewModels
             {
                 LblTipoTarjeta = "Número de tarjeta de crédito";
             }
-
-            ListaMonedas = CatalogoService.ListarMonedasString();
-            LblTipoCambio = TipoCambioService.ObtenerDescTipoCambio();
-            Monto = null;
+            
         }
 
         private string _lblTipoTarjeta;
@@ -56,8 +71,8 @@ namespace NS.MBX_amarin.ViewModels
             set { SetProperty(ref _numTarjeta, value); }
         }
 
-        private ObservableCollection<string> _listaMonedas;
-        public ObservableCollection<string> ListaMonedas
+        private ObservableCollection<Catalogo> _listaMonedas;
+        public ObservableCollection<Catalogo> ListaMonedas
         {
             get { return _listaMonedas; }
             set { SetProperty(ref _listaMonedas, value); }
@@ -81,11 +96,11 @@ namespace NS.MBX_amarin.ViewModels
         public DelegateCommand AccionSiguienteIC =>
             _accionSiguienteIC ?? (_accionSiguienteIC = new DelegateCommand(ExecuteAccionSiguienteIC));
 
-        private string _nomMoneda;
-        public string NomMoneda
+        private Catalogo _moneda;
+        public Catalogo Moneda
         {
-            get { return _nomMoneda; }
-            set { SetProperty(ref _nomMoneda, value); }
+            get { return _moneda; }
+            set { SetProperty(ref _moneda, value); }
         }
 
         async void ExecuteAccionSiguienteIC()
@@ -97,12 +112,12 @@ namespace NS.MBX_amarin.ViewModels
             }
             else
             {
-                parametros.Add("Monto", Monto);
-                parametros.Add("NumTarjeta", NumTarjeta);
-                parametros.Add("Moneda", CatalogoService.BuscarMonedaPorNombre(NomMoneda));
-                parametros.Add(Constantes.pageOrigen, Constantes.pageDatosPagoTarjeta);
+                NavParametros.Add("Monto", Monto);
+                NavParametros.Add("NumTarjeta", NumTarjeta);
+                NavParametros.Add("Moneda", Moneda);
+                NavParametros.Add(Constantes.pageOrigen, Constantes.pageDatosPagoTarjeta);
 
-                await NavigationService.NavigateAsync(Constantes.pageConfDatosPago, parametros);
+                await NavigationService.NavigateAsync(Constantes.pageConfDatosPago, NavParametros);
             }
         }
 

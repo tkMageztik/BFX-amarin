@@ -133,9 +133,10 @@ namespace NS.MBX_amarin.Views
         //public async Task<ImageSource> GetImageFromStream(string url)
         //{ var resp = await obj_Client.GetStreamAsync(url); return Xamarin.Forms.ImageSource.FromStream(() => { return resp; }); }
 
-        private void BtnIngresar_OnClicked(object sender, EventArgs args)
+        private async void BtnIngresar_OnClicked(object sender, EventArgs args)
         {
             //string msg = ValidarIngreso();
+            ((MainPageViewModel)BindingContext).IsBusy = true;
             string msg = "";
             if (msg == "")
             {
@@ -143,12 +144,13 @@ namespace NS.MBX_amarin.Views
                 //if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
                 //{
                 // Navigation.PushAsync(new NavigationBarView());
-                ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
+                await ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
                 //Application.Current.MainPage = ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
                     //navegarSpecialBar();//new NavigationBarView();
                 //}
             }
-            else { DisplayAlert("Banco X", msg, "Aceptar"); }
+            else { await DisplayAlert("Banco X", msg, "Aceptar"); }
+            
         }
 
         private void SwtTipNroDoc_OnToggled(object sender, ToggledEventArgs args)
@@ -270,8 +272,12 @@ namespace NS.MBX_amarin.Views
         private async void BtnRegistrar_OnClicked(object sender, EventArgs args)
         {
             //var navPage = new NavigationPage(new Registro());
+            ((MainPageViewModel)BindingContext).IsBusy = true;
 
+            await Task.Delay(2000);
             await ((MainPageViewModel)BindingContext).Navegar("Registro");
+
+            ((MainPageViewModel)BindingContext).IsBusy = false;
             //Navigation.PushAsync(new Registro());
             //App.Current.MainPage = new NavigationPage(new Registro);
         }

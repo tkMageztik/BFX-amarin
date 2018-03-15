@@ -15,6 +15,7 @@ namespace NS.MBX_amarin.ViewModels
 	public class EmpresaViewModel : ViewModelBase
 	{
         private ICatalogoService CatalogoService { get; set; }
+        private NavigationParameters NavParameters { get; set; }
 
         public EmpresaViewModel(ICatalogoService catalogoService, INavigationService navigationService)
             : base(navigationService)
@@ -22,11 +23,45 @@ namespace NS.MBX_amarin.ViewModels
             CatalogoService = catalogoService;
 
             MostrarBuscador = false;
+            ListaEmpServicios = CatalogoService.ListarEmpresasConServicios();
         }
 
-        public ICatalogoService ObtenerCatalogoService()
+        public override void OnNavigatingTo(NavigationParameters parameters)
         {
-            return CatalogoService;
+            NavParameters = parameters;
+
+        }
+
+        private ObservableCollection<Catalogo> _listaEmpServicios;
+        public ObservableCollection<Catalogo> ListaEmpServicios
+        {
+            get { return _listaEmpServicios; }
+            set { SetProperty(ref _listaEmpServicios, value); }
+        }
+
+        private Catalogo _empServicioSelected;
+        public Catalogo EmpServicioSelected
+        {
+            get { return _empServicioSelected; }
+            set { SetProperty(ref _empServicioSelected, value); }
+        }
+
+        private DelegateCommand _empServicioTappedIC;
+        public DelegateCommand EmpServicioTappedIC =>
+            _empServicioTappedIC ?? (_empServicioTappedIC = new DelegateCommand(ExecuteEmpServicioTappedIC));
+
+        async void ExecuteEmpServicioTappedIC()
+        {
+            Catalogo empresa = new Catalogo
+            {
+                IdTabla = EmpServicioSelected.IdTabla,
+                Codigo = EmpServicioSelected.Codigo,
+                Nombre = EmpServicioSelected.Nombre
+            };
+            Application.Current.Properties["empresa"] = empresa;
+            NavParameters.Add("Empresa", empresa);
+
+            await NavigationService.NavigateAsync("ServicioEmpresa", NavParameters);
         }
 
         private bool _mostrarBuscador;

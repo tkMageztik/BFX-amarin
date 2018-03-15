@@ -15,6 +15,13 @@
                 <!--<Setter Property="BarTextColor" Value="Black" />-->
                 <Setter Property="BarBackgroundColor" Value="Blue" />
             </Style>
+            <Style TargetType="ActivityIndicator">
+                <!--<Setter Property="BarTextColor" Value="Black" />-->
+                <Setter Property="Color" Value="DarkBlue" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+            
             <Style TargetType="SearchBar">
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="FontSize" Value="Small" />

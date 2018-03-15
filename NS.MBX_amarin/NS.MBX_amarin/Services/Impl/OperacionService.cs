@@ -9,9 +9,9 @@ namespace NS.MBX_amarin.Services.Impl
 {
     public class OperacionService : IOperacionService
     {
-        private ObservableCollection<SubOperacion> listaSuboperacionesFrecuentes = new ObservableCollection<SubOperacion>();
+        private ObservableCollection<OperacionFrecuente> listaOperacionesFrecuentes = new ObservableCollection<OperacionFrecuente>();
 
-        public ObservableCollection<SubOperacion> ListaSuboperacionesFrecuentes { get => listaSuboperacionesFrecuentes; set => listaSuboperacionesFrecuentes = value; }
+        public ObservableCollection<OperacionFrecuente> ListaOperacionesFrecuentes { get => listaOperacionesFrecuentes; set => listaOperacionesFrecuentes = value; }
 
         public ObservableCollection<Operacion> ListarOperaciones()
         {
@@ -23,6 +23,21 @@ namespace NS.MBX_amarin.Services.Impl
             };
 
             return new ObservableCollection<Operacion>(lista);
+        }
+
+        public Operacion BuscarOperacion(string id)
+        {
+            ObservableCollection<Operacion> lista = ListarOperaciones();
+
+            foreach(Operacion ope in lista)
+            {
+                if(ope.Id == id)
+                {
+                    return ope;
+                }
+            }
+
+            return null;
         }
 
         public ObservableCollection<SubOperacion> ListarSubOperaciones(string id)
@@ -62,29 +77,59 @@ namespace NS.MBX_amarin.Services.Impl
         }
 
         //se ordena del mas reciente al menos
-        public ObservableCollection<SubOperacion> ListarSuboperacionesFrecuentes()
+        public ObservableCollection<OperacionFrecuente> ListarOperacionesFrecuentes()
         {
-            List<SubOperacion> listaOrdenada = ListaSuboperacionesFrecuentes.OrderBy(x => x.FechaOperacion).ToList() ;
+            List<OperacionFrecuente> listaOrdenada = ListaOperacionesFrecuentes.OrderBy(x => x.FechaOperacion).ToList() ;
 
-            return new ObservableCollection<SubOperacion>(listaOrdenada);
+            return new ObservableCollection<OperacionFrecuente>(listaOrdenada);
         }
 
-        public void AgregarSuboperacionFrecuente(SubOperacion suboperacion)
+        public void AgregarOperacionFrecuente(OperacionFrecuente opeFrec)
         {
             bool encontro = false;
+            OperacionFrecuente existente = null;
             //buscamos si ya existe
-            foreach(SubOperacion sub in listaSuboperacionesFrecuentes)
+            foreach(OperacionFrecuente frec in ListaOperacionesFrecuentes)
             {
-                if(sub.Id == suboperacion.Id && sub.IdOperacion == suboperacion.IdOperacion && suboperacion.ServicioFrecuente.IdEmpresa == sub.ServicioFrecuente.IdEmpresa)
+                if(opeFrec.SubOperacion.Id == frec.SubOperacion.Id && opeFrec.Operacion.Id == frec.Operacion.Id )
                 {
-                    encontro = true;
+                    //condicionales dependiendo de la operacion
+                    if(opeFrec.Operacion.Id == "1")
+                    {
+                        if ((opeFrec.SubOperacion.Id == "0" || opeFrec.SubOperacion.Id == "1") && frec.Servicio != null && opeFrec.Servicio.IdEmpresa == frec.Servicio.IdEmpresa)
+                        {
+                            encontro = true;
+                        }else if (opeFrec.SubOperacion.Id == "2" && frec.Picker1 != null && opeFrec.Picker1.Codigo == frec.Picker1.Codigo)
+                        {
+                            encontro = true;
+                        }
+                    }
+                    else if (opeFrec.Operacion.Id == "2")
+                    {
+                        if (opeFrec.SubOperacion.Id == "0" || opeFrec.SubOperacion.Id == "1")
+                        {
+                            encontro = true;
+                        }
+                    }
+                }
+                if (encontro)
+                {
+                    existente = frec;
                     break;
                 }
             }
 
             if (!encontro)
             {
-                ListaSuboperacionesFrecuentes.Add(suboperacion);
+                ListaOperacionesFrecuentes.Add(opeFrec);
+            }
+            else
+            {
+                var index = listaOperacionesFrecuentes.IndexOf(existente);
+                if(index != -1)
+                {
+                    listaOperacionesFrecuentes[index] = opeFrec;
+                }
             }
         }
     }

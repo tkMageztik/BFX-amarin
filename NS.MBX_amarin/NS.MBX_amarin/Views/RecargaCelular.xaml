@@ -12,7 +12,7 @@
             </StackLayout>
             <StackLayout Style="{StaticResource stackContent1MarSup20}" >
                 <Label Text="Empresa" Style="{StaticResource lblCont1BoldSm}" />
-                <Picker  ItemsSource="{Binding ListaOperadores}" SelectedItem="{Binding NomOperador, Mode=TwoWay}" Style="{StaticResource picCont1Sm}" />
+                <Picker  ItemsSource="{Binding ListaOperadores}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding OperadorSelected, Mode=TwoWay}" Style="{StaticResource picCont1Sm}" />
 
                 <Label Text="Número de Celular" Style="{StaticResource lblCont1BoldSm}" />
                 <Entry Text="{Binding NumCelular}"  Style="{StaticResource entCont1NumSm}" />

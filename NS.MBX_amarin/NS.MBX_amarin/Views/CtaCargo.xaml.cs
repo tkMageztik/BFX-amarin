@@ -77,16 +77,15 @@ namespace NS.MBX_amarin.Views
             else if (pageOrigen == Constantes.pageTipoTarjeta)
             {
                 Application.Current.Properties["ctaCargo"] = e.Item;
-                var navParameters = new NavigationParameters();
+                var navParameters = ((CtaCargoViewModel)BindingContext).ObtenerNavParametros();
                 navParameters.Add("CtaCargo", e.Item);
                 navParameters.Add("CodTipoTarjeta", Application.Current.Properties["CodTipoTarjeta"]);
                 await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageDatosPagoTarjeta, navParameters);
-                //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
             }
             else if (pageOrigen == Constantes.pageRecargaCelular)
             {
                 Application.Current.Properties["ctaCargo"] = e.Item;
-                var navParameters = ((CtaCargoViewModel)BindingContext).NavParametros;
+                var navParameters = ((CtaCargoViewModel)BindingContext).ObtenerNavParametros();
                 navParameters.Add("CtaCargo", e.Item);
                 await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfDatosPago, navParameters);
                 //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
@@ -94,9 +93,17 @@ namespace NS.MBX_amarin.Views
             else if (pageOrigen == Constantes.pageRecargaBim)
             {
                 Application.Current.Properties["ctaCargo"] = e.Item;
-                var navParameters = ((CtaCargoViewModel)BindingContext).NavParametros;
+                var navParameters = ((CtaCargoViewModel)BindingContext).ObtenerNavParametros();
                 navParameters.Add("CtaCargo", e.Item);
                 await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfDatosPago, navParameters);
+                //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
+            }
+            else if (pageOrigen == Constantes.pageOperaciones)//operacion frecuente pago de tc
+            {
+                Application.Current.Properties["ctaCargo"] = e.Item;
+                var navParameters = ((CtaCargoViewModel)BindingContext).ObtenerNavParametros();
+                navParameters.Add("CtaCargo", e.Item);
+                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageDatosPagoTarjeta, navParameters);
                 //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
             }
             else

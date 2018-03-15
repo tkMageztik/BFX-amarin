@@ -1,4 +1,5 @@
-﻿using NS.MBX_amarin.Services;
+﻿using NS.MBX_amarin.Model;
+using NS.MBX_amarin.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -14,7 +15,7 @@ namespace NS.MBX_amarin.ViewModels
 	{
         private ICatalogoService CatalogoService { get; set; }
         private ITipoCambioService TipoCambioService { get; set; }
-
+        
         public RecargaBimViewModel(ITipoCambioService tipService, ICatalogoService catService, INavigationService navigationService, IPageDialogService dialogService)
             : base(navigationService, dialogService)
         {
@@ -65,7 +66,8 @@ namespace NS.MBX_amarin.ViewModels
             }
             else
             {
-                var navParametros = new NavigationParameters();
+                NavigationParameters navParametros = GetNavigationParameters();
+
                 navParametros.Add("Monto", Monto);
                 navParametros.Add("NumBim", NumBim);
                 navParametros.Add(Constantes.pageOrigen, Constantes.pageRecargaBim);
@@ -88,6 +90,19 @@ namespace NS.MBX_amarin.ViewModels
             }
 
             return msj;
+        }
+
+        public override void OnNavigatingTo(NavigationParameters parameters)
+        {
+            RefNavParameters = parameters;
+            string pageOrigen = parameters[Constantes.pageOrigen] as string;
+
+            if (pageOrigen == Constantes.pageOperaciones)
+            {
+                OperacionFrecuente opeFrec = parameters["OperacionFrecuente"] as OperacionFrecuente;
+                NumBim = opeFrec.parametro1;
+            }
+
         }
     }
 }

@@ -7,7 +7,6 @@
              x:Class="NS.MBX_amarin.Views.MainPage" NavigationPage.HasNavigationBar="False">
 
     <AbsoluteLayout BackgroundColor="Blue">
-
         <Image x:Name="bgImage" Source="fondo.jpg"
                Aspect="AspectFill"
                AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0"
@@ -57,6 +56,9 @@
                 </StackLayout>
             </StackLayout>
         </Frame>
-
+        <StackLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1,1"
+               AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+        </StackLayout>
     </AbsoluteLayout>
 </ContentPage>

@@ -8,10 +8,11 @@ namespace NS.MBX_amarin.Services
 {
     public interface IOperacionService
     {
-        ObservableCollection<SubOperacion> ListaSuboperacionesFrecuentes { get; set; }
+        ObservableCollection<OperacionFrecuente> ListaOperacionesFrecuentes { get; set; }
         ObservableCollection<Operacion> ListarOperaciones();
+        Operacion BuscarOperacion(string id);
         ObservableCollection<SubOperacion> ListarSubOperaciones(string id);
-        ObservableCollection<SubOperacion> ListarSuboperacionesFrecuentes();
-        void AgregarSuboperacionFrecuente(SubOperacion suboperacion);
+        ObservableCollection<OperacionFrecuente> ListarOperacionesFrecuentes();
+        void AgregarOperacionFrecuente(OperacionFrecuente opeFrec);
     }
 }

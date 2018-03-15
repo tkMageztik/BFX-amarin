@@ -16,7 +16,7 @@ namespace NS.MBX_amarin.ViewModels
 
         }
 
-        public async void NavegarSiguiente()
+        public async Task NavegarSiguiente()
         {
             //await NavigationService.NavigateAsync("NavBar");
             await NavigationService.NavigateAsync("app:///NavBar");
