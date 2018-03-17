@@ -27,18 +27,23 @@ namespace NS.MBX_amarin.Services.Impl
 
         public Operacion BuscarOperacion(string id)
         {
-            ObservableCollection<Operacion> lista = ListarOperaciones();
-
-            foreach(Operacion ope in lista)
-            {
-                if(ope.Id == id)
-                {
-                    return ope;
-                }
-            }
-
-            return null;
+            return ListarOperaciones().Where(p => p.Id == id).First();
         }
+
+        //public Operacion BuscarOperacion(string id)
+        //{
+        //    ObservableCollection<Operacion> lista = ListarOperaciones();
+
+        //    foreach(Operacion ope in lista)
+        //    {
+        //        if(ope.Id == id)
+        //        {
+        //            return ope;
+        //        }
+        //    }
+
+        //    return null;
+        //}
 
         public ObservableCollection<SubOperacion> ListarSubOperaciones(string id)
         {

@@ -13,15 +13,15 @@
             </Frame>
 
             <StackLayout Padding="20,0,20,0" >
-                <Label x:Name="lblServicio"  Text="lblServicio" FontSize="Small" FontAttributes="Bold" />
-                <Label x:Name="lblEmpresa"  Text="lblEmpresa" FontSize="Small"  />
-                <Label x:Name="lblCodigo"  Text="lblCodigo" FontSize="Small"  />
+                <Label  Text="{Binding LblServicio}" FontSize="Small" FontAttributes="Bold" />
+                <Label  Text="{Binding LblEmpresa}" FontSize="Small"  />
+                <Label  Text="{Binding LblCodigoCliente}" FontSize="Small"  />
 
                 <Label  Text="Monto a pagar S/" FontSize="Small" FontAttributes="Bold" />
-                <Entry x:Name="entMonto" HorizontalOptions="FillAndExpand" Keyboard="Numeric" />
-                <Label x:Name="lblTipoCambio" Text="lblTipoCambio a pagar S/" FontSize="Small" FontAttributes="Bold" />
+                <Entry Text="{Binding Monto}" HorizontalOptions="FillAndExpand" Keyboard="Numeric" />
+                <Label Text="{Binding LblTipoCambio}" FontSize="Small" FontAttributes="Bold" />
 
-                <Button x:Name="btnSiguiente" Clicked="EventoSiguiente" Text="Siguiente" HorizontalOptions="FillAndExpand" />
+                <Button Command="{Binding SiguienteIC}" Text="Siguiente" HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

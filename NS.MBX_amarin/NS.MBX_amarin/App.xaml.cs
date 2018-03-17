@@ -11,7 +11,10 @@ using Prism.Autofac;
 using Xamarin.Forms;
 using NS.MBX_amarin.Views;
 using NS.MBX_amarin.Services.Impl;
+using Acr.UserDialogs;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace NS.MBX_amarin
 {
     public partial class App : PrismApplication
@@ -50,7 +53,8 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterInstance<ICuentaService>(cuentaService);
             containerRegistry.RegisterInstance<ICatalogoService>(new CatalogoService());
             containerRegistry.RegisterInstance<IOperacionService>(new OperacionService());
-            
+
+            containerRegistry.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
@@ -75,6 +79,7 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<GenericTextScrollView>();
             containerRegistry.RegisterForNavigation<RecargaCelular>();
             containerRegistry.RegisterForNavigation<RecargaBim>();
+            containerRegistry.RegisterForNavigation<OpcionesAdicionales>();
         }
 
         //public App()

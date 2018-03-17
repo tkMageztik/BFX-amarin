@@ -28,7 +28,7 @@ namespace NS.MBX_amarin.ViewModels
 
         public NavigationParameters ObtenerNavParametros()
         {
-            return GetNavigationParameters(true);
+            return GetNavigationParameters(true, null);
         }
 
         public async Task Navegar(string ruta, NavigationParameters navParameters)

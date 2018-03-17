@@ -14,12 +14,12 @@
 
             <StackLayout Padding="20,0,20,0" >
                 <Label Text="Empresa" FontSize="Small" FontAttributes="Bold" />
-                <Label x:Name="lblEmpresa" Text="Empresa" FontSize="Small" HorizontalOptions="FillAndExpand" />
+                <Label Text="{Binding NomEmpresa}" FontSize="Small" HorizontalOptions="FillAndExpand" />
                 <Label Text="Servicio" FontSize="Small" FontAttributes="Bold" />
-                <Picker x:Name="picServicio" HorizontalOptions="FillAndExpand" Title="-- Seleccione --"/>
+                <Picker ItemsSource="{Binding ListaServicios}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding ServicioSelected, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Title="-- Seleccione --"/>
                 <Label x:Name="lblDato"  Text="Código de cliente" FontSize="Small" FontAttributes="Bold" />
-                <Entry x:Name="entCodigo" HorizontalOptions="FillAndExpand"/>
-                <Button x:Name="btnSiguiente" Clicked="EventoSiguiente" Text="Siguiente" HorizontalOptions="FillAndExpand" />
+                <Entry Text="{Binding CodigoCliente}" HorizontalOptions="FillAndExpand"/>
+                <Button Command="{Binding SiguienteIC}" Text="Siguiente" HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -10,31 +10,31 @@
             <StackLayout BackgroundColor="White" Padding="20,0,20,0">
 
                 <Label  Text="Cuenta Cargo: " FontSize="Small" FontAttributes="Bold" />
-                <Label x:Name="lblNombreCta"  Text="lblNombreCta" FontSize="Small"  />
-                <Label x:Name="lblCodCta"  Text="lblCodCta" FontSize="Small"  />
+                <Label Text="{Binding LblNombreCta}" FontSize="Small"  />
+                <Label Text="{Binding LblCodCta}" FontSize="Small"  />
 
                 <Label  Text="Empresa:" FontSize="Small" FontAttributes="Bold" />
-                <Label x:Name="lblEmpresa"  Text="lblNombreCta" FontSize="Small"  />
+                <Label Text="{Binding LblEmpresa}"  FontSize="Small"  />
 
                 <Label  Text="Datos:" FontSize="Small" FontAttributes="Bold" />
-                <Label x:Name="lblServicio"  Text="lblServicio" FontSize="Small"  />
-                <Label x:Name="lblCodigo"  Text="lblCodigo" FontSize="Small"  />
+                <Label Text="{Binding LblServicio}"  FontSize="Small"  />
+                <Label Text="{Binding LblCodigo}"  FontSize="Small"  />
 
-                <Label x:Name="lblMonedaMonto" Text="lblMonedaMonto:" FontSize="Small" FontAttributes="Bold" />
+                <Label Text="{Binding LblMonedaMonto}" FontSize="Small" FontAttributes="Bold" />
                 <Label  Text="" FontSize="Small" FontAttributes="Bold" />
 
                 <Label  Text="Clave SMS" FontSize="Small" FontAttributes="Bold" HorizontalOptions="Center" />
                 <Label  Text="Hemos enviado una Clave SMS al celular" FontSize="Small" HorizontalOptions="Center" />
                 <Label  Text="5193*****13" FontSize="Small" FontAttributes="Bold" HorizontalOptions="Center" />
 
-                <Entry x:Name="entClave" HorizontalOptions="FillAndExpand" Keyboard="Numeric" />
+                <Entry Text="{Binding Clave}" HorizontalOptions="FillAndExpand" Keyboard="Numeric" />
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Guardar como operación frecuente" FontSize="Small"  HorizontalOptions="StartAndExpand" />
-                    <Switch x:Name="swtFrecuente"  HorizontalOptions="End" ></Switch>
+                    <Switch IsToggled="{Binding IsOperacionFrecuente}"  HorizontalOptions="End" ></Switch>
                 </StackLayout>
 
-                <Button Clicked="EventoConfirmar" Text="Confirmar" HorizontalOptions="FillAndExpand" />
+                <Button Command="{Binding AccionCompletarIC}" Text="Confirmar" HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

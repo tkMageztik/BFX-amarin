@@ -57,7 +57,7 @@ namespace NS.MBX_amarin.ViewModels
 
         async void ExecuteItemTappedIC(Object item)
         {
-            var navParameters = new NavigationParameters();
+            var navParameters = GetNavigationParameters();
             navParameters.Add("Empresa", ItemSeleccionado);
             Application.Current.Properties["empresa"] = ItemSeleccionado;
 
@@ -66,5 +66,9 @@ namespace NS.MBX_amarin.ViewModels
             ItemSeleccionado = null;
         }
 
-	}
+        public override void OnNavigatingTo(NavigationParameters parameters)
+        {
+            RefNavParameters = parameters;
+        }
+    }
 }

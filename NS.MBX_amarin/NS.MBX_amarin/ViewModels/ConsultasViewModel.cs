@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using NS.MBX_amarin.Services;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,10 +11,12 @@ namespace NS.MBX_amarin.ViewModels
 {
 	public class ConsultasViewModel : ViewModelBase
 	{
-        public ConsultasViewModel(INavigationService navigationService)
+        private IOperacionService OperacionService;
+
+        public ConsultasViewModel(INavigationService navigationService, IOperacionService operacionService)
             : base(navigationService)
         {
-
+            OperacionService = operacionService;
         }
 
         public async Task Navegar(string destino)
@@ -21,9 +24,19 @@ namespace NS.MBX_amarin.ViewModels
             await NavigationService.NavigateAsync(destino);
         }
 
+        public async Task Navegar(string destino, NavigationParameters nav)
+        {
+            await NavigationService.NavigateAsync(destino, nav);
+        }
+
         public async Task NavegarModal(string destino)
         {
             await NavigationService.NavigateAsync(destino, null, true);
+        }
+
+        public IOperacionService GetOperacionService()
+        {
+            return OperacionService;
         }
     }
 }

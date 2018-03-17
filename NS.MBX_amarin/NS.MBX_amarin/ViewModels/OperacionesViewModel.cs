@@ -109,9 +109,13 @@ namespace NS.MBX_amarin.ViewModels
                 {
                     if (OpeFrecSelected.SubOperacion.Id == "0" || OpeFrecSelected.SubOperacion.Id == "1")//pago de servicios
                     {
-                        Application.Current.Properties["empresa"] = CatalogoService.BuscarEmpresaConServicios(OpeFrecSelected.Servicio.IdEmpresa);
-                        Application.Current.Properties["servicio"] = OpeFrecSelected.Servicio;
-                        Application.Current.Properties["pageOrigen"] = "OperacionesView";
+                        //Application.Current.Properties["empresa"] = CatalogoService.BuscarEmpresaConServicios(OpeFrecSelected.Servicio.IdEmpresa);
+                        //Application.Current.Properties["servicio"] = OpeFrecSelected.Servicio;
+                        //Application.Current.Properties["pageOrigen"] = "OperacionesView";
+
+                        navParameters.Add(Constantes.pageOrigen, "OperacionesView");
+                        navParameters.Add("Empresa", CatalogoService.BuscarEmpresaConServicios(OpeFrecSelected.Servicio.IdEmpresa));
+                        navParameters.Add("Servicio", OpeFrecSelected.Servicio);
 
                         await NavigationService.NavigateAsync("ServicioEmpresa", navParameters);
 

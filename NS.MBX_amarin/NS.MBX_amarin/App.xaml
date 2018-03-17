@@ -17,9 +17,9 @@
             </Style>
             <Style TargetType="ActivityIndicator">
                 <!--<Setter Property="BarTextColor" Value="Black" />-->
-                <Setter Property="Color" Value="DarkBlue" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="Color" Value="LightBlue" />
+                <!-- <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />-->
             </Style>
             
             <Style TargetType="SearchBar">
@@ -105,6 +105,21 @@
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="Title" Value="-- Seleccione --" />
             </Style>
+
+            <Style x:Key="btnOpcAdi" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+            <Style x:Key="btnLogout" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
         </ResourceDictionary>
         
 

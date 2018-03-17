@@ -4,7 +4,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="NS.MBX_amarin.Views.Registro"
-             Title="Registro">
+             Title="Registro"
+             BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="0">

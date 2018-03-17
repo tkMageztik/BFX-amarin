@@ -18,23 +18,7 @@ namespace NS.MBX_amarin.Views
         public Empresa()
         {
             InitializeComponent();
-
-            //lsvData.ItemsSource = ((EmpresaViewModel)BindingContext).ObtenerCatalogoService().ListarEmpresasConServicios();
-
         }
 
-        //async void EventoItemSeleccionado(object sender, ItemTappedEventArgs e)
-        //{
-        //    if (e.Item == null)
-        //        return;
-
-        //    Application.Current.Properties["empresa"] = e.Item as Catalogo;
-
-        //    await ((EmpresaViewModel)BindingContext).NavegarServicioEmpresa();
-        //    //await Navigation.PushAsync(new ServicioEmpresaView(), false);
-
-        //    //Deselect Item
-        //    ((ListView)sender).SelectedItem = null;
-        //}
     }
 }

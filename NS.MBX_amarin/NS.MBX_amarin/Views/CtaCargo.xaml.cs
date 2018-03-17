@@ -71,7 +71,9 @@ namespace NS.MBX_amarin.Views
             if (pageOrigen == "PagoServicioEmpresaView")
             {
                 Application.Current.Properties["ctaCargo"] = e.Item;
-                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfPagoServicioEmpresa);
+                NavigationParameters parametros = ((CtaCargoViewModel)BindingContext).ObtenerNavParametros();
+                parametros.Add("CtaCargo", e.Item);
+                await ((CtaCargoViewModel)BindingContext).Navegar(Constantes.pageConfPagoServicioEmpresa, parametros);
                 //await Navigation.PushAsync(new ConfPagoServicioEmpresaView(), false);
             }
             else if (pageOrigen == Constantes.pageTipoTarjeta)

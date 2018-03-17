@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.OpcionesAdicionales"
+             Title="Más Opciones" >
+    <StackLayout Style="{StaticResource stackContainer}">
+        <ScrollView Orientation="Horizontal">
+            <StackLayout Style="{StaticResource stackBasic}" Orientation="Horizontal">
+                <Button Command="{Binding AccionBloquearIC}" Text="Bloquea tu tarjeta" Style="{StaticResource btnOpcAdi}" />
+                <Button Command="{Binding AccionConfigurarIC}" Text="Configura tus tarjetas" Style="{StaticResource btnOpcAdi}" />
+                <Button Command="{Binding AccionViajeIC}" Text="Avísanos si sales de viaje" Style="{StaticResource btnOpcAdi}" />
+                <Button Command="{Binding AccionCompartirIC}" Text="Gana S/ compartiendo tu APP" Style="{StaticResource btnOpcAdi}" />
+            </StackLayout>
+        </ScrollView>
+        <ListView ItemsSource="{Binding ListaOpcAdicionales}" SelectedItem="{Binding OpcSelected, Mode=TwoWay}">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding OpcTappedIC}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Padding="10,0,10,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                    <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand" FontSize="Medium"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Style="{StaticResource stackBasic}">
+                    <Button Command="{Binding AccionLogoutIC}" Text="Cerrar Sesión" Style="{StaticResource btnLogout}" />
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+        
+    </StackLayout>
+</ContentPage>

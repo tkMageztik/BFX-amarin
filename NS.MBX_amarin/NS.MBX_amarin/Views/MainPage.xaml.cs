@@ -28,33 +28,46 @@ namespace NS.MBX_amarin.Views
         {
             InitializeComponent();
             //GetMainPage();
+                        
+        }
 
-            //LoadTipDoc();
-            Task.Run(async () => await LoadTipDoc()).Wait();
-            //LoadTipDoc().ConfigureAwait(false);
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
 
-            LoadUser();
-            txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
-            picTipDoc.SelectedIndexChanged += TxtTipNroDoc_OnChanged;
-            txtNroDoc.TextChanged += TxtTipNroDoc_OnChanged;
-            swtTipNroDoc.Toggled += SwtTipNroDoc_OnToggled;
+            //using (((MainPageViewModel)BindingContext).ObtenerUserDialogs().Loading(""))
+            //{
+                //LoadTipDoc();
+                //await loadTipoDoc();
+                //Task.Run(async () => await LoadTipDoc()).Wait();
+                //LoadTipDoc().ConfigureAwait(false);
 
-            //UserRepository repository = new UserRepository();
-            //repository.Delete();
+                await LoadTipDoc();
+                LoadUser();
 
-            txtClaveWeb.Text = "Cualquier_Clave";
+                txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
+                picTipDoc.SelectedIndexChanged += TxtTipNroDoc_OnChanged;
+                txtNroDoc.TextChanged += TxtTipNroDoc_OnChanged;
+                swtTipNroDoc.Toggled += SwtTipNroDoc_OnToggled;
 
-            //inicializar cuentas
-            ObservableCollection<Cuenta> lstCtas = new ObservableCollection<Cuenta>
-            {
-                new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", CodigoCta="00023232445", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
-                new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", CodigoCta="0334343444", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
-                new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", CodigoCta="00665553234", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
-                new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", CodigoCta="00334333434", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
-            };
+                //UserRepository repository = new UserRepository();
+                //repository.Delete();
 
-            Application.Current.Properties["listaCuentas"] = lstCtas;
-            Application.Current.Properties["pageOrigen"] = "";
+                txtClaveWeb.Text = "Cualquier_Clave";
+
+                //inicializar cuentas
+                ObservableCollection<Cuenta> lstCtas = new ObservableCollection<Cuenta>
+                {
+                    new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", CodigoCta="00023232445", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
+                    new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", CodigoCta="0334343444", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
+                    new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", CodigoCta="00665553234", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
+                    new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", CodigoCta="00334333434", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
+                };
+
+                Application.Current.Properties["listaCuentas"] = lstCtas;
+                Application.Current.Properties["pageOrigen"] = "";
+            //}
+
         }
 
         private void TxtTipNroDoc_OnChanged(object sender, EventArgs args)
@@ -76,14 +89,18 @@ namespace NS.MBX_amarin.Views
 
             //picTipDoc.ItemsSource = lstTipDoc;
             //picTipDoc.SelectedItem = "DNI";
-            TipoDocumentoViewModel tipoDocumentoViewModel = new TipoDocumentoViewModel();
-            var t = await tipoDocumentoViewModel.GetTipoDocumentos();
+            if(picTipDoc.ItemsSource == null)
+            {
+                TipoDocumentoViewModel tipoDocumentoViewModel = new TipoDocumentoViewModel();
+                var t = await tipoDocumentoViewModel.GetTipoDocumentos();
 
-            picTipDoc.ItemsSource = t.ToList().Where(x => x.TipDoc != null).ToList().ConvertAll(obj => obj.TipDoc);
-            //picTipDoc.ItemDisplayBinding = new Binding("tipDoc");
-            picTipDoc.SelectedItem = "DNI";
+                picTipDoc.ItemsSource = t.ToList().Where(x => x.TipDoc != null).ToList().ConvertAll(obj => obj.TipDoc);
+                //picTipDoc.ItemDisplayBinding = new Binding("tipDoc");
+                picTipDoc.SelectedItem = "DNI";
+            }
+            
         }
-        private void LoadUser()
+        private async void LoadUser()
         {
             UserRepository repository = new UserRepository();
             if (repository.Users != null && repository.Users.Count > 0)
@@ -136,20 +153,23 @@ namespace NS.MBX_amarin.Views
         private async void BtnIngresar_OnClicked(object sender, EventArgs args)
         {
             //string msg = ValidarIngreso();
-            ((MainPageViewModel)BindingContext).IsBusy = true;
-            string msg = "";
-            if (msg == "")
+            using (((MainPageViewModel)BindingContext).ObtenerUserDialogs().Loading(""))
             {
-                //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
-                //if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
-                //{
-                // Navigation.PushAsync(new NavigationBarView());
-                await ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
-                //Application.Current.MainPage = ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
+                string msg = "";
+                if (msg == "")
+                {
+                    //DisplayAlert("Banco X", "En mantenimiento...", "Aceptar");
+                    //if (txtNroTarjeta.Text == "4213550042988682" && txtNroDoc.Text == "46541509")
+                    //{
+                    // Navigation.PushAsync(new NavigationBarView());
+                    await Task.Delay(500);
+                    await ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
+                    //Application.Current.MainPage = ((MainPageViewModel)this.BindingContext).NavegarSiguiente();
                     //navegarSpecialBar();//new NavigationBarView();
-                //}
-            }
-            else { await DisplayAlert("Banco X", msg, "Aceptar"); }
+                    //}
+                }
+                else { await DisplayAlert("Banco X", msg, "Aceptar"); }
+            }                
             
         }
 
@@ -272,14 +292,20 @@ namespace NS.MBX_amarin.Views
         private async void BtnRegistrar_OnClicked(object sender, EventArgs args)
         {
             //var navPage = new NavigationPage(new Registro());
-            ((MainPageViewModel)BindingContext).IsBusy = true;
+            //((MainPageViewModel)BindingContext).IsBusy = true;
+            using (((MainPageViewModel)BindingContext).ObtenerUserDialogs().Loading(""))
+            {
+                //using (((MainPageViewModel)BindingContext).ObtenerUserDialogs().)
 
-            await Task.Delay(2000);
-            await ((MainPageViewModel)BindingContext).Navegar("Registro");
+                await Task.Delay(500);
+                await ((MainPageViewModel)BindingContext).Navegar("Registro");
+                
+                //((MainPageViewModel)BindingContext).IsBusy = false;
+                //Navigation.PushAsync(new Registro());
+                //App.Current.MainPage = new NavigationPage(new Registro);
+            }
 
-            ((MainPageViewModel)BindingContext).IsBusy = false;
-            //Navigation.PushAsync(new Registro());
-            //App.Current.MainPage = new NavigationPage(new Registro);
+
         }
         private void BtnContacto_OnClicked(object sender, EventArgs args)
         {

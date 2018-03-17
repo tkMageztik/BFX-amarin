@@ -22,11 +22,13 @@ namespace NS.MBX_amarin.Views
             //this.BarTextColor = Color.White;
             //this.FixedMode = true;
             string[] tabTitles = { "Mis ctas", "Operaciones", "Ubícanos", "Más" };
+            //0000FF
+            //005eaa
             string[] tabColors = { "#0000FF", "#0000FF", "#0000FF", "#0000FF" };
             // int[] tabBadgeCounts = { 0, 1, 5, 3, 4 };
-            //string[] tabBadgeColors = { "#000000", "#FF0000", "#000000", "#000000" };
+            //string[] tabBadgeColors = { "#000000", "#FF0000", "#000000", "#0000FF" };
 
-            foreach(Page page in this.Children)
+            foreach (Page page in this.Children)
             {
                 BottomBarPageExtensions.SetTabColor(page, Color.FromHex(tabColors[0]));
             }

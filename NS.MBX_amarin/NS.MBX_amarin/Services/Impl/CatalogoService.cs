@@ -12,6 +12,9 @@ namespace NS.MBX_amarin.Services.Impl
         //constantes para los catalogos
         private readonly string cOD_OPE_MOVIL = "COD_OPE_MOVIL";
         public string COD_OPE_MOVIL { get => cOD_OPE_MOVIL; }
+
+        private readonly string cOD_OPC_ADICIONALES = "COD_OPC_ADICIONALES";
+        public string COD_OPC_ADICIONALES { get => cOD_OPC_ADICIONALES; }
         
         public ObservableCollection<string> ListarOperadoresMovilesString()
         {
@@ -35,6 +38,19 @@ namespace NS.MBX_amarin.Services.Impl
                 new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Movistar", IdEstado = 1 },
                  new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Entel",  IdEstado = 1 },
                   new Catalogo { IdTabla = 3, Codigo = "3", Nombre = "Bitel",  IdEstado = 1 }
+            };
+
+            return new ObservableCollection<Catalogo>(lista);
+        }
+
+        public ObservableCollection<Catalogo> ListarOpcionesAdicionales()
+        {
+            List<Catalogo> lista = new List<Catalogo>
+            {
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Configuraciones",  IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Mi perfil", IdEstado = 1 },
+                new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Servicio al cliente",  IdEstado = 1 },
+                new Catalogo { IdTabla = 3, Codigo = "3", Nombre = "Solicitudes",  IdEstado = 1 }
             };
 
             return new ObservableCollection<Catalogo>(lista);
@@ -77,6 +93,9 @@ namespace NS.MBX_amarin.Services.Impl
             if (codCatalogo == COD_OPE_MOVIL)
             {
                 lista = ListarOperadoresMoviles();
+            }else if(codCatalogo == COD_OPC_ADICIONALES)
+            {
+                lista = ListarOpcionesAdicionales();
             }
 
 

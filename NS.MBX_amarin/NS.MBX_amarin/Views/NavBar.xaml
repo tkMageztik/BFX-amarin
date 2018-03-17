@@ -5,7 +5,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:views="clr-namespace:NS.MBX_amarin.Views"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="NS.MBX_amarin.Views.NavBar">
+             x:Class="NS.MBX_amarin.Views.NavBar"
+             BackgroundColor="White"   >
     <NavigationPage Title="Mis ctas" Icon="ctas1_2.png">
         <x:Arguments>
             <views:Cuentas     />
@@ -18,5 +19,10 @@
     </NavigationPage>
 
     <views:Cuentas Title="Ubícanos" Icon="ic_nearby_2.png"    />
-    <views:Cuentas Title="Mas" Icon="menu_2.png"    />
+    
+    <NavigationPage Title="Más" Icon="menu_2.png">
+        <x:Arguments>
+            <views:OpcionesAdicionales />
+        </x:Arguments>
+    </NavigationPage>
 </bb:BottomBarPage>

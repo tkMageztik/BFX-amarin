@@ -1,5 +1,6 @@
 ﻿using NS.MBX_amarin.Model;
 using NS.MBX_amarin.ViewModels;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,7 +91,12 @@ namespace NS.MBX_amarin.Views
         {
             Application.Current.Properties["opeId"] = idOperacion;
             Application.Current.Properties["origenMisCuentas"] = true;
-            await ((ConsultasViewModel)BindingContext).Navegar("SubOperaciones");
+
+            NavigationParameters navParameters = new NavigationParameters();
+            navParameters.Add("Operacion", ((ConsultasViewModel)BindingContext).GetOperacionService().BuscarOperacion(idOperacion));
+            navParameters.Add("IdOperacion", idOperacion);
+
+            await ((ConsultasViewModel)BindingContext).Navegar("SubOperaciones", navParameters);
             //Navigation.PushAsync(new SubOperacionesView(idOperacion, true), false);
         }
     }

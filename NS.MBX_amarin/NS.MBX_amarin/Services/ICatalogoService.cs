@@ -9,13 +9,14 @@ namespace NS.MBX_amarin.Services
     public interface ICatalogoService
     {
         string COD_OPE_MOVIL {  get; }
-
+        string COD_OPC_ADICIONALES { get; }
 
         ObservableCollection<Catalogo> ObtenerListaPorCodigo(string codCatalogo);
         Catalogo BuscarPorNombre(string codCatalogo, string nombre);
         Catalogo BuscarPorCodigo(string codCatalogo, string codigo);
 
         Catalogo BuscarMonedaPorCodigo(string codigo);
+        ObservableCollection<Catalogo> ListarOpcionesAdicionales();
         ObservableCollection<string> ListarOperadoresMovilesString();
         ObservableCollection<Catalogo> ListarOperadoresMoviles();
         Catalogo BuscarMonedaPorNombre(string nombre);

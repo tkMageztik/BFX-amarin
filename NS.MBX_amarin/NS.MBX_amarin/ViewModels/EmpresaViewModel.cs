@@ -15,7 +15,6 @@ namespace NS.MBX_amarin.ViewModels
 	public class EmpresaViewModel : ViewModelBase
 	{
         private ICatalogoService CatalogoService { get; set; }
-        private NavigationParameters NavParameters { get; set; }
 
         public EmpresaViewModel(ICatalogoService catalogoService, INavigationService navigationService)
             : base(navigationService)
@@ -28,7 +27,7 @@ namespace NS.MBX_amarin.ViewModels
 
         public override void OnNavigatingTo(NavigationParameters parameters)
         {
-            NavParameters = parameters;
+            RefNavParameters = parameters;
 
         }
 
@@ -59,9 +58,11 @@ namespace NS.MBX_amarin.ViewModels
                 Nombre = EmpServicioSelected.Nombre
             };
             Application.Current.Properties["empresa"] = empresa;
-            NavParameters.Add("Empresa", empresa);
 
-            await NavigationService.NavigateAsync("ServicioEmpresa", NavParameters);
+            NavigationParameters parametros = GetNavigationParameters();
+            parametros.Add("Empresa", empresa);
+
+            await NavigationService.NavigateAsync("ServicioEmpresa", parametros);
         }
 
         private bool _mostrarBuscador;
@@ -112,11 +113,11 @@ namespace NS.MBX_amarin.ViewModels
 
         async void ExecuteItemTappedIC()
         {
-            var navParameters = new NavigationParameters();
-            navParameters.Add("TipoTarjeta", ItemSeleccionado);
+            NavigationParameters parametros = GetNavigationParameters();
+            parametros.Add("TipoTarjeta", ItemSeleccionado);
             Application.Current.Properties[Constantes.pageOrigen] = Constantes.pageTipoTarjeta;
 
-            await NavigationService.NavigateAsync("CtaCargo", navParameters);
+            await NavigationService.NavigateAsync("CtaCargo", parametros);
 
             ItemSeleccionado = null;
         }
