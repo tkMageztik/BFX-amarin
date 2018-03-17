@@ -15,6 +15,7 @@ namespace NS.MBX_amarin.Services
         Catalogo BuscarPorNombre(string codCatalogo, string nombre);
         Catalogo BuscarPorCodigo(string codCatalogo, string codigo);
 
+        Cliente ObtenerCliente();
         Catalogo BuscarMonedaPorCodigo(string codigo);
         ObservableCollection<Catalogo> ListarOpcionesAdicionales();
         ObservableCollection<string> ListarOperadoresMovilesString();

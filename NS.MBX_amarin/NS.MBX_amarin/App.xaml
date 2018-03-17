@@ -21,7 +21,7 @@
                 <!-- <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />-->
             </Style>
-            
+
             <Style TargetType="SearchBar">
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="FontSize" Value="Small" />
@@ -58,7 +58,7 @@
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Spacing" Value="0" />
             </Style>
-            
+
             <Style x:Key="lblCont1BoldSm" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="FontSize" Value="Small" />
@@ -81,7 +81,7 @@
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="Black" />
             </Style>
-            
+
             <Style x:Key="btnCont1Sm" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="FontSize" Value="Small" />
@@ -109,15 +109,20 @@
             <Style x:Key="btnOpcAdi" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="BackgroundColor" Value="LightBlue" />
+                <Setter Property="Margin" Value="4" />
             </Style>
             <Style x:Key="btnLogout" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="Small" />
-                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="2" />
                 <Setter Property="BorderColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="LightGray" />
             </Style>
 
         </ResourceDictionary>

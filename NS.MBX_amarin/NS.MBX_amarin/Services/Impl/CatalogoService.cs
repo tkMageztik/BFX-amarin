@@ -15,6 +15,13 @@ namespace NS.MBX_amarin.Services.Impl
 
         private readonly string cOD_OPC_ADICIONALES = "COD_OPC_ADICIONALES";
         public string COD_OPC_ADICIONALES { get => cOD_OPC_ADICIONALES; }
+
+        private Cliente Cliente = new Cliente{ Nombre = "Jose", Celular = "98****567", Email = "emacliente@gmail.com"};
+
+        public Cliente ObtenerCliente()
+    {
+            return Cliente;
+    }
         
         public ObservableCollection<string> ListarOperadoresMovilesString()
         {

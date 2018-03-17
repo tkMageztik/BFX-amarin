@@ -80,6 +80,7 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<RecargaCelular>();
             containerRegistry.RegisterForNavigation<RecargaBim>();
             containerRegistry.RegisterForNavigation<OpcionesAdicionales>();
+            containerRegistry.RegisterForNavigation<MiPerfil>();
         }
 
         //public App()

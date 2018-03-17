@@ -42,9 +42,27 @@ namespace NS.MBX_amarin.ViewModels
         public DelegateCommand OpcTappedIC =>
             _opcTappedIC ?? (_opcTappedIC = new DelegateCommand(ExecuteOpcTappedIC));
 
-        void ExecuteOpcTappedIC()
+        async void ExecuteOpcTappedIC()
         {
+            try
+            {
+                //configuraciones
+                if (OpcSelected.Codigo == "0")
+                {
 
+                }
+                else if (OpcSelected.Codigo == "1")//mi perfil
+                {
+                    await NavigationService.NavigateAsync(Constantes.pageMiPerfil);
+                }
+
+                OpcSelected = null;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
         }
 
         private DelegateCommand _accionLogoutIC;

@@ -6,6 +6,9 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="NS.MBX_amarin.Views.OpcionesAdicionales"
              Title="Más Opciones" >
+    <ContentPage.Resources>
+        
+    </ContentPage.Resources>
     <StackLayout Style="{StaticResource stackContainer}">
         <ScrollView Orientation="Horizontal">
             <StackLayout Style="{StaticResource stackBasic}" Orientation="Horizontal">
@@ -35,7 +38,7 @@
             </ListView.ItemTemplate>
             <ListView.Footer>
                 <StackLayout Style="{StaticResource stackBasic}">
-                    <Button Command="{Binding AccionLogoutIC}" Text="Cerrar Sesión" Style="{StaticResource btnLogout}" />
+                    <Button  Command="{Binding AccionLogoutIC}" Text="Cerrar Sesión" Style="{StaticResource btnLogout}" />
                 </StackLayout>
             </ListView.Footer>
         </ListView>

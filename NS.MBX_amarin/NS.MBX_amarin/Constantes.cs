@@ -22,6 +22,7 @@ namespace NS.MBX_amarin
         public static readonly string pageEmpresa = "Empresa";
         public static readonly string pageBuscadorEmpresa = "BuscadorEmpresa";
         public static readonly string pageOperaciones = "Operaciones";
+        public static readonly string pageMiPerfil = "MiPerfil";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";
