@@ -13,6 +13,11 @@ namespace NS.MBX_amarin.Services.Impl
 
         public ObservableCollection<OperacionFrecuente> ListaOperacionesFrecuentes { get => listaOperacionesFrecuentes; set => listaOperacionesFrecuentes = value; }
 
+        public string GenerarCodigoOperacion()
+        {
+            return "231230";
+        }
+        
         public ObservableCollection<Operacion> ListarOperaciones()
         {
             List<Operacion> lista = new List<Operacion>

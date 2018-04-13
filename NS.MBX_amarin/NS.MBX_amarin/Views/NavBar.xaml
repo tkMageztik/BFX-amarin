@@ -18,7 +18,13 @@
         </x:Arguments>
     </NavigationPage>
 
-    <views:Cuentas Title="Ubícanos" Icon="ic_nearby_2.png"    />
+    <NavigationPage Title="Ubícanos" Icon="ic_nearby_2.png">
+        <x:Arguments>
+            <views:Ubicanos />
+        </x:Arguments>
+    </NavigationPage>
+
+    <!--<views:Cuentas Title="Ubícanos" Icon="ic_nearby_2.png"    />-->
     
     <NavigationPage Title="Más" Icon="menu_2.png">
         <x:Arguments>

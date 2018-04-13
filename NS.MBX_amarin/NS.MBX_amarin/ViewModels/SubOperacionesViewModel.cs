@@ -92,7 +92,9 @@ namespace NS.MBX_amarin.ViewModels
             {
                 Application.Current.Properties["strTipoTransf"] = subope.Id;
                 Application.Current.Properties["strOrigenMisCuentas"] = OrigenMisCuentas;
-                Application.Current.Properties["strPageOrigen"] = "";
+                Application.Current.Properties["strPageOrigen"] = Constantes.pageSubOperaciones;
+                navParameters.Add(Constantes.pageOrigen, Constantes.pageSubOperaciones);
+
                 await NavigationService.NavigateAsync("CtaCargo", navParameters);
             }
 

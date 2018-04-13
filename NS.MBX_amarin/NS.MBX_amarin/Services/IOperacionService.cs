@@ -14,5 +14,6 @@ namespace NS.MBX_amarin.Services
         ObservableCollection<SubOperacion> ListarSubOperaciones(string id);
         ObservableCollection<OperacionFrecuente> ListarOperacionesFrecuentes();
         void AgregarOperacionFrecuente(OperacionFrecuente opeFrec);
+        string GenerarCodigoOperacion();
     }
 }

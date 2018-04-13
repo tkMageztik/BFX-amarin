@@ -37,35 +37,43 @@ namespace NS.MBX_amarin.Views
 
             //using (((MainPageViewModel)BindingContext).ObtenerUserDialogs().Loading(""))
             //{
-                //LoadTipDoc();
-                //await loadTipoDoc();
-                //Task.Run(async () => await LoadTipDoc()).Wait();
-                //LoadTipDoc().ConfigureAwait(false);
-
+            //LoadTipDoc();
+            //await loadTipoDoc();
+            //Task.Run(async () => await LoadTipDoc()).Wait();
+            //LoadTipDoc().ConfigureAwait(false);
+            try
+            {
                 await LoadTipDoc();
                 LoadUser();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+                
 
-                txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
-                picTipDoc.SelectedIndexChanged += TxtTipNroDoc_OnChanged;
-                txtNroDoc.TextChanged += TxtTipNroDoc_OnChanged;
-                swtTipNroDoc.Toggled += SwtTipNroDoc_OnToggled;
+            txtNroTarjeta.TextChanged += TxtNroTarjeta_OnChanged;
+            picTipDoc.SelectedIndexChanged += TxtTipNroDoc_OnChanged;
+            txtNroDoc.TextChanged += TxtTipNroDoc_OnChanged;
+            swtTipNroDoc.Toggled += SwtTipNroDoc_OnToggled;
 
-                //UserRepository repository = new UserRepository();
-                //repository.Delete();
+            //UserRepository repository = new UserRepository();
+            //repository.Delete();
 
-                txtClaveWeb.Text = "Cualquier_Clave";
+            txtClaveWeb.Text = "Cualquier_Clave";
 
-                //inicializar cuentas
-                ObservableCollection<Cuenta> lstCtas = new ObservableCollection<Cuenta>
-                {
-                    new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", CodigoCta="00023232445", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
-                    new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", CodigoCta="0334343444", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
-                    new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", CodigoCta="00665553234", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
-                    new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", CodigoCta="00334333434", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
-                };
+            //inicializar cuentas propias
+            ObservableCollection<Cuenta> lstCtas = new ObservableCollection<Cuenta>
+            {
+                new Cuenta { idCta = "1", NombreCta = "Cuenta Simple Soles", CodigoCta="00023232445", SaldoDisponible = 100.10M, Moneda = "S/", idMoneda = "PEN" },
+                new Cuenta { idCta = "2", NombreCta = "Cuenta Simple Dólares", CodigoCta="0334343444", SaldoDisponible = 5.10M, Moneda = "$" , idMoneda = "USD"},
+                new Cuenta { idCta = "3", NombreCta = "Cuenta Ahorros Soles", CodigoCta="00665553234", SaldoDisponible = 155.10M, Moneda = "S/", idMoneda = "PEN" },
+                new Cuenta { idCta = "4", NombreCta = "Cuenta Ahorros Dólares", CodigoCta="00334333434", SaldoDisponible = 555.10M, Moneda = "$", idMoneda = "USD" }
+            };
 
-                Application.Current.Properties["listaCuentas"] = lstCtas;
-                Application.Current.Properties["pageOrigen"] = "";
+            ((MainPageViewModel)BindingContext).ObtenerCuentaService().listaCuentas = lstCtas;
+            Application.Current.Properties["listaCuentas"] = lstCtas;
+            Application.Current.Properties["pageOrigen"] = "";
             //}
 
         }

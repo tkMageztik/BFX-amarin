@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NS.MBX_amarin.Views.BuscadorDireccion"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:NS.MBX_amarin.Converters"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             >
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <StackLayout Style="{StaticResource stackBasic}">
+
+            <!--<SearchBar Text="{Binding TxtBuscador}" 
+            Placeholder="Ingrese dirección" TextColor="Gray" FontSize="Small"
+            HorizontalOptions="FillAndExpand"  >
+                <SearchBar.Behaviors>
+                    <b:EventToCommandBehavior EventName="TextChanged" 
+                                      Command="{Binding BuscarIC}" />
+                    <b:EventToCommandBehavior EventName="Focused" 
+                                      Command="{Binding FocusedIC}" />
+                    <b:EventToCommandBehavior EventName="Unfocused" 
+                                      Command="{Binding UnfocusedIC}" />
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+            <ListView ItemsSource="{Binding ListaResultados}" SelectedItem="{Binding ItemSelected, Mode=TwoWay}" IsVisible="IsFocused" >
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped"
+                                      Command="{Binding TapListaIC}"
+                                      EventArgsConverter="{StaticResource itemTappedEventArgsConverter}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}" TextColor="Gray" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

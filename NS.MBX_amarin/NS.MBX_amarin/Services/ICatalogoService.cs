@@ -10,10 +10,13 @@ namespace NS.MBX_amarin.Services
     {
         string COD_OPE_MOVIL {  get; }
         string COD_OPC_ADICIONALES { get; }
+        string COD_UBICACIONES_MAPS { get; }
+        string COD_TIPOS_CTA { get; }
 
         ObservableCollection<Catalogo> ObtenerListaPorCodigo(string codCatalogo);
         Catalogo BuscarPorNombre(string codCatalogo, string nombre);
         Catalogo BuscarPorCodigo(string codCatalogo, string codigo);
+        ObservableCollection<Catalogo> BuscarCoincidePorNombre(string codCatalogo, string nombre);
 
         Cliente ObtenerCliente();
         Catalogo BuscarMonedaPorCodigo(string codigo);

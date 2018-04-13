@@ -14,7 +14,9 @@ namespace NS.MBX_amarin.Model
         public Catalogo Picker1 { get; set; } //servicio, tipo tarjeta, etc
         public Catalogo Picker2 { get; set; } //moneda, etc
         public string parametro1 { get; set; } //num tarjeta, num telefono, etc
+        public Cuenta CtaOrigen { get; set; }
         public Cuenta CtaDestino { get; set; }
+        public Catalogo Moneda { get; set; }
 
         public Servicio Servicio { get; set; }
     }

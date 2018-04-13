@@ -1,6 +1,7 @@
 ﻿using NS.MBX_amarin.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace NS.MBX_amarin.Services.Impl
@@ -8,6 +9,7 @@ namespace NS.MBX_amarin.Services.Impl
     public class CuentaService : ICuentaService
     {
         private ITipoCambioService TipoCambioService { get; set; }
+        public ObservableCollection<Cuenta> listaCuentas { get; set; }
 
         public CuentaService(ITipoCambioService tipoCambioService)
         {
@@ -50,6 +52,38 @@ namespace NS.MBX_amarin.Services.Impl
             }
 
             return msj;
+        }
+
+        //valida si la cuenta tiene suficiente saldo para procesar la operacion
+        public bool ValidarSaldoOperacion(Cuenta cuenta, decimal monto, string monedaMonto)
+        {
+            bool rpta = true;
+            if (cuenta != null)
+            {
+                decimal montoCambiado = monto;
+                TipoCambio tipoCambio = TipoCambioService.obtenerTipoCambio();
+
+                if (cuenta.idMoneda == "PEN" && monedaMonto == "USD")
+                {
+                    montoCambiado = decimal.Round(Decimal.Multiply(monto, tipoCambio.CompraDolares), 2, MidpointRounding.AwayFromZero);
+                }
+                else if (cuenta.idMoneda == "USD" && monedaMonto == "PEN")
+                {
+                    montoCambiado = decimal.Round(Decimal.Divide(monto, tipoCambio.VentaDolares), 2, MidpointRounding.AwayFromZero);
+                }
+
+                if (cuenta.SaldoDisponible < montoCambiado)
+                {
+                    rpta = false;
+                }
+
+            }
+            else
+            {
+                rpta = false;
+            }
+
+            return rpta;
         }
     }
 }

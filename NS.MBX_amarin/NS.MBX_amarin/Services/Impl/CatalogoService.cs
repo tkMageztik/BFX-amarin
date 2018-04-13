@@ -10,11 +10,17 @@ namespace NS.MBX_amarin.Services.Impl
     public class CatalogoService : ICatalogoService
     {
         //constantes para los catalogos
-        private readonly string cOD_OPE_MOVIL = "COD_OPE_MOVIL";
-        public string COD_OPE_MOVIL { get => cOD_OPE_MOVIL; }
+        private readonly string _COD_OPE_MOVIL = "COD_OPE_MOVIL";
+        public string COD_OPE_MOVIL { get => _COD_OPE_MOVIL; }
 
-        private readonly string cOD_OPC_ADICIONALES = "COD_OPC_ADICIONALES";
-        public string COD_OPC_ADICIONALES { get => cOD_OPC_ADICIONALES; }
+        private readonly string _COD_OPC_ADICIONALES = "COD_OPC_ADICIONALES";
+        public string COD_OPC_ADICIONALES { get => _COD_OPC_ADICIONALES; }
+
+        private readonly string _COD_UBICACIONES_MAPS = "COD_UBICACIONES_MAPS";
+        public string COD_UBICACIONES_MAPS { get => _COD_UBICACIONES_MAPS; }
+
+        private readonly string _COD_TIPOS_CTA = "COD_TIPOS_CTA";
+        public string COD_TIPOS_CTA { get => _COD_TIPOS_CTA; }
 
         private Cliente Cliente = new Cliente{ Nombre = "Jose", Celular = "98****567", Email = "emacliente@gmail.com"};
 
@@ -45,6 +51,32 @@ namespace NS.MBX_amarin.Services.Impl
                 new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Movistar", IdEstado = 1 },
                  new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Entel",  IdEstado = 1 },
                   new Catalogo { IdTabla = 3, Codigo = "3", Nombre = "Bitel",  IdEstado = 1 }
+            };
+
+            return new ObservableCollection<Catalogo>(lista);
+        }
+
+        public ObservableCollection<Catalogo> ListarTiposCuenta()
+        {
+            List<Catalogo> lista = new List<Catalogo>
+            {
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Cuenta Ahorros Soles", Descripcion = "PEN", IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Cuenta Ahorros Dólares", Descripcion = "USD",IdEstado = 1 },
+                new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Cuenta Corriente Soles", Descripcion = "PEN", IdEstado = 1 },
+                new Catalogo { IdTabla = 3, Codigo = "3", Nombre = "Cuenta Corriente Dólares", Descripcion = "USD", IdEstado = 1 }
+            };
+
+            return new ObservableCollection<Catalogo>(lista);
+        }
+
+        public ObservableCollection<Catalogo> ListarUbicacionesMaps()
+        {
+            List<Catalogo> lista = new List<Catalogo>
+            {
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Av. Ricardo Palma 232",  IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Jr. Casas 223", IdEstado = 1 },
+                new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Av. Aranceles 555",  IdEstado = 1 },
+                new Catalogo { IdTabla = 3, Codigo = "3", Nombre = "Calle Rosario 655",  IdEstado = 1 }
             };
 
             return new ObservableCollection<Catalogo>(lista);
@@ -93,6 +125,20 @@ namespace NS.MBX_amarin.Services.Impl
             return null;
         }
 
+        public ObservableCollection<Catalogo> BuscarCoincidePorNombre(string codCatalogo, string nombre)
+        {
+            if(!string.IsNullOrEmpty(nombre))
+            {
+                ObservableCollection<Catalogo> listaCat = ObtenerListaPorCodigo(codCatalogo);
+
+                List<Catalogo> listaFiltro = listaCat.Where(c => c.Nombre.ToUpper().Contains(nombre.ToUpper())).ToList();
+
+                return new ObservableCollection<Catalogo>(listaFiltro);
+            }
+
+            return null;
+        }
+
         public ObservableCollection<Catalogo> ObtenerListaPorCodigo(string codCatalogo)
         {
             ObservableCollection<Catalogo> lista = null;
@@ -103,8 +149,14 @@ namespace NS.MBX_amarin.Services.Impl
             }else if(codCatalogo == COD_OPC_ADICIONALES)
             {
                 lista = ListarOpcionesAdicionales();
+            }else if(codCatalogo == COD_UBICACIONES_MAPS)
+            {
+                lista = ListarUbicacionesMaps();
             }
-
+            else if (codCatalogo == COD_TIPOS_CTA)
+            {
+                lista = ListarTiposCuenta();
+            }
 
             return lista;
         }

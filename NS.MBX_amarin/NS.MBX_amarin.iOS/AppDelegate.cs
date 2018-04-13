@@ -25,6 +25,10 @@ namespace NS.MBX_amarin.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            //TODO: Definir un api key para maps en iOS y luego descomentar esta parte
+            //Xamarin.FormsGoogleMaps.Init("apikey");
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

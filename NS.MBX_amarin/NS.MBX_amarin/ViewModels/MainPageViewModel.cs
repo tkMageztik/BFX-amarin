@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using NS.MBX_amarin.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -11,10 +12,12 @@ namespace NS.MBX_amarin.ViewModels
 {
 	public class MainPageViewModel : ViewModelBase
 	{
-        public MainPageViewModel(INavigationService navigationService, IUserDialogs userDialogs)
+        private ICuentaService CuentaService { get; set; }
+
+        public MainPageViewModel(ICuentaService cuentaService, INavigationService navigationService, IUserDialogs userDialogs)
             : base(navigationService, userDialogs)
         {
-
+            this.CuentaService = cuentaService;
         }
 
         public async Task NavegarSiguiente()
@@ -26,6 +29,11 @@ namespace NS.MBX_amarin.ViewModels
         public IUserDialogs ObtenerUserDialogs()
         {
             return UserDialogs;
+        }
+
+        public ICuentaService ObtenerCuentaService()
+        {
+            return CuentaService;
         }
 
         public async Task Navegar(string destino)

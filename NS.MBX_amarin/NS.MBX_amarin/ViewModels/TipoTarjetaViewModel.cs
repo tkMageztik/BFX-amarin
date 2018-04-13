@@ -44,6 +44,7 @@ namespace NS.MBX_amarin.ViewModels
         async void ExecuteItemTappedIC()
         {
             NavParameters.Add("TipoTarjeta", ItemSeleccionado);
+            NavParameters.Add("CodTipoTarjeta", ItemSeleccionado.Codigo);
 
             Application.Current.Properties["strTipoTransf"] = "0";
             Application.Current.Properties["strOrigenMisCuentas"] = false;

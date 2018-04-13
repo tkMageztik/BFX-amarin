@@ -10,6 +10,9 @@ namespace NS.MBX_amarin
         public static readonly string msjExito = "La operación fue realizada con éxito";
         public static readonly string msjNoSaldo = "No hay suficiente saldo en la cuenta de origen";
 
+        //google places api
+        public static readonly string placesApiKey = "AIzaSyBJwIS9G1hf8u3KSCIKyRQUZUMnglnWOtQ";//por ahora es publica
+
         //constantes para navegacion
         public static readonly string pageOrigen = "pageOrigen";
         public static readonly string pageTipoTarjeta = "TipoTarjeta";
@@ -22,7 +25,15 @@ namespace NS.MBX_amarin
         public static readonly string pageEmpresa = "Empresa";
         public static readonly string pageBuscadorEmpresa = "BuscadorEmpresa";
         public static readonly string pageOperaciones = "Operaciones";
+        public static readonly string pageSubOperaciones = "SubOperaciones";
         public static readonly string pageMiPerfil = "MiPerfil";
+        public static readonly string pageTransfCtaPropia = "TransfCtaPropia";
+        public static readonly string pageTransfCtaPropiaDestino = "TransfCtaPropiaDestino";
+        public static readonly string pageTransfCtaPropiaDatos = "TransfCtaPropiaDatos";
+        public static readonly string pageTransfConfirmacion = "TransfConfirmacion";
+        public static readonly string pageTransfCuentaTercero = "TransfCuentatercero";
+        public static readonly string pageTransfCtaTerceroDestino = "TransfCtaTerceroDestino";
+        public static readonly string pageTransfCuentaOtroBanco = "TransfCuentaOtroBanco";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";

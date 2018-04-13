@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<BFP7015>
+  <OutDat>
+    <OData>
+      <ODnomcl Type="System.String" Length="30" Default="" Decimal="" />
+      <ODdlm01 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODfille Type="System.String" Length="165" Default="" Decimal="" />
+      <ODcodof Type="System.Double" Length="2" Default="" Decimal="0" />
+      <ODtipct Type="System.String" Length="2" Default="" Decimal="" />
+      <ODmoned Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODdelim Type="System.String" Length="1" Default="" Decimal="" />
+    </OData>
+  </OutDat>
+  <OutDat>
+    <OData />
+    <OHead>
+      <OFMTAP Type="System.String" Length="1" Default="" Decimal="" />
+      <OSTATUS Type="System.String" Length="1" Default="" Decimal="" />
+      <OLOG Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OESTACI Type="System.String" Length="10" Default="" Decimal="" />
+      <OMSG Type="System.String" Length="4" Default="" Decimal="" />
+      <OLOGLO Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHORA Type="System.Double" Length="6" Default="80010" Decimal="0" />
+      <DLDCPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFMTPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFINFMT Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+  </OutDat>
+</BFP7015>

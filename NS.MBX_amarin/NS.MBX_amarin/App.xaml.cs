@@ -13,6 +13,7 @@ using NS.MBX_amarin.Views;
 using NS.MBX_amarin.Services.Impl;
 using Acr.UserDialogs;
 using Xamarin.Forms.Xaml;
+using NS.MBX_amarin.Six;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace NS.MBX_amarin
@@ -49,10 +50,13 @@ namespace NS.MBX_amarin
         {
             ITipoCambioService tipoCambioService = new TipoCambioService();
             ICuentaService cuentaService = new CuentaService(tipoCambioService);
+
+            containerRegistry.RegisterInstance<IGPlacesService>(new GPlacesService());
             containerRegistry.RegisterInstance<ITipoCambioService>(tipoCambioService);
             containerRegistry.RegisterInstance<ICuentaService>(cuentaService);
             containerRegistry.RegisterInstance<ICatalogoService>(new CatalogoService());
             containerRegistry.RegisterInstance<IOperacionService>(new OperacionService());
+            containerRegistry.RegisterInstance<ISixService>(new SixService());
 
             containerRegistry.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
 
@@ -81,6 +85,12 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<RecargaBim>();
             containerRegistry.RegisterForNavigation<OpcionesAdicionales>();
             containerRegistry.RegisterForNavigation<MiPerfil>();
+            containerRegistry.RegisterForNavigation<Ubicanos>();
+            containerRegistry.RegisterForNavigation<TransfCtaPropiaDestino>();
+            containerRegistry.RegisterForNavigation<TransfConfirmacion>();
+            containerRegistry.RegisterForNavigation<TransfCtaPropiaDatos>();
+            containerRegistry.RegisterForNavigation<TransfCtaTerceroDestino>();
+            containerRegistry.RegisterForNavigation<TransfResumen>();
         }
 
         //public App()

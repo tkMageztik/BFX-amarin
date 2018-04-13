@@ -12,5 +12,6 @@ namespace NS.MBX_amarin.Model
         public decimal SaldoDisponible { get; set; }
         public string Moneda { get; set; }
         public string idMoneda { get; set; } //PEN, USD
+        public string NombreTitular { get; set; }
     }
 }
