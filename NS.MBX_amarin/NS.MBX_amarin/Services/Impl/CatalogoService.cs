@@ -22,6 +22,9 @@ namespace NS.MBX_amarin.Services.Impl
         private readonly string _COD_TIPOS_CTA = "COD_TIPOS_CTA";
         public string COD_TIPOS_CTA { get => _COD_TIPOS_CTA; }
 
+        private readonly string _COD_OPC_SI_NO = "COD_OPC_SI_NO";
+        public string COD_OPC_SI_NO { get => _COD_OPC_SI_NO; }
+
         private Cliente Cliente = new Cliente{ Nombre = "Jose", Celular = "98****567", Email = "emacliente@gmail.com"};
 
         public Cliente ObtenerCliente()
@@ -41,6 +44,17 @@ namespace NS.MBX_amarin.Services.Impl
             }
 
             return new ObservableCollection<string>(lista);
+        }
+
+        public ObservableCollection<Catalogo> ListarOpcionesSiNo()
+        {
+            List<Catalogo> lista = new List<Catalogo>
+            {
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Si",  IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "No", IdEstado = 1 }
+            };
+
+            return new ObservableCollection<Catalogo>(lista);
         }
 
         public ObservableCollection<Catalogo> ListarOperadoresMoviles()
@@ -157,6 +171,10 @@ namespace NS.MBX_amarin.Services.Impl
             {
                 lista = ListarTiposCuenta();
             }
+            else if (codCatalogo == COD_OPC_SI_NO)
+            {
+                lista = ListarOpcionesSiNo();
+            }
 
             return lista;
         }
@@ -220,9 +238,9 @@ namespace NS.MBX_amarin.Services.Impl
         {
             List<Catalogo> lista = new List<Catalogo>
             {
-                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Otra tarjeta Financiero", Descripcion = "Tarjeta de Crédito", IdEstado = 1 },
-                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Tarjeta de otro banco", Descripcion = "Tarjeta de Crédito", IdEstado = 1 },
-                new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Tarjeta Diners", Descripcion = "Tarjeta de Crédito Diners", IdEstado = 1 }
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Tarjeta propio banco", Descripcion = "Tarjeta de Crédito", IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Tarjeta de otro banco", Descripcion = "Tarjeta de Crédito", IdEstado = 1 }
+                //,new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Tarjeta Diners", Descripcion = "Tarjeta de Crédito Diners", IdEstado = 1 }
             };
 
             return new ObservableCollection<Catalogo>(lista);
@@ -247,9 +265,12 @@ namespace NS.MBX_amarin.Services.Impl
         {
             List<Catalogo> lista = new List<Catalogo>
             {
-                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Direct TV", IdEstado = 1 },
-                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Edelnor", IdEstado = 1 },
-                new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Sedapal", IdEstado = 1 }
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Claro", IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Movistar", IdEstado = 1 },//telefonia celular y fija
+                new Catalogo { IdTabla = 2, Codigo = "2", Nombre = "Entel Perú", IdEstado = 1 },
+                new Catalogo { IdTabla = 3, Codigo = "3", Nombre = "Edelnor", IdEstado = 1 },
+                new Catalogo { IdTabla = 4, Codigo = "4", Nombre = "Luz del Sur", IdEstado = 1 },
+                new Catalogo { IdTabla = 5, Codigo = "5", Nombre = "Sedapal", IdEstado = 1 },
             };
 
             return new ObservableCollection<Catalogo>(lista);
@@ -259,13 +280,13 @@ namespace NS.MBX_amarin.Services.Impl
         {
             ObservableCollection<Catalogo> lista1 = ListarEmpresasConServicios();
 
-            ObservableCollection<Catalogo> lista2 = ListarEmpresas();
+            //ObservableCollection<Catalogo> lista2 = ListarEmpresas();
             
-            //unir las listas
-            foreach(Catalogo cat in lista2)
-            {
-                lista1.Add(cat);
-            }
+            ////unir las listas
+            //foreach(Catalogo cat in lista2)
+            //{
+            //    lista1.Add(cat);
+            //}
 
             Catalogo empresa = null;
 
@@ -286,62 +307,85 @@ namespace NS.MBX_amarin.Services.Impl
         public ObservableCollection<Servicio> ListarServiciosxEmpresa(string id)
         {
             List<Servicio> lista = null;
-            if (id == "0")
+            if (id == "0")//claro
             {
 
                 lista = new List<Servicio>
                 {
-                    new Servicio { IdEmpresa = "0", Codigo = "0", Nombre = "Instalación Post Pago" },
-                    new Servicio { IdEmpresa = "0", Codigo = "1", Nombre = "Mensual Post" },
-                    new Servicio { IdEmpresa = "0", Codigo = "2", Nombre = "Recarga" }
+                    new Servicio { IdEmpresa = "0", Codigo = "0", Nombre = "Pago Celular" }
                 };
             }
-            else if (id == "1")
+            else if (id == "1")//movistar
             {
 
                 lista = new List<Servicio>
                 {
-                    new Servicio { IdEmpresa = "1", Codigo = "0", Nombre = "Luz" }
+                    new Servicio { IdEmpresa = "1", Codigo = "0", Nombre = "Pago Celular" },
+                    new Servicio { IdEmpresa = "1", Codigo = "1", Nombre = "Teléfono Fijo" }
                 };
             }
-            else if (id == "2")
+            else if (id == "2")//entel perú
             {
 
                 lista = new List<Servicio>
                 {
-                    new Servicio { IdEmpresa = "2", Codigo = "0", Nombre = "Agua" }
+                    new Servicio { IdEmpresa = "2", Codigo = "0", Nombre = "Pago Celular" }
+                };
+            }
+            else if (id == "3")//edelnor
+            {
+
+                lista = new List<Servicio>
+                {
+                    new Servicio { IdEmpresa = "3", Codigo = "0", Nombre = "Luz" }
+                };
+            }
+            else if (id == "4")//luz sur
+            {
+
+                lista = new List<Servicio>
+                {
+                    new Servicio { IdEmpresa = "4", Codigo = "0", Nombre = "Luz" }
+                };
+            }
+            else if (id == "5")//sedapal
+            {
+
+                lista = new List<Servicio>
+                {
+                    new Servicio { IdEmpresa = "5", Codigo = "0", Nombre = "Agua" }
                 };
             }
             //san marcos
-            else if (id == "15")
-            {
+            //else if (id == "15")
+            //{
 
-                lista = new List<Servicio>
-                {
-                    new Servicio { IdEmpresa = id, Codigo = "0", Nombre = "Pago de matrícula" },
-                    new Servicio { IdEmpresa = id, Codigo = "1", Nombre = "Rectificación" }
-                };
-            }
-            //instituto certus
-            else if (id == "2")
-            {
+            //    lista = new List<Servicio>
+            //    {
+            //        new Servicio { IdEmpresa = id, Codigo = "0", Nombre = "Pago de matrícula" },
+            //        new Servicio { IdEmpresa = id, Codigo = "1", Nombre = "Rectificación" }
+            //    };
+            //}
+            ////instituto certus
+            //else if (id == "2")
+            //{
 
-                lista = new List<Servicio>
-                {
-                    new Servicio { IdEmpresa = id, Codigo = "0", Nombre = "Pago de Ciclo" },
-                    new Servicio { IdEmpresa = id, Codigo = "1", Nombre = "Pago de Matrícula" }
-                };
-            }
-            //ucv
-            else if (id == "2")
-            {
+            //    lista = new List<Servicio>
+            //    {
+            //        new Servicio { IdEmpresa = id, Codigo = "0", Nombre = "Pago de Ciclo" },
+            //        new Servicio { IdEmpresa = id, Codigo = "1", Nombre = "Pago de Matrícula" }
+            //    };
+            //}
+            ////ucv
+            //else if (id == "2")
+            //{
 
-                lista = new List<Servicio>
-                {
-                    new Servicio { IdEmpresa = id, Codigo = "0", Nombre = "Pago de matrícula" },
-                    new Servicio { IdEmpresa = id, Codigo = "1", Nombre = "Rectificación" }
-                };
-            }
+            //    lista = new List<Servicio>
+            //    {
+            //        new Servicio { IdEmpresa = id, Codigo = "0", Nombre = "Pago de matrícula" },
+            //        new Servicio { IdEmpresa = id, Codigo = "1", Nombre = "Rectificación" }
+            //    };
+            //}
 
             return new ObservableCollection<Servicio>(lista);
         }
@@ -366,7 +410,7 @@ namespace NS.MBX_amarin.Services.Impl
         //insensitivo
         public ObservableCollection<Catalogo> BuscarEmpresa(string nombre)
         {
-            ObservableCollection<Catalogo> listaTotal = ListarEmpresas();
+            ObservableCollection<Catalogo> listaTotal = ListarEmpresasConServicios();
             List<Catalogo> listaFiltro = listaTotal.Where(c => c.Nombre.ToUpper().Contains(nombre.ToUpper())).ToList();
 
             return new ObservableCollection<Catalogo>(listaFiltro);

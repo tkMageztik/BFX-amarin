@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<BFP7002>
+  <OutDat>
+    <OData>
+      <ODNrTarj Type="System.String" Length="19" Default="" Decimal="" />
+      <ODDcodcl Type="System.String" Length="9" Default="" Decimal="" />
+      <ODDnomcl Type="System.String" Length="26" Default="" Decimal="" />
+      <ODDdocum Type="System.String" Length="11" Default="" Decimal="" />
+      <ODDfenac Type="System.String" Length="8" Default="" Decimal="" />
+      <ODDtipcl Type="System.String" Length="1" Default="" Decimal="" />
+      <ODDtipdo Type="System.String" Length="1" Default="" Decimal="" />
+      <ODDnroct Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODDctas Length="114" Size="25">
+        <ODDtipct Type="System.String" Length="2" Default="" Decimal="" />
+        <ODDmoned Type="System.String" Length="3" Default="" Decimal="" />
+        <ODDcodct Type="System.String" Length="16" Default="" Decimal="" />
+        <ODDsigno Type="System.String" Length="1" Default="" Decimal="" />
+        <ODDmonto Type="System.Double" Length="14" Default="" Decimal="2" />
+        <ODdescr Type="System.String" Length="78" Default="" Decimal="" />
+      </ODDctas>
+      <ODDtipta Type="System.String" Length="1" Default="" Decimal="" />
+      <ODDelim Type="System.String" Length="1" Default="" Decimal="" />
+    </OData>
+    <OHead>
+      <OFMTAP Type="System.String" Length="1" Default="" Decimal="" />
+      <OSTATUS Type="System.String" Length="1" Default="" Decimal="" />
+      <OLOG Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OESTACI Type="System.String" Length="10" Default="" Decimal="" />
+      <OMSG Type="System.String" Length="4" Default="" Decimal="" />
+      <OLOGLO Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHORA Type="System.Double" Length="6" Default="80010" Decimal="0" />
+      <DLDCPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFMTPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFINFMT Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+  </OutDat>
+</BFP7002>

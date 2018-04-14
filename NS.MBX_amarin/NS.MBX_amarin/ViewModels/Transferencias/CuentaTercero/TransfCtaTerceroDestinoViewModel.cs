@@ -1,4 +1,5 @@
-﻿using NS.MBX_amarin.BusinessLogic.Transacciones;
+﻿using NS.MBX_amarin.BusinessLogic;
+using NS.MBX_amarin.BusinessLogic.Transacciones;
 using NS.MBX_amarin.Common;
 using NS.MBX_amarin.Model;
 using NS.MBX_amarin.Services;
@@ -9,6 +10,7 @@ using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 
@@ -175,14 +177,51 @@ namespace NS.MBX_amarin.ViewModels
             Cuenta ctaOrigen = RefNavParameters["CtaCargo"] as Cuenta;
             //Cuenta ctaDestino = RefNavParameters["CtaDestino"] as Cuenta;
 
-            double dblMonto = double.Parse(Monto);
-            string strMonto = Convert.ToString(System.Math.Round(dblMonto, 2) * 100);
-            string strMontoReal = Convert.ToString(System.Math.Round(dblMonto, 2) * 100).PadLeft(14, '0');
+            string strCuentaOrigen = ctaOrigen.CodigoCta;
+            string strCuentaDestino = NumCtaDestino;
+            string strMonedaCodMonto = MonedaSel.Codigo;
+            double dblMonto = System.Math.Round(double.Parse(Monto), 2);
+            string strDescrpcion = "";// Comunes.RemoverCaracteresEspeciales(txtDescripcion.Text.Trim()).ToUpper();
+            //strDescrpcion = (strDescrpcion.ToString().Trim().Length == 0) ? "TRANSF.CTA." : strDescrpcion.ToString().Trim();
 
-            string strMensaje = '*' + NumCtaDestino.PadLeft(12, '0') + ctaOrigen.CodigoCta.PadLeft(12, '0') + strMonto.PadLeft(14, '0') + MonedaSel.Codigo + "".PadRight(30, ' ') + '*';
-            Transacciones tx = new Transacciones();
+            //DataView dvCuentas = ((DataTable)ViewState["dtCuentas"]).DefaultView;
+            //dvCuentas.RowFilter = "ODcodct='" + ddlCuentaOrigen.SelectedValue + "'";
+            string strMonedaOrigen = ctaOrigen.idMoneda == "PEN" ? "S/. " : "US$ ";
+            string strMonedaDesMonto = strMonedaCodMonto == "PEN" ? "S/. " : "US$ ";
+            string strMonedaDesOrigen = strMonedaOrigen == "S/. " ? "PEN" : "USD";
+            double dblMontoOrigen = 0.0;
+            double dblMontoDestino = 0.0;
+            double dblItf = 0.0;
+            double dblComisiones = 0.0;
+            double dblTotalDebitar = 0.0;
+            double dblTipoCambio = 0.0;
+            /* Inicio  Tipo Cambio Preferencial */
+            StringDictionary dsTipoCambiopre = ObtenerTipoCambioPreferencial(NumCtaDestino.ToString(), strCuentaOrigen, strMonedaCodMonto, dblMonto);
+            double dblCambioVenta = System.Math.Round(double.Parse(dsTipoCambiopre["venta"].ToString()), 3);
+            double dblCambioCompra = System.Math.Round(double.Parse(dsTipoCambiopre["compra"].ToString()), 3);
+            /* Fin  Tipo Cambio Preferencial */
+            //StringDictionary dsTipoCambio = ObtenerTipoCambio();
+            //double dblCambioVenta = System.Math.Round(double.Parse(dsTipoCambio["venta"].ToString()), 3);
+            //double dblCambioCompra = System.Math.Round(double.Parse(dsTipoCambio["compra"].ToString()), 3);
+
+            if (strMonedaOrigen == strMonedaDesMonto)
+                dblMontoOrigen = dblMonto;
+            else
+            {
+                if (strMonedaOrigen == "S/. ")
+                    dblMontoOrigen = System.Math.Round((dblMonto * dblCambioVenta), 2);
+                else
+                    dblMontoOrigen = System.Math.Round((dblMonto / dblCambioCompra), 2);
+            }
+
+            string strMonto = Convert.ToString(System.Math.Round(dblMontoOrigen, 2) * 100);
+            string strMensaje = '*' + strCuentaDestino.PadLeft(12, '0') + strCuentaOrigen.PadLeft(12, '0') + strMonto.PadLeft(14, '0') + strMonedaDesOrigen + strDescrpcion.PadRight(30, ' ') + '*';
+            //Agregado Tipo Cambio Preferencial
+            //string strMontoReal = Convert.ToString(System.Math.Round(dblMonto, 2) * 100).PadLeft(14, '0');
+            //string strMensaje = '%' + strCuentaDestino.PadLeft(12, '0') + strCuentaOrigen.PadLeft(12, '0') + strMonto.PadLeft(14, '0') + strMonedaDesOrigen + strDescrpcion.PadRight(30, ' ') + '%' + strMontoReal;
+            TransaccionesMBX tx = new TransaccionesMBX();
             DataSet dsSalida = tx.EjecutarTransaccion(ListaTransacciones.TrasferenciaValidaCuentas, 155, strMensaje, ListaTransacciones.NombreMensajeOut(), ListaTransacciones.PosicionInicialCorte(), out _strError);
-            //insertar log TODO
+            //base.InsertaLogGeneral(TipoTransaccion.Consultas(), TipoOperacion.Consulta(), DefaultValues.TrasferenciaValidaCuentas, strMensaje, dsSalida, _strError);
 
             if (_strError != "0000")
             {
@@ -190,21 +229,23 @@ namespace NS.MBX_amarin.ViewModels
                 try
                 {
                     mensajeRpta = "Cuenta de origen se encuentra inactiva.";
+                    //Mensaje1.MostrarFalla(ErrorManager.ObtenerMensajeSistema(int.Parse(_strError)));
+                    //MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(int.Parse(_strError)), ListImages.Error);
                 }
                 catch (Exception)
                 {
-                    //MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(6666), ListImages.Error);
+                    //Mensaje1.MostrarFalla("Error no manejado, intente otra vez!");
+                   // MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(6666), ListImages.Error);
                 }
             }
 
             string tlog = DateTime.Now.Hour.ToString().PadLeft(2, '0') + DateTime.Now.Minute.ToString().PadLeft(2, '0') + DateTime.Now.Second.ToString().PadLeft(2, '0') + DateTime.Now.Hour.ToString().PadLeft(2, '0') + DateTime.Now.Minute.ToString().PadLeft(2, '0');
             //Agrego tipo cambio preferencial
-            strMontoReal = Convert.ToString(System.Math.Round(dblMonto, 2) * 100).PadLeft(14, '0');
+            string strMontoReal = Convert.ToString(System.Math.Round(dblMonto, 2) * 100).PadLeft(14, '0');
             //strMensaje = '%' + strCuentaOrigen.PadRight(12, ' ') + '%' + tlog + '%' + strMonto.PadLeft(14, '0') + '%' + strCuentaDestino.PadRight(12, ' ') + '%' + strMonedaDesOrigen + strDescrpcion.PadRight(30, ' ') + '1';
-            strMensaje = '%' + ctaOrigen.CodigoCta.PadRight(12, ' ') + '%' + tlog + '%' + strMonto.PadLeft(14, '0') + '%' + NumCtaDestino.PadRight(12, ' ') + '%' + MonedaSel.Codigo + "".PadRight(30, ' ') + '1' + "".PadLeft(48, ' ') + strMontoReal;
-
+            strMensaje = '%' + strCuentaOrigen.PadRight(12, ' ') + '%' + tlog + '%' + strMonto.PadLeft(14, '0') + '%' + strCuentaDestino.PadRight(12, ' ') + '%' + strMonedaDesOrigen + strDescrpcion.PadRight(30, ' ') + '1' + "".PadLeft(48, ' ') + strMontoReal;
+            //
             DataSet dsOut = tx.EjecutarTransaccion(ListaTransacciones.TrasferenciaConsultaGastos, 250, strMensaje, ListaTransacciones.NombreMensajeOut(), ListaTransacciones.PosicionInicialCorte(), out _strError);
-            //DataSet dsHeader = tx.ObtenerCabecera(DefaultValues.TrasferenciaConsultaGastos, DefaultValues.NombreMensajeOut(), 0);
             if (_strError != "0000")
             {
                 dsOut = null;
@@ -212,14 +253,17 @@ namespace NS.MBX_amarin.ViewModels
                 try
                 {
                     mensajeRpta = "La cuenta de origen no posee saldo suficiente.";
-                    //MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(int.Parse(_strError)), ListImages.Error);
+                    //Mensaje1.MostrarFalla(ErrorManager.ObtenerMensajeSistema(int.Parse(_strError)));
+                    // MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(int.Parse(_strError)), ListImages.Error);
                 }
                 catch (Exception)
                 {
-                    //MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(6666), ListImages.Error);
+                    //Mensaje1.MostrarFalla("Error no manejado, intente otra vez!");
+                   // MostrarMensaje("", ErrorManager.ObtenerMensajeSistema(6666), ListImages.Error);
                 }
-                //return false;
             }
+
+            
 
             return mensajeRpta;
         }

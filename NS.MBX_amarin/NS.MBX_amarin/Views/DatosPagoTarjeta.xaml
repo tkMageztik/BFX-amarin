@@ -11,6 +11,8 @@
                 <Label Text="Ingresa datos del pago"  Style="{StaticResource lblTitulo1Sm}"  />
             </StackLayout>
             <StackLayout Style="{StaticResource stackContent1MarSup20}" >
+                
+                
                 <Label Text="{Binding LblTipoTarjeta}" Style="{StaticResource lblCont1BoldSm}" />
                 <Entry Text="{Binding NumTarjeta}"  Style="{StaticResource entCont1NumSm}" />
 

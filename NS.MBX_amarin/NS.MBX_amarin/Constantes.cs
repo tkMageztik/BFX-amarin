@@ -28,12 +28,16 @@ namespace NS.MBX_amarin
         public static readonly string pageSubOperaciones = "SubOperaciones";
         public static readonly string pageMiPerfil = "MiPerfil";
         public static readonly string pageTransfCtaPropia = "TransfCtaPropia";
+        public static readonly string pageTransfResumen = "TransfResumen";
         public static readonly string pageTransfCtaPropiaDestino = "TransfCtaPropiaDestino";
         public static readonly string pageTransfCtaPropiaDatos = "TransfCtaPropiaDatos";
         public static readonly string pageTransfConfirmacion = "TransfConfirmacion";
         public static readonly string pageTransfCuentaTercero = "TransfCuentatercero";
         public static readonly string pageTransfCtaTerceroDestino = "TransfCtaTerceroDestino";
         public static readonly string pageTransfCuentaOtroBanco = "TransfCuentaOtroBanco";
+        public static readonly string pageTransfCtaOtroBancoDestino = "TransfCtaOtroBancoDestino";
+        public static readonly string pagePagoTCTipo = "PagoTCTipo";
+        public static readonly string pagePagoTCDatos = "PagoTCDatos";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";

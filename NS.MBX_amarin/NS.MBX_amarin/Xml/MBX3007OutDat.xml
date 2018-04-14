@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<BFP3007>
+  <OutDat>
+    <OData>
+      <ODdlm01 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODtipc1 Type="System.Double" Length="13" Default="" Decimal="3" />
+      <ODdlm02 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODtipc2 Type="System.Double" Length="13" Default="" Decimal="3" />
+      <ODdlm03 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODtipc3 Type="System.Double" Length="13" Default="" Decimal="3" />
+      <ODdlm04 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODtipc4 Type="System.Double" Length="13" Default="" Decimal="3" />
+      <ODdelim Type="System.String" Length="1" Default="" Decimal="" />
+    </OData>
+  </OutDat>
+</BFP3007>

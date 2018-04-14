@@ -77,9 +77,9 @@ namespace NS.MBX_amarin.Services.Impl
 
                 lista = new List<SubOperacion>
                 {
-                    new SubOperacion { Id= "0",IdOperacion="3", Nombre = "A otra cuenta Financiero" },
-                    new SubOperacion { Id= "1",IdOperacion="3", Nombre = "A otro banco" },
-                    new SubOperacion { Id= "2",IdOperacion="3", Nombre = "A cuenta propia" }
+                    new SubOperacion { Id= "2",IdOperacion="3", Nombre = "A cuenta propia" },
+                    new SubOperacion { Id= "0",IdOperacion="3", Nombre = "A otra cuenta del propio banco" },
+                    new SubOperacion { Id= "1",IdOperacion="3", Nombre = "A otro banco" }
                 };
             }
 

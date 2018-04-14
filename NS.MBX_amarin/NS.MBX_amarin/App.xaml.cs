@@ -91,6 +91,9 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<TransfCtaPropiaDatos>();
             containerRegistry.RegisterForNavigation<TransfCtaTerceroDestino>();
             containerRegistry.RegisterForNavigation<TransfResumen>();
+            containerRegistry.RegisterForNavigation<TransfCtaOtroBancoDestino>();
+            containerRegistry.RegisterForNavigation<PagoTCTipo>();
+            containerRegistry.RegisterForNavigation<PagoTCDatos>();
         }
 
         //public App()

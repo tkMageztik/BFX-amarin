@@ -90,9 +90,6 @@ namespace NS.MBX_amarin.ViewModels
 
             else if (Operacion.Id == "3")
             {
-                Application.Current.Properties["strTipoTransf"] = subope.Id;
-                Application.Current.Properties["strOrigenMisCuentas"] = OrigenMisCuentas;
-                Application.Current.Properties["strPageOrigen"] = Constantes.pageSubOperaciones;
                 navParameters.Add(Constantes.pageOrigen, Constantes.pageSubOperaciones);
 
                 await NavigationService.NavigateAsync("CtaCargo", navParameters);
@@ -105,6 +102,7 @@ namespace NS.MBX_amarin.ViewModels
         //los parametros que son objetos deben ser copias, no referencias 
         public override void OnNavigatingTo(NavigationParameters parameters)
         {
+            RefNavParameters = parameters;
             Operacion = parameters["Operacion"] as Operacion;
             IdOperacion = parameters["IdOperacion"] as string;
 

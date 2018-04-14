@@ -57,12 +57,13 @@ namespace NS.MBX_amarin.ViewModels
                 Codigo = EmpServicioSelected.Codigo,
                 Nombre = EmpServicioSelected.Nombre
             };
-            Application.Current.Properties["empresa"] = empresa;
 
             NavigationParameters parametros = GetNavigationParameters();
             parametros.Add("Empresa", empresa);
 
             await NavigationService.NavigateAsync("ServicioEmpresa", parametros);
+
+            EmpServicioSelected = null;
         }
 
         private bool _mostrarBuscador;

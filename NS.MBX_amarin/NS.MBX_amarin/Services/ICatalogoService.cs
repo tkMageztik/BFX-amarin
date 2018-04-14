@@ -12,6 +12,7 @@ namespace NS.MBX_amarin.Services
         string COD_OPC_ADICIONALES { get; }
         string COD_UBICACIONES_MAPS { get; }
         string COD_TIPOS_CTA { get; }
+        string COD_OPC_SI_NO { get; }
 
         ObservableCollection<Catalogo> ObtenerListaPorCodigo(string codCatalogo);
         Catalogo BuscarPorNombre(string codCatalogo, string nombre);

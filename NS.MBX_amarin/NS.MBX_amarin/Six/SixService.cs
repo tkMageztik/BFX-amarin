@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace NS.MBX_amarin.Six
@@ -11,7 +12,7 @@ namespace NS.MBX_amarin.Six
        // SixSendClass SIXConnection = new SixSendClass();
 
         //[System.Runtime.InteropServices.DllImport("C:\\sixclsec\\Sixpbl32.dll")]
-        //private static extern int SixGenPBlk(string Pin, string Pad, [In, Out]StringBuilder Token);
+        private static extern int SixGenPBlk(string Pin, string Pad, [In, Out]StringBuilder Token);
 
         private string SetSender()
         {
@@ -36,25 +37,25 @@ namespace NS.MBX_amarin.Six
         }
 
         //[WebMethod]
-        //public string SetToken(string PAD, string PIN)
-        //{
-        //    int iStatus;
-        //    StringBuilder PinBlock = new StringBuilder(16);
-        //    string _Retorno;
-        //    try
-        //    {
-        //        if ((PAD.Length != 16) && (PIN.Length != 4)) throw new Exception("{ Error en el Ingreso de Parametros }");
-        //        iStatus = SixGenPBlk(PIN, PAD, PinBlock);
-        //        if (iStatus != 0) throw new Exception("{ Error en el Ingreso de Parametros }");
-        //        _Retorno = PAD + "     " + PinBlock + String.Format("{0:ddMMyyyy}", DateTime.Now) + System.DateTime.Now.Hour.ToString().PadLeft(2, '0') + System.DateTime.Now.Minute.ToString().PadLeft(2, '0') + System.DateTime.Now.Second.ToString().PadLeft(2, '0');
-        //        return _Retorno;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //LogManager.Log(ex, BFP.Library.Utils.Enums.LogType.Xml);
-        //        throw ex;
-        //    }
-        //}
+        public string SetToken(string PAD, string PIN)
+        {
+            int iStatus;
+            StringBuilder PinBlock = new StringBuilder(16);
+            string _Retorno;
+            try
+            {
+                if ((PAD.Length != 16) && (PIN.Length != 4)) throw new Exception("{ Error en el Ingreso de Parametros }");
+                iStatus = SixGenPBlk(PIN, PAD, PinBlock);
+                if (iStatus != 0) throw new Exception("{ Error en el Ingreso de Parametros }");
+                _Retorno = PAD + "     " + PinBlock + String.Format("{0:ddMMyyyy}", DateTime.Now) + System.DateTime.Now.Hour.ToString().PadLeft(2, '0') + System.DateTime.Now.Minute.ToString().PadLeft(2, '0') + System.DateTime.Now.Second.ToString().PadLeft(2, '0');
+                return _Retorno;
+            }
+            catch (Exception ex)
+            {
+                //LogManager.Log(ex, BFP.Library.Utils.Enums.LogType.Xml);
+                throw ex;
+            }
+        }
 
         //[WebMethod]
         public string SendMessage(string Trx, short Length, string Message)
@@ -115,7 +116,7 @@ namespace NS.MBX_amarin.Six
                 //try
                 //{
                 //HResult = "";// SIXConnection.MessageOut;//string, osea encriptado
-                if(Trx == ListaTransacciones.TrasferenciaValidaCuentas)
+                if (Trx == ListaTransacciones.TrasferenciaValidaCuentas)
                 {
                     //ERROR
                     //HResult = "**00000HB        203600000192412 * **                                                                                                                                                                                                           *";
@@ -123,10 +124,10 @@ namespace NS.MBX_amarin.Six
                     HResult = "**00000HB        000000000192412 * *JUAN PEREZ OCHOA              S                                                                                                                                                                       01  02 ";
 
                 }
-                else if(Trx == ListaTransacciones.TrasferenciaConsultaGastos)
+                else if (Trx == ListaTransacciones.TrasferenciaConsultaGastos)
                 {
                     //ERROR
-                   // HResult = "**00000HB        203600000192412 * **                                                                                                                                                                                                           *";
+                    // HResult = "**00000HB        203600000192412 * **                                                                                                                                                                                                           *";
 
                     //OK
                     HResult = "**00000HB        000000000192412 * *                                                                                                                                                                                                                                                                                                                                                                                          ";
@@ -135,13 +136,57 @@ namespace NS.MBX_amarin.Six
                 else if (Trx == ListaTransacciones.TrasferenciaEjecuta)
                 {
                     //ERROR
-                   // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
+                    // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
 
                     //OK
                     HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                    ";
 
                 }
+                else if (Trx == ListaTransacciones.VALIDAR_COORDENADAS_HB())
+                {
+                    //ERROR
+                    // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
 
+                    //OK
+                    HResult = "**08785HB        000000000152743***                                                                                                                ";
+
+                }
+                else if (Trx == ListaTransacciones.TIPO_CAMBIO())//faltatrama
+                {
+                    //ERROR
+                    // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
+
+                    //OK
+                    HResult = "**08785HB        000000000152743***                                                                                                                ";
+
+                }
+                else if (Trx == ListaTransacciones.TipoCambioPreferencia)//faltatrama
+                {
+                    //ERROR
+                    // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
+
+                    //OK
+                    HResult = "**08785HB        000000000152743***                                                                                                                ";
+
+                }
+                else if (Trx == ListaTransacciones.TrasferenciaOtroBancoConsultaGastos)//faltatrama
+                {
+                    //ERROR
+                    // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
+
+                    //OK
+                    HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                                    ";
+
+                }
+                else if (Trx == ListaTransacciones.TrasferenciaEjecutaOtroBanco)//faltatrama
+                {
+                    //ERROR
+                    // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
+
+                    //OK
+                    HResult = "**08786HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                                    ";
+
+                }
                 //Stream s = new MemoryStream(ASCIIEncoding.Default.GetBytes(HResult));
                 //Encoding encode = Encoding.GetEncoding(850);
                 //StreamReader readStream = new StreamReader(s, encode);

@@ -46,7 +46,7 @@ namespace NS.MBX_amarin.ViewModels
                     LblNombreCta2 = ctaDestino.NombreCta;
                     LblCodCta2 = ctaDestino.CodigoCta;
                 }
-                else if (suboperacion.Id == "0")
+                else if (suboperacion.Id == "0" || suboperacion.Id == "1")
                 {
                     LblNombreCta2 = ctaDestino.NombreTitular;
                     LblCodCta2 = ctaDestino.CodigoCta;

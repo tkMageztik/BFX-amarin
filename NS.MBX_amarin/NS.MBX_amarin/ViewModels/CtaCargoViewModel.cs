@@ -51,9 +51,9 @@ namespace NS.MBX_amarin.ViewModels
             {
                 pageDestino = Constantes.pageConfPagoServicioEmpresa;
             }
-            else if (pageOrigen == Constantes.pageTipoTarjeta)
+            else if (pageOrigen == Constantes.pagePagoTCTipo)
             {
-                pageDestino = Constantes.pageDatosPagoTarjeta;
+                pageDestino = Constantes.pagePagoTCDatos;
             }
             else if (pageOrigen == Constantes.pageRecargaCelular)
             {
@@ -81,7 +81,7 @@ namespace NS.MBX_amarin.ViewModels
                     }
                     else if(suboperacion.Id == "1")
                     {
-                        pageDestino = Constantes.pageTransfCuentaOtroBanco;
+                        pageDestino = Constantes.pageTransfCtaOtroBancoDestino;
                     }
                     else if(suboperacion.Id == "2")
                     {

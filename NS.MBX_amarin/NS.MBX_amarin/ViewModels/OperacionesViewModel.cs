@@ -113,7 +113,7 @@ namespace NS.MBX_amarin.ViewModels
                         //Application.Current.Properties["servicio"] = OpeFrecSelected.Servicio;
                         //Application.Current.Properties["pageOrigen"] = "OperacionesView";
 
-                        navParameters.Add(Constantes.pageOrigen, "OperacionesView");
+                        navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
                         navParameters.Add("Empresa", CatalogoService.BuscarEmpresaConServicios(OpeFrecSelected.Servicio.IdEmpresa));
                         navParameters.Add("Servicio", OpeFrecSelected.Servicio);
 

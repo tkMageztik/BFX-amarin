@@ -7,6 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using NS.MBX_amarin.Six;
+using NS.MBX_amarin.Common;
+using System.Collections.Specialized;
+using System.Data;
+using Xamarin.Forms;
+using NS.MBX_amarin.BusinessLogic;
 
 namespace NS.MBX_amarin.ViewModels
 {
@@ -124,6 +130,148 @@ namespace NS.MBX_amarin.ViewModels
             }
 
             return navParameters;
+        }
+
+        public int ValidarTarjetaCoordenadas(string strNumeroCoordenada, int intNumeroCaracteresObligatorios, string strClave, out string strError)
+        {
+            string strNumeroTarjeta = string.Empty;
+            //BFP.HomeBanking.BusinessLogic.SIXP2.Service objSixtoken = null;
+            TransaccionesMBX Transaccion = null;
+            try
+            {
+                //if (Session["strTC"] != null)
+                //{
+                //objSixtoken = new BFP.HomeBanking.BusinessLogic.SIXP2.Service { Url = System.Configuration.ConfigurationManager.AppSettings.Get("URLHOMEBANKINGWS") };
+                Transaccion = new TransaccionesMBX();
+                strNumeroTarjeta = "23232323232323";// Session["strTC"].ToString().Substring(0, 14);
+                string strTarjetaCoordenada = strNumeroTarjeta.ToString() + strNumeroCoordenada.ToString();
+                string strClaveDigital = strClave.ToString();
+                if (strClaveDigital.ToString() == "")
+                {
+                    strError = "Debe Ingresar su Clave Digital";
+                    return 1;
+                }
+                if (strClaveDigital.ToString().Length < int.Parse(intNumeroCaracteresObligatorios.ToString()))
+                {
+                    strError = "La clave Digital debe ser de " + intNumeroCaracteresObligatorios.ToString();
+                    return 1;
+                }
+                string strToken = new SixService().SetToken(strTarjetaCoordenada, strClaveDigital);
+                strToken = strToken.Substring(21, 16);
+                string strMensajeTrama = strTarjetaCoordenada.ToString() + "   " + strToken.ToString() + "    ";
+                strError = Transaccion.EjecutarTransaccion(ListaTransacciones.VALIDAR_COORDENADAS_HB(), 121, strMensajeTrama.ToString());
+                if (strError == "0000")
+                {
+                    //Session["ds_TramaCoordenadas"] = null;//soluciona problema TCO repetido en cada pago en CHROME 26-DIC-2013 FDJ
+                    return 0;
+                }
+                else
+                {
+                    strError = "4008";
+                    return 1;
+                }
+                //}
+                //else
+                //{
+                //    strError = "4002";
+                //    return -1;
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                //GenerarLogError(string.Concat(ex.Message, ex.HelpLink, ex.StackTrace), " Exception ValidarTarjetaCoordenadas4");
+                strError = "6666";
+                return -1;
+            }
+        }
+
+        protected StringDictionary ObtenerTipoCambio()
+        {
+            TransaccionesMBX tx = new TransaccionesMBX();
+            StringDictionary strTipoCambio = new StringDictionary();
+            //DataSet dsSalida = null;
+            string _strError = string.Empty;
+
+            try
+            {
+                if (Application.Current.Properties["TipoCambio"] == null)
+                {
+                    using (DataSet dsSalida = tx.EjecutarTransaccion(ListaTransacciones.TIPO_CAMBIO(), ListaTransacciones.LongitudCabecera(), "", ListaTransacciones.NombreMensajeOut(), ListaTransacciones.PosicionInicialCorte(), out _strError))
+                    {
+                        if (string.Compare(_strError, "0000") == 0)
+                        {
+                            strTipoCambio.Add("compra", decimal.Parse(dsSalida.Tables[0].Rows[0]["ODtipc1"].ToString()).ToString());
+                            strTipoCambio.Add("venta", decimal.Parse(dsSalida.Tables[0].Rows[0]["ODtipc2"].ToString()).ToString());
+                            Application.Current.Properties["TipoCambio"] = strTipoCambio;
+                        }
+                        else
+                        {
+                            //Session["TipoCambio"] = null;
+                            Application.Current.Properties["TipoCambio"] = null;
+                            strTipoCambio = null;
+                        }
+                    }
+
+                }
+                else
+                {
+                    strTipoCambio = (StringDictionary)Application.Current.Properties["TipoCambio"];
+                }
+            }
+            catch (Exception ex)
+            {
+                //GenerarLogError(string.Concat(ex.Message, ex.HelpLink, ex.StackTrace), " Exception ObtenerTipoCambio");
+                return strTipoCambio;
+            }
+            finally
+            {
+                //dsSalida = null;
+            }
+
+
+            return strTipoCambio;
+
+        }
+
+        protected StringDictionary ObtenerTipoCambioPreferencial(string strCuentaDestino, string strCuentaOrigen, string strMonedaTransaccion, double douImporteTransaccion)
+        {
+            TransaccionesMBX tx = new TransaccionesMBX();
+            StringDictionary strTipoCambio = new StringDictionary();
+            DataSet dsSalida = null;
+            string _strError = string.Empty;
+            try
+            {
+                string strImporte = Convert.ToString(System.Math.Round(douImporteTransaccion, 2) * 100).PadLeft(14, '0');
+                string strTrama = string.Concat(strCuentaDestino.PadRight(20, ' '), strCuentaOrigen.PadRight(20, ' '), strImporte, strMonedaTransaccion.PadLeft(3, '0'));
+                dsSalida = tx.EjecutarTransaccion(ListaTransacciones.TipoCambioPreferencia.ToString(), 150, strTrama, ListaTransacciones.NombreMensajeOut(), ListaTransacciones.PosicionInicialCorte(), out _strError);
+                if (string.Compare(_strError, "0000") == 0)
+                {
+                    strTipoCambio.Add("compra", dsSalida.Tables[0].Rows[0]["ODRatFpr"].ToString());
+                    strTipoCambio.Add("venta", dsSalida.Tables[0].Rows[0]["ODRatFsr"].ToString());
+                    Application.Current.Properties["TipoCambioPreferencia"] = strTipoCambio;
+                }
+                else
+                {
+                    strTipoCambio.Add("compra", "1.0000");
+                    strTipoCambio.Add("venta", "1.0000");
+                    Application.Current.Properties["TipoCambioPreferencia"] = strTipoCambio;
+                }
+            }
+            catch (Exception ex)
+            {
+                //GenerarLogError(string.Concat(ex.Message, ex.HelpLink, ex.StackTrace), " Exception ObtenerTipoCambioPreferencial");
+                strTipoCambio.Add("compra", "1.0000");
+                strTipoCambio.Add("venta", "1.0000");
+                return strTipoCambio;
+            }
+            finally
+            {
+                dsSalida = null;
+                tx = null;
+            }
+            return strTipoCambio;
+
         }
     }
 }

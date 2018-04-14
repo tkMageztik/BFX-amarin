@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace NS.MBX_amarin.BusinessLogic.Transacciones
+namespace NS.MBX_amarin.BusinessLogic
 {
-    public class Transacciones : SEBase
+    public class TransaccionesMBX : SEBase
     {
         private DataSet _Cabecera;
         public string _strTrama = string.Empty;
@@ -187,7 +187,7 @@ namespace NS.MBX_amarin.BusinessLogic.Transacciones
         public DataSet EmularData(string strNombreMensajeOut, string strNombreTransaccion, int intPosicionInicialLecturaOut, int CantidadData)
         {
             DataLoader xml = new DataLoader();
-            Transacciones ch = new Transacciones();
+            TransaccionesMBX ch = new TransaccionesMBX();
             using (DataSet dsSalida = xml.EmularData(strNombreMensajeOut, strNombreTransaccion, intPosicionInicialLecturaOut))
             {
                 foreach (DataTable dt in dsSalida.Tables)
@@ -295,7 +295,7 @@ namespace NS.MBX_amarin.BusinessLogic.Transacciones
             }
         }
 
-        ~Transacciones()
+        ~TransaccionesMBX()
         {
             //objSixCommunication = null;
             _Cabecera = null;

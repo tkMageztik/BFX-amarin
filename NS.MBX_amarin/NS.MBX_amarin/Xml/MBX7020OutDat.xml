@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<BFP7020>
+  <OutDat>
+    <OData>
+      <ODnomtj Type="System.String" Length="30" Default="" Decimal="" />
+      <ODcodct Type="System.Double" Length="12" Default="" Decimal="0" />
+      <ODagect Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODsucct Type="System.Double" Length="1" Default="" Decimal="0" />
+      <ODmtovc Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODmtopg Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODtrjex Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODmtoor Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODticam Type="System.Double" Length="14" Default="" Decimal="8" />
+      <ODmtocv Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODnomct Type="System.String" Length="30" Default="" Decimal="" />
+      <ODindhs Type="System.String" Length="1" Default="" Decimal="" />
+      <ODfecpr Type="System.String" Length="8" Default="" Decimal="" />
+      <ODdelim Type="System.String" Length="1" Default="" Decimal="" />
+      <ODt47out Type="System.String" Length="115" Default="" Decimal="" />
+      <ODItfx Type="System.Double" Length="12" Default="" Decimal="2" />
+      <ODComx Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODopcio Type="System.String" Length="30" Default="" Decimal="" />
+    </OData>
+    <OHead>
+      <OHfmtap Type="System.String" Length="1" Default="" Decimal="" />
+      <OHstatu Type="System.String" Length="1" Default="" Decimal="" />
+      <OHlogtx Type="System.String" Length="5" Default="" Decimal="" />
+      <OHestac Type="System.String" Length="10" Default="" Decimal="" />
+      <OHcomsg Type="System.String" Length="4" Default="" Decimal="" />
+      <OHlogap Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHhora Type="System.Double" Length="6" Default="" Decimal="0" />
+      <OHlcdpr Type="System.String" Length="1" Default="" Decimal="" />
+      <OHfmtpr Type="System.String" Length="1" Default="" Decimal="" />
+      <OHfinfm Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+  </OutDat>
+</BFP7020>

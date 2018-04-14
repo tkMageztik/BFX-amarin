@@ -19,7 +19,7 @@
                 <Label Text="Selecciona el servicio a pagar"  FontSize="Medium" 
                 HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" TextColor="Black"  />
             </StackLayout>
-            <ListView ItemsSource="{Binding ListaEmpServicios}" SelectedItem="{Binding EmpServicioSelected, Mode=TwoWay}" IsVisible="{Binding MostrarBuscador, Converter={StaticResource negateBooleanConverter}}" >
+            <ListView ItemsSource="{Binding ListaEmpServicios}" SelectedItem="{Binding EmpServicioSelected, Mode=TwoWay}" IsVisible="{Binding MostrarBuscador, Converter={StaticResource negateBooleanConverter}}" VerticalOptions="Start" >
                 <ListView.Behaviors>
                     <b:EventToCommandBehavior EventName="ItemTapped" 
                                       Command="{Binding EmpServicioTappedIC}" />
@@ -40,7 +40,7 @@
             </ListView>
 
             <SearchBar Text="{Binding TxtBuscador}" SearchCommand="{Binding BuscarIC}" 
-            Placeholder="Buscar otra empresa" >
+            Placeholder="Buscar otra empresa" VerticalOptions="Start" >
                 <SearchBar.Behaviors>
                     <b:EventToCommandBehavior EventName="Focused" 
                                       Command="{Binding BuscadorFocusedIC}" />

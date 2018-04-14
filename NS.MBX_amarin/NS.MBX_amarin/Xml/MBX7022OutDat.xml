@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<BFP7022>
+  <OutDat>
+    <OData>
+      <ODRatFpr Type="System.Double" Length="11" Default="" Decimal="6" />
+      <ODRatFsr Type="System.Double" Length="11" Default="" Decimal="6" />
+    </OData>
+    <OHead>
+      <OFMTAP Type="System.String" Length="1" Default="" Decimal="" />
+      <OSTATUS Type="System.String" Length="1" Default="" Decimal="" />
+      <OLOG Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OESTACI Type="System.String" Length="10" Default="" Decimal="" />
+      <OMSG Type="System.String" Length="4" Default="" Decimal="" />
+      <OLOGLO Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHORA Type="System.Double" Length="6" Default="80010" Decimal="0" />
+      <DLDCPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFMTPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFINFMT Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+  </OutDat>
+</BFP7022>

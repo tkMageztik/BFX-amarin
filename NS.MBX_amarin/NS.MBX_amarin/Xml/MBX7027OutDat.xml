@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<BFP7027>
+  <OutDat>
+    <OHead>
+      <OHfmtap Type="System.String" Length="1" Default="" Decimal="" />
+      <OHstatu Type="System.String" Length="1" Default="" Decimal="" />
+      <OHlogtx Type="System.String" Length="5" Default="" Decimal="" />
+      <OHestac Type="System.String" Length="10" Default="" Decimal="" />
+      <OHcomsg Type="System.String" Length="4" Default="" Decimal="" />
+      <OHlogap Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHhora Type="System.Double" Length="6" Default="" Decimal="0" />
+      <OHlcdpr Type="System.String" Length="1" Default="" Decimal="" />
+      <OHfmtpr Type="System.String" Length="1" Default="" Decimal="" />
+      <OHfinfm Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+    <OData>
+      <ODnomtj Type="System.String" Length="30" Default="" Decimal="" />
+      <ODclstj Type="System.String" Length="20" Default="" Decimal="" />
+      <ODfepag Type="System.String" Length="8" Default="" Decimal="" />
+      <ODfill1 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODcredb Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill2 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODcreda Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill3 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODdispb Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill4 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODpfulb Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill5 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODmvenb Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill6 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODpminb Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill7 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODpfula Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill8 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODmvena Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODfill9 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODpmina Type="System.Double" Length="13" Default="" Decimal="2" />
+      <ODdelim Type="System.String" Length="1" Default="" Decimal="" />
+    </OData>
+  </OutDat>
+</BFP7027>
