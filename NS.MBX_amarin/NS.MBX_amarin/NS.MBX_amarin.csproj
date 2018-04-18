@@ -114,6 +114,12 @@
     <EmbeddedResource Update="Views\PagoTC\PagoTCTipo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PagoTC\PropioBanco\PagoTCPropTipo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PagoTC\TCPropia.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\PopUpOperaciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -169,5 +175,8 @@
 
   <ItemGroup>
     <Folder Include="Utilities\" />
+    <Folder Include="ViewModels\PagoTC\OtroBanco\" />
+    <Folder Include="Views\Compartido\" />
+    <Folder Include="Views\PagoTC\OtroBanco\" />
   </ItemGroup>
 </Project>

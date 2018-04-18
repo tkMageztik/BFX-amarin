@@ -56,6 +56,7 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterInstance<ICuentaService>(cuentaService);
             containerRegistry.RegisterInstance<ICatalogoService>(new CatalogoService());
             containerRegistry.RegisterInstance<IOperacionService>(new OperacionService());
+            containerRegistry.RegisterInstance<ITarjetaService>(new TarjetaService());
             containerRegistry.RegisterInstance<ISixService>(new SixService());
 
             containerRegistry.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
@@ -94,6 +95,8 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<TransfCtaOtroBancoDestino>();
             containerRegistry.RegisterForNavigation<PagoTCTipo>();
             containerRegistry.RegisterForNavigation<PagoTCDatos>();
+            containerRegistry.RegisterForNavigation<PagoTCPropTipo>();
+            containerRegistry.RegisterForNavigation<TCPropia>();
         }
 
         //public App()

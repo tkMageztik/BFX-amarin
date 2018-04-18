@@ -22,6 +22,9 @@ namespace NS.MBX_amarin.Services.Impl
         private readonly string _COD_TIPOS_CTA = "COD_TIPOS_CTA";
         public string COD_TIPOS_CTA { get => _COD_TIPOS_CTA; }
 
+        private readonly string _COD_TIPOS_PROP_TAR = "COD_TIPOS_PROP_TAR";
+        public string COD_TIPOS_PROP_TAR { get => _COD_TIPOS_PROP_TAR; }
+
         private readonly string _COD_OPC_SI_NO = "COD_OPC_SI_NO";
         public string COD_OPC_SI_NO { get => _COD_OPC_SI_NO; }
 
@@ -44,6 +47,17 @@ namespace NS.MBX_amarin.Services.Impl
             }
 
             return new ObservableCollection<string>(lista);
+        }
+
+        public ObservableCollection<Catalogo> ListarTiposPropTarjeta()
+        {
+            List<Catalogo> lista = new List<Catalogo>
+            {
+                new Catalogo { IdTabla = 0, Codigo = "0", Nombre = "Tarjeta Propia",  IdEstado = 1 },
+                new Catalogo { IdTabla = 1, Codigo = "1", Nombre = "Tarjeta de Tercero", IdEstado = 1 }
+            };
+
+            return new ObservableCollection<Catalogo>(lista);
         }
 
         public ObservableCollection<Catalogo> ListarOpcionesSiNo()
@@ -174,6 +188,10 @@ namespace NS.MBX_amarin.Services.Impl
             else if (codCatalogo == COD_OPC_SI_NO)
             {
                 lista = ListarOpcionesSiNo();
+            }
+            else if(codCatalogo == COD_TIPOS_PROP_TAR)
+            {
+                lista = ListarTiposPropTarjeta();
             }
 
             return lista;

@@ -38,6 +38,8 @@ namespace NS.MBX_amarin
         public static readonly string pageTransfCtaOtroBancoDestino = "TransfCtaOtroBancoDestino";
         public static readonly string pagePagoTCTipo = "PagoTCTipo";
         public static readonly string pagePagoTCDatos = "PagoTCDatos";
+        public static readonly string pagePagoTCPropTipo = "PagoTCPropTipo";
+        public static readonly string pageTCPropia = "TCPropia";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";

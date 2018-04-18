@@ -55,6 +55,11 @@ namespace NS.MBX_amarin.ViewModels
             
         }
 
+        public override async void OnNavigatedFrom(NavigationParameters parametros)
+        {
+            await NavigationService.GoBackToRootAsync();
+        }
+
         private string _lblCodOpe;
         public string LblCodOpe
         {

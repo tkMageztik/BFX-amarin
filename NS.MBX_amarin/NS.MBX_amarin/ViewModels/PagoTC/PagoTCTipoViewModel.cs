@@ -18,7 +18,7 @@ namespace NS.MBX_amarin.ViewModels
             : base(navigationService)
         {
             CatalogoService = catalogoService;
-            Lista = CatalogoService.ListarTiposTarjetaCredito();
+            
         }
 
         private Catalogo _itemSeleccionado;
@@ -42,14 +42,17 @@ namespace NS.MBX_amarin.ViewModels
         async void ExecuteItemTappedIC()
         {
             NavigationParameters parametros = GetNavigationParameters();
-            parametros.Add("TipoTarjeta", ItemSeleccionado);
-            parametros.Add(Constantes.pageOrigen, Constantes.pagePagoTCTipo);
+            parametros.Add("TipoPropTarjeta", ItemSeleccionado);
+            parametros.Add(Constantes.pageOrigen, Constantes.pagePagoTCPropTipo);
 
-            //Application.Current.Properties["strTipoTransf"] = "0";
-            //Application.Current.Properties["strOrigenMisCuentas"] = false;
-            //Application.Current.Properties["strPageOrigen"] = Constantes.pageTipoTarjeta;
-            //Application.Current.Properties["CodTipoTarjeta"] = ItemSeleccionado.Codigo;
-            await NavigationService.NavigateAsync(Constantes.pageCtaCargo, parametros);
+            if (ItemSeleccionado.Codigo == "0")
+            {
+                await NavigationService.NavigateAsync(Constantes.pageTCPropia, parametros);
+            }
+            else
+            {
+                await NavigationService.NavigateAsync(Constantes.pagePagoTCDatos, parametros);
+            }
 
             ItemSeleccionado = null;
         }
@@ -57,6 +60,7 @@ namespace NS.MBX_amarin.ViewModels
         public override void OnNavigatingTo(NavigationParameters parameters)
         {
             RefNavParameters = parameters;
+            Lista = CatalogoService.ObtenerListaPorCodigo(CatalogoService.COD_TIPOS_PROP_TAR);
         }
     }
 }

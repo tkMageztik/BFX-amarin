@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NS.MBX_amarin.Services.Impl
 {
-    public class TarjetaService
+    public class TarjetaService : ITarjetaService
     {
         public ObservableCollection<Tarjeta> ListarTarjetasCredito(string codCliente)
         {
