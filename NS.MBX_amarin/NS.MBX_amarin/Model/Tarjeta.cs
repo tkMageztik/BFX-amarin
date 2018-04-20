@@ -9,7 +9,11 @@ namespace NS.MBX_amarin.Model
         public string NroTarjeta { get; set; }
         public string NombreCliente { get; set; }
         public string Email { get; set; }
+        public string MarcaTarjeta { get; set; }
         public bool IsTarjetaCredito { get; set; }
         public int IdEstado { get; set; }
+        public decimal DeudaMinMes { get; set; }
+        public decimal DeudaTotMes { get; set; }
+        public string UltimoDiaPagoMes { get; set; }
     }
 }

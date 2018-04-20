@@ -23,5 +23,11 @@ namespace NS.MBX_amarin.Common
         public static string TrasferenciaOtroBancoConsultaGastos = "7017";
         public static string TrasferenciaEjecuta = "7025";
         public static string TrasferenciaEjecutaOtroBanco = "7005";
+
+        public static string PagoTarjetaOtroBancoEjecuta = "7006";
+        public static string PagoTarjetaOtroBanco = "7019";
+        public static string PagoTarjetaBancoFinanciero = "7020";
+        public static string PagoTarjetaBancoFinancieroConsulta = "7027";
+        public static string PagoTarjetaBancoFinancieroEjecuta = "7028";
     }
 }

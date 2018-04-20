@@ -94,6 +94,7 @@ namespace NS.MBX_amarin.Services.Impl
             return new ObservableCollection<OperacionFrecuente>(listaOrdenada);
         }
 
+        //agrega una ope frecuente y si encuentra repetida por el nombre, la reemplaza
         public void AgregarOperacionFrecuente(OperacionFrecuente opeFrec)
         {
             bool encontro = false;
@@ -101,27 +102,31 @@ namespace NS.MBX_amarin.Services.Impl
             //buscamos si ya existe
             foreach(OperacionFrecuente frec in ListaOperacionesFrecuentes)
             {
-                if(opeFrec.SubOperacion.Id == frec.SubOperacion.Id && opeFrec.Operacion.Id == frec.Operacion.Id )
+                if(opeFrec.NombreFrecuente.Trim() == frec.NombreFrecuente.Trim())
                 {
-                    //condicionales dependiendo de la operacion
-                    if(opeFrec.Operacion.Id == "1")
-                    {
-                        if ((opeFrec.SubOperacion.Id == "0" || opeFrec.SubOperacion.Id == "1") && frec.Servicio != null && opeFrec.Servicio.IdEmpresa == frec.Servicio.IdEmpresa)
-                        {
-                            encontro = true;
-                        }else if (opeFrec.SubOperacion.Id == "2" && frec.Picker1 != null && opeFrec.Picker1.Codigo == frec.Picker1.Codigo)
-                        {
-                            encontro = true;
-                        }
-                    }
-                    else if (opeFrec.Operacion.Id == "2")
-                    {
-                        if (opeFrec.SubOperacion.Id == "0" || opeFrec.SubOperacion.Id == "1")
-                        {
-                            encontro = true;
-                        }
-                    }
+                    encontro = true;
                 }
+                //if(opeFrec.SubOperacion.Id == frec.SubOperacion.Id && opeFrec.Operacion.Id == frec.Operacion.Id )
+                //{
+                //    //condicionales dependiendo de la operacion
+                //    if(opeFrec.Operacion.Id == "1")
+                //    {
+                //        if ((opeFrec.SubOperacion.Id == "0" || opeFrec.SubOperacion.Id == "1") && frec.Servicio != null && opeFrec.Servicio.IdEmpresa == frec.Servicio.IdEmpresa)
+                //        {
+                //            encontro = true;
+                //        }else if (opeFrec.SubOperacion.Id == "2" && frec.Picker1 != null && opeFrec.Picker1.Codigo == frec.Picker1.Codigo)
+                //        {
+                //            encontro = true;
+                //        }
+                //    }
+                //    else if (opeFrec.Operacion.Id == "2")
+                //    {
+                //        if (opeFrec.SubOperacion.Id == "0" || opeFrec.SubOperacion.Id == "1")
+                //        {
+                //            encontro = true;
+                //        }
+                //    }
+                //}
                 if (encontro)
                 {
                     existente = frec;

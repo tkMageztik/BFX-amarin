@@ -175,7 +175,7 @@ namespace NS.MBX_amarin.Six
                     // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
 
                     //OK
-                    HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                                    ";
+                    HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                                                                                                                                                                                                                                                                             ";
 
                 }
                 else if (Trx == ListaTransacciones.TrasferenciaEjecutaOtroBanco)//faltatrama
@@ -184,8 +184,29 @@ namespace NS.MBX_amarin.Six
                     // HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN JÞGUEVARA OTERO JUAN JþGUEVARA OTERO JUAN JOSE       µ0000000000000000000400 0000002830 2100100000000001132Ÿ¸00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400";
 
                     //OK
-                    HResult = "**08786HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                                    ";
+                    HResult = "**08785HB        000000000152743*** GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN J%GUEVARA OTERO JUAN JOSE       %0000000000000000000400 0000002830 2100100000000001132%%00000000000000000000000000prueba1XXXXXXXXXXXXX          210Cuenta de Ahorros             Cuenta de Ahorros             000000000000400                                                                                                                                                                                                                                                                                                                                                                             ";
 
+                }
+                
+                else if (Trx == ListaTransacciones.PagoTarjetaBancoFinancieroConsulta)
+                {
+                    HResult = "**00000HB        000000000191520*** NESTOR  ELIAS                 MAXIMA MC DORADA INT00000000 0000000000000 0000000211879 0000000242400 0000000262400 0000000252400 0000000272400 0000000179266 0000000282400 0000000010324* ";
+                }
+                else if (Trx == ListaTransacciones.PagoTarjetaBancoFinanciero)
+                {
+                    HResult = "**08785HB        000000000152743***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ";
+                }                
+                else if (Trx == ListaTransacciones.PagoTarjetaBancoFinancieroEjecuta)
+                {
+                    HResult = "**08785HB        000000000152743***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ";
+                }
+                else if (Trx == ListaTransacciones.PagoTarjetaOtroBanco)
+                {
+                    HResult = "**08785HB        000000000152743***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ";
+                }
+                else if (Trx == ListaTransacciones.PagoTarjetaOtroBancoEjecuta)
+                {
+                    HResult = "**08785HB        000000000152743***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ";
                 }
                 //Stream s = new MemoryStream(ASCIIEncoding.Default.GetBytes(HResult));
                 //Encoding encode = Encoding.GetEncoding(850);

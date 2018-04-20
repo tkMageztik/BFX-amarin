@@ -56,6 +56,7 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterInstance<ICuentaService>(cuentaService);
             containerRegistry.RegisterInstance<ICatalogoService>(new CatalogoService());
             containerRegistry.RegisterInstance<IOperacionService>(new OperacionService());
+            containerRegistry.RegisterInstance<ITarjetaService>(new TarjetaService());
             containerRegistry.RegisterInstance<ISixService>(new SixService());
 
             containerRegistry.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
@@ -72,7 +73,7 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<PagoServicioEmpresa>();
             containerRegistry.RegisterForNavigation<CtaCargo>();
             containerRegistry.RegisterForNavigation<ConfPagoServicioEmpresa>();
-            containerRegistry.RegisterForNavigation<TipoTarjeta>();
+            containerRegistry.RegisterForNavigation<OrigenTarjeta>();
             containerRegistry.RegisterForNavigation<DatosPagoTarjeta>();
             containerRegistry.RegisterForNavigation<ConfDatosPago>();
             containerRegistry.RegisterForNavigation<Consultas>();
@@ -92,8 +93,12 @@ namespace NS.MBX_amarin
             containerRegistry.RegisterForNavigation<TransfCtaTerceroDestino>();
             containerRegistry.RegisterForNavigation<TransfResumen>();
             containerRegistry.RegisterForNavigation<TransfCtaOtroBancoDestino>();
-            containerRegistry.RegisterForNavigation<PagoTCTipo>();
             containerRegistry.RegisterForNavigation<PagoTCDatos>();
+            containerRegistry.RegisterForNavigation<PagoTCPropTipo>();
+            containerRegistry.RegisterForNavigation<TCPropia>();
+            containerRegistry.RegisterForNavigation<PagoTCPropiaDatos>();
+            containerRegistry.RegisterForNavigation<PagoTCConfirmacion>();
+            containerRegistry.RegisterForNavigation<PagoTCResumen>();
         }
 
         //public App()

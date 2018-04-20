@@ -72,7 +72,7 @@ namespace NS.MBX_amarin.ViewModels
                 }
                 else if (subope.Id == "2") //pago de tarjetas
                 {
-                    await NavigationService.NavigateAsync(Constantes.pageTipoTarjeta, navParameters);
+                    await NavigationService.NavigateAsync(Constantes.pageOrigenTarjeta, navParameters);
                 }
             }
             else if (Operacion.Id == "2")//recargas

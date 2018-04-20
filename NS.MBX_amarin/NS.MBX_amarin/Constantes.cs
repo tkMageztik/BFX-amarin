@@ -15,7 +15,7 @@ namespace NS.MBX_amarin
 
         //constantes para navegacion
         public static readonly string pageOrigen = "pageOrigen";
-        public static readonly string pageTipoTarjeta = "TipoTarjeta";
+        public static readonly string pageOrigenTarjeta = "OrigenTarjeta";
         public static readonly string pageCtaCargo = "CtaCargo";
         public static readonly string pageDatosPagoTarjeta = "DatosPagoTarjeta";
         public static readonly string pageConfPagoServicioEmpresa = "ConfPagoServicioEmpresa";
@@ -36,8 +36,29 @@ namespace NS.MBX_amarin
         public static readonly string pageTransfCtaTerceroDestino = "TransfCtaTerceroDestino";
         public static readonly string pageTransfCuentaOtroBanco = "TransfCuentaOtroBanco";
         public static readonly string pageTransfCtaOtroBancoDestino = "TransfCtaOtroBancoDestino";
-        public static readonly string pagePagoTCTipo = "PagoTCTipo";
+        //public static readonly string pagePagoTCTipo = "PagoTCTipo";
         public static readonly string pagePagoTCDatos = "PagoTCDatos";
+        public static readonly string pagePagoTCPropiaDatos = "PagoTCPropiaDatos";
+        public static readonly string pagePagoTCPropTipo = "PagoTCPropTipo";
+        public static readonly string pageTCPropia = "TCPropia";
+        public static readonly string pagePagoTCConfirmacion = "PagoTCConfirmacion";
+        public static readonly string pagePagoTCResumen = "PagoTCResumen";
+
+        //keys para el navigation parameter
+        public static readonly string keyOperacionFrecuente = "OperacionFrecuente";
+        public static readonly string keyCtaCargo = "CtaCargo";
+        public static readonly string keyCtaDestino = "CtaDestino";
+        public static readonly string keyOperacion = "Operacion";
+        public static readonly string keySubOperacion = "SubOperacion";
+        public static readonly string keyFechaOperacion = "FechaOperacion";
+        public static readonly string keyMoneda = "Moneda";
+        public static readonly string keyMonto = "Monto";
+        public static readonly string keyCodOperacionGenerado = "CodOperacionGenerado";
+        public static readonly string keyTipoPropTarjeta = "TipoPropTarjeta";
+        public static readonly string keyTCPropia = "TCPropia";//almacena la tarjeta seleccionada de la lista
+
+        public static readonly string keyOrigenTarjeta = "OrigenTarjeta";
+        public static readonly string keyTCDestino = "TCDestino";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";

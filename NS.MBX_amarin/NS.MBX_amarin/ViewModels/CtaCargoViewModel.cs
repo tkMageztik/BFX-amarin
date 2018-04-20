@@ -41,59 +41,80 @@ namespace NS.MBX_amarin.ViewModels
 
         async void ExecuteCtaTappedIC()
         {
-            NavigationParameters parametros = ObtenerNavParametros();
-            parametros.Add("CtaCargo", CtaSelected);
+            try
+            {
+                NavigationParameters parametros = ObtenerNavParametros();
+                parametros.Add("CtaCargo", CtaSelected);
 
-            string pageOrigen = parametros[Constantes.pageOrigen] as string;
-            string pageDestino = string.Empty;
+                string pageOrigen = parametros[Constantes.pageOrigen] as string;
+                string pageDestino = string.Empty;
 
-            if(pageOrigen == "PagoServicioEmpresaView")
-            {
-                pageDestino = Constantes.pageConfPagoServicioEmpresa;
-            }
-            else if (pageOrigen == Constantes.pagePagoTCTipo)
-            {
-                pageDestino = Constantes.pagePagoTCDatos;
-            }
-            else if (pageOrigen == Constantes.pageRecargaCelular)
-            {
-                pageDestino = Constantes.pageConfDatosPago;
-            }
-            else if (pageOrigen == Constantes.pageRecargaBim)
-            {
-                pageDestino = Constantes.pageConfDatosPago;
-            }
-            else if (pageOrigen == Constantes.pageOperaciones)
-            {
-                pageDestino = Constantes.pageDatosPagoTarjeta;
-
-            }
-            else if (pageOrigen == Constantes.pageSubOperaciones)//posible transferencia
-            {
-                Operacion operacion = parametros["Operacion"] as Operacion;
-                SubOperacion suboperacion = parametros["SubOperacion"] as SubOperacion;
-
-                if(operacion.Id == "3")
+                if (pageOrigen == "PagoServicioEmpresaView")
                 {
-                    if(suboperacion.Id == "0")
+                    pageDestino = Constantes.pageConfPagoServicioEmpresa;
+                }
+                else if (pageOrigen == Constantes.pagePagoTCPropTipo)
+                {
+                    pageDestino = Constantes.pagePagoTCDatos;
+                }
+                else if (pageOrigen == Constantes.pageRecargaCelular)
+                {
+                    pageDestino = Constantes.pageConfDatosPago;
+                }
+                else if (pageOrigen == Constantes.pageRecargaBim)
+                {
+                    pageDestino = Constantes.pageConfDatosPago;
+                }
+                else if (pageOrigen == Constantes.pageOrigenTarjeta)
+                {
+                    Catalogo origenTarjeta = parametros[Constantes.keyOrigenTarjeta] as Catalogo;
+
+                    if (origenTarjeta.Codigo == "0")//propio banco
                     {
-                        pageDestino = Constantes.pageTransfCtaTerceroDestino;
+                        pageDestino = Constantes.pagePagoTCPropTipo;
                     }
-                    else if(suboperacion.Id == "1")
+                    else
                     {
-                        pageDestino = Constantes.pageTransfCtaOtroBancoDestino;
-                    }
-                    else if(suboperacion.Id == "2")
-                    {
-                        pageDestino = Constantes.pageTransfCtaPropiaDestino;
+                        pageDestino = Constantes.pageConfDatosPago;
                     }
                 }
-            }
-            else
-            {
-            }
+                else if (pageOrigen == Constantes.pageOperaciones)
+                {
+                    pageDestino = Constantes.pageDatosPagoTarjeta;
 
-            await NavigationService.NavigateAsync(pageDestino, parametros);
+                }
+                else if (pageOrigen == Constantes.pageSubOperaciones)//posible transferencia
+                {
+                    Operacion operacion = parametros["Operacion"] as Operacion;
+                    SubOperacion suboperacion = parametros["SubOperacion"] as SubOperacion;
+
+                    if (operacion.Id == "3")
+                    {
+                        if (suboperacion.Id == "0")
+                        {
+                            pageDestino = Constantes.pageTransfCtaTerceroDestino;
+                        }
+                        else if (suboperacion.Id == "1")
+                        {
+                            pageDestino = Constantes.pageTransfCtaOtroBancoDestino;
+                        }
+                        else if (suboperacion.Id == "2")
+                        {
+                            pageDestino = Constantes.pageTransfCtaPropiaDestino;
+                        }
+                    }
+                }
+                else
+                {
+                }
+
+                await NavigationService.NavigateAsync(pageDestino, parametros);
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
             CtaSelected = null;
         }

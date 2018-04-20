@@ -16,8 +16,14 @@ namespace NS.MBX_amarin.Model
         public string parametro1 { get; set; } //num tarjeta, num telefono, etc
         public Cuenta CtaOrigen { get; set; }
         public Cuenta CtaDestino { get; set; }
+        
         public Catalogo Moneda { get; set; }
 
         public Servicio Servicio { get; set; }
+
+        public Tarjeta TcDestino { get; set; }
+        public Catalogo OrigenTarjeta { get; set; } //es propio banco o de otro banco
+        public Catalogo TipoPropTarjeta { get; set; } //es tarjeta propia o de un tercero
+
     }
 }

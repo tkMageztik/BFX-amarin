@@ -100,9 +100,9 @@ namespace NS.MBX_amarin.ViewModels
             try
             {
                 NavigationParameters navParameters = new NavigationParameters();
-                navParameters.Add("OperacionFrecuente", OpeFrecSelected);
-                navParameters.Add("Operacion", OpeFrecSelected.Operacion);
-                navParameters.Add("SubOperacion", OpeFrecSelected.SubOperacion);
+                navParameters.Add(Constantes.keyOperacionFrecuente, OpeFrecSelected);
+                navParameters.Add(Constantes.keyOperacion, OpeFrecSelected.Operacion);
+                navParameters.Add(Constantes.keySubOperacion, OpeFrecSelected.SubOperacion);
 
                 //dependiendo de la operacion, envia la data necesaria
                 if (OpeFrecSelected.Operacion.Id == "1")
@@ -120,14 +120,10 @@ namespace NS.MBX_amarin.ViewModels
                         await NavigationService.NavigateAsync("ServicioEmpresa", navParameters);
 
                     }
-                    else if (OpeFrecSelected.SubOperacion.Id == "2")
+                    else if (OpeFrecSelected.SubOperacion.Id == "2")//pago de tc
                     {
                         navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
-
-                        Application.Current.Properties["strTipoTransf"] = "0";
-                        Application.Current.Properties["strOrigenMisCuentas"] = false;
-                        Application.Current.Properties["pageOrigen"] = "OperacionesView";
-
+                        
                         await NavigationService.NavigateAsync(Constantes.pageCtaCargo, navParameters);
                     }
                 }
@@ -145,6 +141,28 @@ namespace NS.MBX_amarin.ViewModels
                         navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
                         
                         await NavigationService.NavigateAsync(Constantes.pageRecargaBim, navParameters);
+                    }
+                }
+                else if (OpeFrecSelected.Operacion.Id == "3")//transferencias
+                {
+                    if (OpeFrecSelected.SubOperacion.Id == "2")//cta propia
+                    {
+                        navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
+
+                        await NavigationService.NavigateAsync(Constantes.pageTransfCtaPropiaDatos, navParameters);
+
+                    }
+                    else if (OpeFrecSelected.SubOperacion.Id == "0")//tercero
+                    {
+                        navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
+
+                        await NavigationService.NavigateAsync(Constantes.pageTransfCtaTerceroDestino, navParameters);
+                    }
+                    else if (OpeFrecSelected.SubOperacion.Id == "1")//otro banco
+                    {
+                        navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
+
+                        await NavigationService.NavigateAsync(Constantes.pageTransfCtaOtroBancoDestino, navParameters);
                     }
                 }
 

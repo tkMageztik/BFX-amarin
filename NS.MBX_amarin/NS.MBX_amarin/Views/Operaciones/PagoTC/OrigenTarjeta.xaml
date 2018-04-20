@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.OrigenTarjeta"
+             Title="Pago de Tarjetas">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource stackContainer}">
+            <!--<StackLayout Style="{StaticResource stackTitulo1}" >
+                <Label Text="OTRAS TARJETAS"  Style="{StaticResource lblTitulo1Sm}"  />
+            </StackLayout>-->
+            <ListView ItemsSource="{Binding Lista}" SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}" >
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding ItemTappedIC}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}" TextColor="Gray" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

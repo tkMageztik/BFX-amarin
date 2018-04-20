@@ -13,9 +13,12 @@
     <None Remove="Xml\MBX7002OutDat.xml" />
     <None Remove="Xml\MBX7004OutDat.xml" />
     <None Remove="Xml\MBX7005OutDat.xml" />
+    <None Remove="Xml\MBX7006OutDat.xml" />
     <None Remove="Xml\MBX7015OutDat.xml" />
     <None Remove="Xml\MBX7016OutDat.xml" />
     <None Remove="Xml\MBX7017OutDat.xml" />
+    <None Remove="Xml\MBX7019OutDat.xml" />
+    <None Remove="Xml\MBX7020OutDat.xml" />
     <None Remove="Xml\MBX7022OutDat.xml" />
     <None Remove="Xml\MBX7025OutDat.xml" />
     <None Remove="Xml\MBX7027OutDat.xml" />
@@ -27,9 +30,12 @@
     <EmbeddedResource Include="Xml\MBX7002OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7004OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7005OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7006OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7015OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7016OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7017OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7019OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7020OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7022OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7025OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7027OutDat.xml" />
@@ -57,6 +63,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Operaciones\PagoTC\OrigenTarjeta.xaml.cs">
+      <DependentUpon>OrigenTarjeta.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -75,7 +84,7 @@
     <EmbeddedResource Update="Views\DatosPagoTarjeta.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PagoServicios\BuscadorEmpresa.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\BuscadorEmpresa.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ConfPagoServicioEmpresa.xaml">
@@ -87,7 +96,7 @@
     <EmbeddedResource Update="Views\Cuentas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PagoServicios\Empresa.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\Empresa.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainPage.xaml">
@@ -105,13 +114,25 @@
     <EmbeddedResource Update="Views\Operaciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PagoServicios\PagoServicioEmpresa.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\PagoServicioEmpresa.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PagoTC\PagoTCDatos.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\PagoTCDatos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PagoTC\PagoTCTipo.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\PropioBanco\PagoTCPropTipo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\PropioBanco\TCPropia.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\PropioBanco\PagoTCPropiaDatos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\PagoTCConfirmacion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\PagoTCResumen.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PopUpOperaciones.xaml">
@@ -126,13 +147,13 @@
     <EmbeddedResource Update="Views\Registro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PagoServicios\ServicioEmpresa.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\ServicioEmpresa.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SubOperaciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TipoTarjeta.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoTC\OrigenTarjeta.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Transferencia.xaml">
@@ -144,22 +165,22 @@
     <EmbeddedResource Update="Views\MovimientosView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transferencias\CuentaOtroBanco\TransfCtaOtroBancoDestino.xaml">
+    <EmbeddedResource Update="Views\Operaciones\Transferencias\CuentaOtroBanco\TransfCtaOtroBancoDestino.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transferencias\CuentaPropia\TransfCtaPropiaDatos.xaml">
+    <EmbeddedResource Update="Views\Operaciones\Transferencias\CuentaPropia\TransfCtaPropiaDatos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transferencias\CuentaPropia\TransfCtaPropiaDestino.xaml">
+    <EmbeddedResource Update="Views\Operaciones\Transferencias\CuentaPropia\TransfCtaPropiaDestino.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transferencias\CuentaTercero\TransfCtaTerceroDestino.xaml">
+    <EmbeddedResource Update="Views\Operaciones\Transferencias\CuentaTercero\TransfCtaTerceroDestino.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transferencias\TransfConfirmacion.xaml">
+    <EmbeddedResource Update="Views\Operaciones\Transferencias\TransfConfirmacion.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transferencias\TransfResumen.xaml">
+    <EmbeddedResource Update="Views\Operaciones\Transferencias\TransfResumen.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Ubicanos.xaml">
@@ -169,5 +190,8 @@
 
   <ItemGroup>
     <Folder Include="Utilities\" />
+    <Folder Include="ViewModels\Operaciones\PagoTC\OtroBanco\" />
+    <Folder Include="Views\Compartido\" />
+    <Folder Include="Views\Operaciones\PagoTC\OtroBanco\" />
   </ItemGroup>
 </Project>
