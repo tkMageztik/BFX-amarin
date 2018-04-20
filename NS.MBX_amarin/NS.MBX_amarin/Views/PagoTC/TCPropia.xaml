@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NS.MBX_amarin.Views.TCPropia"
+             Title="Seleccione Tarjeta">
+    <StackLayout Orientation="Vertical">
+        <StackLayout >
+            <ListView ItemsSource="{Binding Lista}" SelectedItem="{Binding ItemSel, Mode=TwoWay}" HasUnevenRows="True">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding ListTappedIC}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Padding="10,0,0,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                        <Label Text="{Binding NroTarjeta}"  FontSize="Small" FontAttributes="Bold"></Label>
+                                        <!--<Label Text="{Binding SaldoDisponible}"  ></Label>
+                                        <Label Text="Saldo Disponible" ></Label>-->
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End"></StackLayout>
+    </StackLayout>
+</ContentPage>
