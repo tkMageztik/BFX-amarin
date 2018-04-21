@@ -18,7 +18,7 @@
                 <Label Text="Servicio" FontSize="Small" FontAttributes="Bold" />
                 <Picker ItemsSource="{Binding ListaServicios}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding ServicioSelected, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Title="-- Seleccione --"/>
                 <Label Text="{Binding LblCodigo}" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Codigo}" HorizontalOptions="FillAndExpand"/>
+                <Entry Text="{Binding Codigo}" HorizontalOptions="FillAndExpand" Style="{StaticResource entCont1NumSm}"/>
                 <Button Command="{Binding SiguienteIC}" Text="Siguiente" HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>

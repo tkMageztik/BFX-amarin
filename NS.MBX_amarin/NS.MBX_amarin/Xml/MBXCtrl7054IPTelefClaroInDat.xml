@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<BFP7054IPTelefClaro>
+  <InDat>
+    <IData>
+      <IDNroAbo Type="System.String" Length="10" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDCtaCar Type="System.String" Length="12" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDNomCli Type="System.String" Length="30" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDImpPag Type="System.String" Length="11" Default="" Decimal="2" Description="" Values="" Control="TextBox" />
+      <IDMoneda Type="System.String" Length="3" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDCodPro Type="System.String" Length="3" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDEstDeu Type="System.String" Length="2" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDTipDoc Type="System.String" Length="3" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDNroDoc Type="System.String" Length="16" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDRefDeu Type="System.String" Length="16" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDFecEmi Type="System.String" Length="8" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDFecVen Type="System.String" Length="8" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <DSRef1 Type="System.String" Length="12" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <DSRef2 Type="System.String" Length="12" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <DSTracReca Type="System.String" Length="6" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <DSHoraReca Type="System.String" Length="6" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDGlosa Type="System.String" Length="30" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDProces Type="System.String" Length="1" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+    </IData>
+  </InDat>
+</BFP7054IPTelefClaro>

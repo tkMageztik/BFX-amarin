@@ -70,9 +70,5 @@ namespace NS.MBX_amarin.ViewModels
             CtaSelected = null;
         }
 
-        void ValidarCuentas()
-        {
-
-        }
     }
 }

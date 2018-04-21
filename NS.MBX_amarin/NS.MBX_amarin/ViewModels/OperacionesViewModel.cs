@@ -123,8 +123,24 @@ namespace NS.MBX_amarin.ViewModels
                     else if (OpeFrecSelected.SubOperacion.Id == "2")//pago de tc
                     {
                         navParameters.Add(Constantes.pageOrigen, Constantes.pageOperaciones);
+                        navParameters.Add(Constantes.keyOrigenTarjeta, OpeFrecSelected.OrigenTarjeta);
+                        if (OpeFrecSelected.OrigenTarjeta.Codigo == "0")
+                        {
+                            if(OpeFrecSelected.TipoPropTarjeta.Codigo == "0")
+                            {
+                                await NavigationService.NavigateAsync(Constantes.pageTCPropia, navParameters);
+                            }
+                            else
+                            {
+                                await NavigationService.NavigateAsync(Constantes.pagePagoTCDatos, navParameters);
+                            }
+                        }
+                        else
+                        {
+                            await NavigationService.NavigateAsync(Constantes.pagePagoTCDatos, navParameters);
+                        }
                         
-                        await NavigationService.NavigateAsync(Constantes.pageCtaCargo, navParameters);
+                        
                     }
                 }
                 else if (OpeFrecSelected.Operacion.Id == "2")//recargas

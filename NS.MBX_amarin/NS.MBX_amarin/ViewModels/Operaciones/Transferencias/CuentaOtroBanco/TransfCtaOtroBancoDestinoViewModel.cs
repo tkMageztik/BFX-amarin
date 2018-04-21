@@ -104,7 +104,7 @@ namespace NS.MBX_amarin.ViewModels
                 }
                 else
                 {
-                    NavigationParameters navParametros = GetNavigationParameters();
+                    NavigationParameters navParametros = GetNavigationParameters(Constantes.keyCtaDestino);
                     navParametros.Add(Constantes.pageOrigen, Constantes.pageTransfCtaOtroBancoDestino);
                     navParametros.Add("Monto", Monto);
                     navParametros.Add("Moneda", MonedaSel);

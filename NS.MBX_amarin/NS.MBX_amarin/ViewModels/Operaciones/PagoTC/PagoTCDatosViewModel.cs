@@ -134,7 +134,7 @@ namespace NS.MBX_amarin.ViewModels
                 {
                     Catalogo origenTarjeta = RefNavParameters[Constantes.keyOrigenTarjeta] as Catalogo;
 
-                    NavigationParameters navParametros = GetNavigationParameters();
+                    NavigationParameters navParametros = GetNavigationParameters(Constantes.keyTCDestino);//luego se validara que no deberia considerar tcDestino
                     navParametros.Add(Constantes.pageOrigen, Constantes.pagePagoTCDatos);
                     navParametros.Add("Monto", Monto);
                     navParametros.Add("Moneda", Moneda);

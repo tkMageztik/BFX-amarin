@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<BFP7026>
+  <OutDat>
+    <OData>
+      <ODtentd Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODcentd Type="System.Double" Length="4" Default="" Decimal="0" />
+      <ODcserv Type="System.Double" Length="7" Default="" Decimal="0" />
+      <ODnabon Type="System.String" Length="10" Default="" Decimal="" />
+      <ODcantd Type="System.Double" Length="2" Default="" Decimal="0" />
+      <Odrcbos Length="65" Size="10">
+        <Odrecib Type="System.Double" Length="10" Default="" Decimal="0" />
+        <Odmoned Type="System.Double" Length="3" Default="" Decimal="0" />
+        <Odnombr Type="System.String" Length="30" Default="" Decimal="" />
+        <Odfecem Type="System.Double" Length="8" Default="" Decimal="0" />
+        <Odtotal Type="System.Double" Length="14" Default="" Decimal="2" />
+      </Odrcbos>
+      <ODdlm01 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODdlm02 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODcsecc Type="System.Double" Length="2" Default="" Decimal="0" />
+    </OData>
+  </OutDat>
+</BFP7026>

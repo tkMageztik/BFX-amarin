@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<BFP7031>
+  <OutDat>
+    <OData>
+      <ODtentd Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODcentd Type="System.Double" Length="4" Default="" Decimal="0" />
+      <ODcserv Type="System.Double" Length="7" Default="" Decimal="0" />
+      <ODnabon Type="System.String" Length="10" Default="" Decimal="" />
+      <ODrecib Type="System.Double" Length="10" Default="" Decimal="0" />
+      <ODmoned Type="System.Double" Length="3" Default="" Decimal="0" />
+      <ODnombr Type="System.String" Length="30" Default="" Decimal="" />
+      <ODfecem Type="System.Double" Length="8" Default="" Decimal="0" />
+      <ODtotal Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODcodct Type="System.Double" Length="12" Default="" Decimal="0" />
+      <ODticam Type="System.Double" Length="10" Default="" Decimal="4" />
+      <ODMoncar Type="System.String" Length="3" Default="" Decimal="" />
+      <ODmtocv Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODindhs Type="System.String" Length="1" Default="" Decimal="" />
+      <ODfecpr Type="System.String" Length="8" Default="" Decimal="" />
+      <ODItfTot Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODComis Type="System.Double" Length="14" Default="" Decimal="2" />
+      <ODDescr01 Type="System.String" Length="15" Default="" Decimal="" />
+      <ODDescr02 Type="System.String" Length="15" Default="" Decimal="" />
+      <ODdlm01 Type="System.String" Length="1" Default="" Decimal="" />
+      <ODdlm02 Type="System.String" Length="1" Default="" Decimal="" />
+    </OData>
+    <OHead>
+      <OFMTAP Type="System.String" Length="1" Default="" Decimal="" />
+      <OSTATUS Type="System.String" Length="1" Default="" Decimal="" />
+      <OLOG Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OESTACI Type="System.String" Length="10" Default="" Decimal="" />
+      <OMSG Type="System.String" Length="4" Default="" Decimal="" />
+      <OLOGLO Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHORA Type="System.Double" Length="6" Default="80010" Decimal="0" />
+      <DLDCPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFMTPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFINFMT Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+  </OutDat>
+</BFP7031>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<BFP7051>
+  <OutDat>
+    <OData>
+      <O1SEQ Type="System.Double" Length="8" Default="" Decimal="0" />
+      <OutMcd Type="System.String" Length="3" Default="" Decimal="" />
+      <OutEr Type="System.String" Length="12" Default="" Decimal="" />
+      <OutSqn Type="System.Double" Length="4" Default="" Decimal="0" />
+      <OutNme Type="System.String" Length="35" Default="" Decimal="" />
+      <OutGrs Type="System.Double" Length="15" Default="" Decimal="2" />
+      <OutGsg Type="System.String" Length="1" Default="" Decimal="" />
+      <OutCon Type="System.Double" Length="15" Default="" Decimal="2" />
+      <OutSco Type="System.String" Length="1" Default="" Decimal="" />
+      <OutIva Type="System.Double" Length="15" Default="" Decimal="2" />
+      <OutCom Type="System.Double" Length="14" Default="" Decimal="2" />
+      <OutPba Type="System.Double" Length="15" Default="" Decimal="2" />
+      <OutPbd Type="System.Double" Length="6" Default="" Decimal="0" />
+      <OutPbc Type="System.String" Length="2" Default="" Decimal="" />
+      <OutPbl Type="System.String" Length="2" Default="" Decimal="" />
+      <OutPbt Type="System.String" Length="1" Default="" Decimal="" />
+      <OutNmi Type="System.String" Length="30" Default="" Decimal="" />
+      <OutCuo Type="System.String" Length="8" Default="" Decimal="" />
+      <OutFev Type="System.String" Length="9" Default="" Decimal="" />
+      <OutCod Type="System.String" Length="10" Default="" Decimal="" />
+      <OutGra Type="System.String" Length="8" Default="" Decimal="" />
+      <OutMor Type="System.Double" Length="17" Default="" Decimal="2" />
+      <OutSeg Type="System.Double" Length="17" Default="" Decimal="2" />
+      <OutDs1 Type="System.String" Length="20" Default="" Decimal="" />
+      <ODImpItf Type="System.Double" Length="15" Default="" Decimal="2" />
+      <ODComis Type="System.Double" Length="15" Default="" Decimal="2" />
+      <ODGlosop Type="System.String" Length="30" Default="" Decimal="" />
+    </OData>
+    <OHead>
+      <OFMTAP Type="System.String" Length="1" Default="" Decimal="" />
+      <OSTATUS Type="System.String" Length="1" Default="" Decimal="" />
+      <OLOG Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OESTACI Type="System.String" Length="10" Default="" Decimal="" />
+      <OMSG Type="System.String" Length="4" Default="" Decimal="" />
+      <OLOGLO Type="System.Double" Length="5" Default="" Decimal="0" />
+      <OHORA Type="System.Double" Length="6" Default="80010" Decimal="0" />
+      <DLDCPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFMTPRT Type="System.String" Length="1" Default="" Decimal="" />
+      <DFINFMT Type="System.String" Length="2" Default="" Decimal="" />
+    </OHead>
+  </OutDat>
+</BFP7051>

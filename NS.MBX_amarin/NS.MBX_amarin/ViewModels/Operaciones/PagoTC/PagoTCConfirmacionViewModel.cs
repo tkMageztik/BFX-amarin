@@ -398,23 +398,31 @@ namespace NS.MBX_amarin.ViewModels
                 //}
                 //else
                 //{
-                    RegistrarOperacionFrecuente(fechaOperacion);
+                RegistrarOperacionFrecuente(fechaOperacion);
 
-                    parametros.Add("CodOperacionGenerado", codOperacionGenerado);
-                    parametros.Add("FechaOperacion", fechaOperacion);
+                parametros.Add("CodOperacionGenerado", codOperacionGenerado);
+                parametros.Add("FechaOperacion", fechaOperacion);
 
-                    bool isOperacionFrecuente = RefNavParameters.ContainsKey(Constantes.keyOperacionFrecuente);
-                    string retroceso;
-                    if (!isOperacionFrecuente)
+                bool isOperacionFrecuente = RefNavParameters.ContainsKey(Constantes.keyOperacionFrecuente);
+                string retroceso;
+                Catalogo tipoPropTarjeta = RefNavParameters[Constantes.keyTipoPropTarjeta] as Catalogo;
+                if (!isOperacionFrecuente)//2 mas para propia, uno mas para tercero. revisar opefrecuente
+                {
+                    if(tipoPropTarjeta.Codigo == "0")
                     {
-                        retroceso = "../../../../../";
+                        retroceso = "../../../../../../../";
                     }
                     else
                     {
-                        retroceso = "../../";
+                        retroceso = "../../../../../../";
                     }
+                }
+                else
+                {
+                    retroceso = "../../";
+                }
 
-                    await NavigationService.NavigateAsync(retroceso + Constantes.pagePagoTCResumen, parametros); 
+                await NavigationService.NavigateAsync(retroceso + Constantes.pagePagoTCResumen, parametros); 
 
             }
         }
@@ -713,6 +721,7 @@ namespace NS.MBX_amarin.ViewModels
                 opeFrec.CtaOrigen = ctaOrigen;
                 opeFrec.TcDestino = tcDestino;
                 opeFrec.OrigenTarjeta = origenTarjeta;
+                opeFrec.Moneda = moneda;
                 if (RefNavParameters.ContainsKey(Constantes.keyTipoPropTarjeta))
                 {
                     opeFrec.TipoPropTarjeta = RefNavParameters[Constantes.keyTipoPropTarjeta] as Catalogo;

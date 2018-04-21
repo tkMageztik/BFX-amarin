@@ -3,6 +3,7 @@ using NS.MBX_amarin.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,8 +16,8 @@ namespace NS.MBX_amarin.ViewModels
 	{
         private ICuentaService CuentaService { get; set; }
 
-        public CtaCargoViewModel(ICuentaService cuentaService, INavigationService navigationService)
-            : base(navigationService)
+        public CtaCargoViewModel(ICuentaService cuentaService, INavigationService navigationService, IPageDialogService dialogService)
+            : base(navigationService, dialogService)
         {
             this.CuentaService = cuentaService;
         }
@@ -75,7 +76,7 @@ namespace NS.MBX_amarin.ViewModels
                     }
                     else
                     {
-                        pageDestino = Constantes.pageConfDatosPago;
+                        pageDestino = Constantes.pagePagoTCDatos;
                     }
                 }
                 else if (pageOrigen == Constantes.pageOperaciones)
@@ -103,6 +104,22 @@ namespace NS.MBX_amarin.ViewModels
                             pageDestino = Constantes.pageTransfCtaPropiaDestino;
                         }
                     }
+                }
+                else if (pageOrigen == Constantes.pagePagoServDatos)//luego de seleccionar un recibo
+                {
+                    //validamos saldo
+                    DetalleRecibo detalleRecibo = parametros[Constantes.keyDetalleReciboIBS] as DetalleRecibo;
+
+                    if (!CuentaService.ValidarSaldoOperacion(CtaSelected, decimal.Parse(detalleRecibo.Monto), "PEN"))
+                    {
+                        await DialogService.DisplayAlertAsync(Constantes.MSJ_INFO, "La cuenta seleccionada no tiene saldo suficiente.", Constantes.MSJ_BOTON_OK);
+                        return;
+                    }
+                    else
+                    {
+                        pageDestino = Constantes.pagePagoServConfirmacion;
+                    }                    
+
                 }
                 else
                 {

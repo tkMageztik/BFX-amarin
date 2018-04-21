@@ -38,14 +38,16 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <SearchBar Text="{Binding TxtBuscador}" SearchCommand="{Binding BuscarIC}" 
+            <!--SearchCommand="{Binding BuscarIC}" -->
+            <SearchBar Text="{Binding TxtBuscador}" 
             Placeholder="Buscar otra empresa" VerticalOptions="Start" >
                 <SearchBar.Behaviors>
                     <b:EventToCommandBehavior EventName="Focused" 
                                       Command="{Binding BuscadorFocusedIC}" />
                     <b:EventToCommandBehavior EventName="Unfocused" 
                                       Command="{Binding BuscadorUnfocusedIC}" />
+                    <b:EventToCommandBehavior EventName="TextChanged" 
+                                      Command="{Binding BuscarIC}" />
                 </SearchBar.Behaviors>
             </SearchBar>
             <ListView ItemsSource="{Binding ListaEmpresas}" SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}" IsVisible="{Binding MostrarBuscador}">

@@ -23,7 +23,7 @@
                 <Label  Text="Hemos enviado una Clave SMS al celular" Style="{StaticResource lblContCent1Sm}" />
                 <Label  Text="5193*****13" Style="{StaticResource lblContCent1BoldSm}" />
 
-                <Entry Text="{Binding ClaveSms}" Style="{StaticResource entCont1Sm}"  />
+                <Entry Text="{Binding ClaveSms}" Style="{StaticResource entCont1NumSm}"  />
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Guardar como operación frecuente" FontSize="Small" TextColor="Black"  HorizontalOptions="StartAndExpand" />

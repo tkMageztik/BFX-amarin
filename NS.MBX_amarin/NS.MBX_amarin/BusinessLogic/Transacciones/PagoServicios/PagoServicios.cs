@@ -9,42 +9,42 @@ using BC = NS.MBX_amarin.Common;
 namespace NS.MBX_amarin.BusinessLogic
 {
     public class PagoServicios
-    {/*
+    {
         public DataSet ObtenerControlesInput(int intServicio, int TipoOperacion)
         {
             TransaccionesMBX tx = new TransaccionesMBX();
             DataSet dsData = new DataSet();
             string Trama = "";
             BP.DataLoader xml = new BP.DataLoader();
-            //DA.PagoServicios ObjPagoServicio = new DA.PagoServicios();
+            DA.PagoServicios ObjPagoServicio = new DA.PagoServicios();
             try
             {
-                using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, TipoOperacion))
-                {
-                    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
-                    {
-                        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
-                        string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
-                        using (DataSet dsSalida = xml.ObtenerControlsInput(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
-                        {
-                            if (dsSalida != null)
-                            {
-                                dsData.Tables.Add(TablaInformacionControlesInput());
-                                dsData.Tables[0].Rows.Add();
-                                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlTrama"] = strDefaultValuesNemonico;
-                                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlCantidad"] = dsSalida.Tables[0].Columns.Count;
-                                string strColumnas = "";
-                                foreach (DataColumn item in dsSalida.Tables[0].Columns)
-                                {
-                                    strColumnas += item + ";";
-                                }
-                                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlListaCampos"] = strColumnas;
-                                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlDelimitadorCampos"] = ";";
-                            }
-                            //dsData = dsSalida;
-                        }
-                    }
-                }
+                //using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, TipoOperacion))
+                //{
+                //    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
+                //    {
+                //        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                //        string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                //        using (DataSet dsSalida = xml.ObtenerControlsInput(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
+                //        {
+                //            if (dsSalida != null)
+                //            {
+                //                dsData.Tables.Add(TablaInformacionControlesInput());
+                //                dsData.Tables[0].Rows.Add();
+                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlTrama"] = strDefaultValuesNemonico;
+                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlCantidad"] = dsSalida.Tables[0].Columns.Count;
+                //                string strColumnas = "";
+                //                foreach (DataColumn item in dsSalida.Tables[0].Columns)
+                //                {
+                //                    strColumnas += item + ";";
+                //                }
+                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlListaCampos"] = strColumnas;
+                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlDelimitadorCampos"] = ";";
+                //            }
+                //            //dsData = dsSalida;
+                //        }
+                //    }
+                //}
                 return dsData;
             }
             catch (Exception ex)
@@ -67,7 +67,96 @@ namespace NS.MBX_amarin.BusinessLogic
             return dtData;
 
         }
-        public DataSet ObtenerConsultaTelefono(short intLongitudTrama, int intServicio, out string _strError, params object[] parameterValues)
+
+        private void MapearServicioConsulta(string codEmpresa, string codServicio, out string strDefaultValuesNemonico, out string strDefaultValuesNombre)
+        {
+            strDefaultValuesNemonico = "";
+            strDefaultValuesNombre = "";
+            if (codEmpresa == "0")//claro
+            {
+                strDefaultValuesNemonico = "7053";
+                strDefaultValuesNombre = "7053ICTelefCelClaro1";
+            }
+            else if(codEmpresa == "1")
+            {
+                if(codServicio == "0")//celular
+                {
+                    strDefaultValuesNemonico = "7026";
+                    strDefaultValuesNombre = "7026ICTelefCel";
+                }
+                else
+                {
+                    strDefaultValuesNemonico = "7026";
+                    strDefaultValuesNombre = "7026ICTelFija";
+                }
+            }
+            else if(codEmpresa == "2")
+            {
+                strDefaultValuesNemonico = "7053";
+                strDefaultValuesNombre = "7053ICTelefCelClaro1";
+            }
+            else if (codEmpresa == "3")//edelnor
+            {
+                strDefaultValuesNemonico = "7026";
+                strDefaultValuesNombre = "7026ICEDELNOR";
+            }
+            else if (codEmpresa == "4")//luz del sur
+            {
+                strDefaultValuesNemonico = "7026";
+                strDefaultValuesNombre = "7026ICLUZSUR";
+            }
+            else if (codEmpresa == "5")//sedapal
+            {
+                strDefaultValuesNemonico = "7051";
+                strDefaultValuesNombre = "7051ICSEDAPAL";
+            }
+        }
+
+        private void MapearServicioEjecutar(string codEmpresa, string codServicio, out string strDefaultValuesNemonico, out string strDefaultValuesNombre)
+        {
+            strDefaultValuesNemonico = "";
+            strDefaultValuesNombre = "";
+            if (codEmpresa == "0")//claro
+            {
+                strDefaultValuesNemonico = "7054";
+                strDefaultValuesNombre = "7054IPTelefClaro";
+            }
+            else if (codEmpresa == "1")
+            {
+                if (codServicio == "0")//celular
+                {
+                    strDefaultValuesNemonico = "7031";
+                    strDefaultValuesNombre = "7031ICTELFCEL";
+                }
+                else
+                {
+                    strDefaultValuesNemonico = "7031";
+                    strDefaultValuesNombre = "7031ICTelefFija";
+                }
+            }
+            else if (codEmpresa == "2")//entel
+            {
+                strDefaultValuesNemonico = "7054";
+                strDefaultValuesNombre = "7054IPTelefClaro";
+            }
+            else if (codEmpresa == "3")//edelnor
+            {
+                strDefaultValuesNemonico = "7031";
+                strDefaultValuesNombre = "7031ICEDELNOR";
+            }
+            else if (codEmpresa == "4")//luz del sur
+            {
+                strDefaultValuesNemonico = "7031";
+                strDefaultValuesNombre = "7031ICLUZ";
+            }
+            else if (codEmpresa == "5")//sedapal
+            {
+                strDefaultValuesNemonico = "7051";
+                strDefaultValuesNombre = "7051IPSEDAPAL";
+            }
+        }
+
+        public DataSet ObtenerConsultaTelefono(short intLongitudTrama, string intServicio, out string _strError, params object[] parameterValues)
         {
 
             DataSet dsData = new DataSet();
@@ -80,14 +169,17 @@ namespace NS.MBX_amarin.BusinessLogic
                 BP.DataLoader xml = new BP.DataLoader();
                 DA.PagoServicios ObjPagoServicio = new DA.PagoServicios();
                 string strTramaGenerada = "";
-                using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, 1))
-                {
-                    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
-                    {
-                        string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
-                        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
-                        string strProgramaEjecutador = dsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
-                        string strNombreEmpresa = dsServicioTransaccion.Tables[0].Rows[0]["strNombreEmpresa"].ToString();
+                //using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, 1))
+                //{
+                //    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
+                //    {
+                string strDefaultValuesNemonico = "";
+                string strDefaultValuesNombre = "";
+                MapearServicioConsulta(intServicio.Substring(0, 1), intServicio.Substring(1, 1), out strDefaultValuesNemonico, out strDefaultValuesNombre);
+                //string strDefaultValuesNemonico = ""; dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                //string strDefaultValuesNombre = ""; dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                string strProgramaEjecutador = "HomeBanking";// fdsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
+                string strNombreEmpresa = "";// dsServicioTransaccion.Tables[0].Rows[0]["strNombreEmpresa"].ToString();
                         using (DataSet dsSalida = xml.ObtenerInputTrama(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
                         {
                             if (dsSalida != null && dsSalida.Tables[0].Rows.Count == 1)
@@ -100,7 +192,7 @@ namespace NS.MBX_amarin.BusinessLogic
                                 if (strProgramaEjecutador == "HomeBanking")
                                 {
                                     TransaccionesMBX tx = new TransaccionesMBX();
-                                    using (DataSet dsDataTrama = tx.EjecutarTransaccion(strDefaultValuesNemonico, intLongitudTrama, strTramaGenerada, BC.DefaultValues.NombreMensajeOut(), BC.DefaultValues.PosicionInicialCorte(), out strMensajeError))
+                                    using (DataSet dsDataTrama = tx.EjecutarTransaccion(strDefaultValuesNemonico, intLongitudTrama, strTramaGenerada, BC.ListaTransacciones.NombreMensajeOut(), BC.ListaTransacciones.PosicionInicialCorte(), out strMensajeError))
                                     {
                                         if (dsDataTrama != null && strMensajeError == "0000")
                                         {
@@ -120,13 +212,13 @@ namespace NS.MBX_amarin.BusinessLogic
                                 dsData = null;
                             }
                         }
-                    }
-                    else
-                    {
-                        strMensajeError = "Aun no ha registrado el XML de entrada";
-                        dsData = null;
-                    }
-                }
+                //    }
+                //    else
+                //    {
+                //        strMensajeError = "Aun no ha registrado el XML de entrada";
+                //        dsData = null;
+                //    }
+                //}
                 _strError = strMensajeError;
 
                 return dsData;
@@ -363,7 +455,7 @@ namespace NS.MBX_amarin.BusinessLogic
                                 if (strProgramaEjecutador == "HomeBanking")
                                 {
                                     TransaccionesMBX tx = new TransaccionesMBX();
-                                    using (DataSet dsDataTrama = tx.EjecutarTransaccion(strDefaultValuesNemonico, intLongitudTrama, strTramaGenerada, BC.ListaTransacciones.NombreMensajeOut(), BC.DefaultValues.PosicionInicialCorte(), out strMensajeError))
+                                    using (DataSet dsDataTrama = tx.EjecutarTransaccion(strDefaultValuesNemonico, intLongitudTrama, strTramaGenerada, BC.ListaTransacciones.NombreMensajeOut(), BC.ListaTransacciones.PosicionInicialCorte(), out strMensajeError))
                                     {
                                         if (dsDataTrama != null && strMensajeError == "0000")
                                             dsData = dsDataTrama;
@@ -596,7 +688,7 @@ namespace NS.MBX_amarin.BusinessLogic
         //        return string.Empty;
         //    }
         //}
-        */
+        
 
     }
 }

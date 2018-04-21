@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\Operaciones\PagoTC\OtroBanco\**" />
+    <EmbeddedResource Remove="ViewModels\Operaciones\PagoTC\OtroBanco\**" />
+    <None Remove="ViewModels\Operaciones\PagoTC\OtroBanco\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Xml\BFP3007OutDat.xml" />
     <None Remove="Xml\BFP7005OutDat.xml" />
     <None Remove="Xml\BFP7017OutDat.xml" />
@@ -21,8 +27,27 @@
     <None Remove="Xml\MBX7020OutDat.xml" />
     <None Remove="Xml\MBX7022OutDat.xml" />
     <None Remove="Xml\MBX7025OutDat.xml" />
+    <None Remove="Xml\MBX7026ICEDELNORInDat.xml" />
+    <None Remove="Xml\MBX7026ICLUZSURInDat.xml" />
+    <None Remove="Xml\MBX7026ICTelefCelInDat.xml" />
+    <None Remove="Xml\MBX7026ICTelFijaInDat.xml" />
+    <None Remove="Xml\MBX7026OutDat.xml" />
     <None Remove="Xml\MBX7027OutDat.xml" />
     <None Remove="Xml\MBX7028OutDat.xml" />
+    <None Remove="Xml\MBX7031ICEDELNORInDat.xml" />
+    <None Remove="Xml\MBX7031ICLUZInDat.xml" />
+    <None Remove="Xml\MBX7031ICTelefFijaInDat.xml" />
+    <None Remove="Xml\MBX7031ICTELFCELInDat.xml" />
+    <None Remove="Xml\MBX7031OutDat.xml" />
+    <None Remove="Xml\MBX7051ICSEDAPALInDat.xml" />
+    <None Remove="Xml\MBX7051IPSEDAPALInDat.xml" />
+    <None Remove="Xml\MBX7051OutDat.xml" />
+    <None Remove="Xml\MBX7053ICTelefCelClaro1InDat.xml" />
+    <None Remove="Xml\MBX7053OutDat.xml" />
+    <None Remove="Xml\MBX7054IPTelefClaroInDat.xml" />
+    <None Remove="Xml\MBX7054OutDat.xml" />
+    <None Remove="Xml\MBXCtrl7053ICTelefCelClaro1InDat.xml" />
+    <None Remove="Xml\MBXCtrl7054IPTelefClaroInDat.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,8 +63,27 @@
     <EmbeddedResource Include="Xml\MBX7020OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7022OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7025OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7026ICEDELNORInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7026ICLUZSURInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7026ICTelefCelInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7026ICTelFijaInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7026OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7027OutDat.xml" />
     <EmbeddedResource Include="Xml\MBX7028OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7031ICEDELNORInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7031ICLUZInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7031ICTelefFijaInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7031ICTELFCELInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7031OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7051ICSEDAPALInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7051IPSEDAPALInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7051OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7053ICTelefCelClaro1InDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7053OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7054IPTelefClaroInDat.xml" />
+    <EmbeddedResource Include="Xml\MBX7054OutDat.xml" />
+    <EmbeddedResource Include="Xml\MBXCtrl7053ICTelefCelClaro1InDat.xml" />
+    <EmbeddedResource Include="Xml\MBXCtrl7054IPTelefClaroInDat.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -87,7 +131,7 @@
     <EmbeddedResource Update="Views\Operaciones\PagoServicios\BuscadorEmpresa.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ConfPagoServicioEmpresa.xaml">
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\ConfPagoServicioEmpresa.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CtaCargo.xaml">
@@ -133,6 +177,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Operaciones\PagoTC\PagoTCResumen.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\PagoServConfirmacion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\PagoServDatos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Operaciones\PagoServicios\PagoServResumen.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PopUpOperaciones.xaml">
@@ -190,7 +243,6 @@
 
   <ItemGroup>
     <Folder Include="Utilities\" />
-    <Folder Include="ViewModels\Operaciones\PagoTC\OtroBanco\" />
     <Folder Include="Views\Compartido\" />
     <Folder Include="Views\Operaciones\PagoTC\OtroBanco\" />
   </ItemGroup>

@@ -44,6 +44,10 @@ namespace NS.MBX_amarin
         public static readonly string pagePagoTCConfirmacion = "PagoTCConfirmacion";
         public static readonly string pagePagoTCResumen = "PagoTCResumen";
 
+        public static readonly string pagePagoServConfirmacion = "PagoServConfirmacion";
+        public static readonly string pagePagoServResumen = "PagoServResumen";
+        public static readonly string pagePagoServDatos = "PagoServDatos";
+
         //keys para el navigation parameter
         public static readonly string keyOperacionFrecuente = "OperacionFrecuente";
         public static readonly string keyCtaCargo = "CtaCargo";
@@ -59,6 +63,13 @@ namespace NS.MBX_amarin
 
         public static readonly string keyOrigenTarjeta = "OrigenTarjeta";
         public static readonly string keyTCDestino = "TCDestino";
+        //public static readonly string keyRecibo = "Recibo";
+        //public static readonly string keyDetalleRecibo = "DetalleRecibo";
+        public static readonly string keyEmpresa = "Empresa";
+        public static readonly string keyServicio = "Servicio";
+        public static readonly string keyReciboIBS = "ReciboIBS";
+        public static readonly string keyDetalleReciboIBS = "DetalleReciboIBS";
+        public static readonly string keyCodigoServicio = "CodigoServicio";
 
         //constantes para mensajes dialog
         public static readonly string MSJ_VALIDACION = "Validación";

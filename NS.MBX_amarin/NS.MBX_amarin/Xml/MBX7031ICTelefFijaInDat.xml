@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<BFP7031ICTelefFija>
+  <InDat>
+    <IData>
+      <IDdlm01 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDtentd Type="System.String" Length="3" Default="001" Decimal="0" />
+      <IDdlm02 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDcentd Type="System.String" Length="4" Default="0001" Decimal="0" />
+      <IDdlm03 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDcserv Type="System.String" Length="7" Default="0000001" Decimal="0" />
+      <IDdlm04 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDnabon Type="System.String" Length="10" Default="" Decimal="" />
+      <IDdlm05 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDrecib Type="System.String" Length="10" Default="" Decimal="0" />
+      <IDdlm06 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDfecem Type="System.String" Length="8" Default="" Decimal="0" />
+      <IDdlm07 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDmoned Type="System.String" Length="3" Default="" Decimal="0" />
+      <IDdlm08 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDtotal Type="System.String" Length="14" Default="" Decimal="2" />
+      <IDdlm09 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDcodct Type="System.String" Length="12" Default="" Decimal="0" />
+      <IDdlm10 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDcsecc Type="System.String" Length="2" Default="" Decimal="" />
+      <IDdlm11 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDGlosa1 Type="System.String" Length="15" Default="" Decimal="" />
+      <IDdlm12 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDGlosa2 Type="System.String" Length="15" Default="" Decimal="" />
+      <IDdlm13 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDNomAbo Type="System.String" Length="30" Default="" Decimal="" />
+      <IDdlm14 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDProces Type="System.String" Length="1" Default="" Decimal="" />
+    </IData>
+  </InDat>
+</BFP7031ICTelefFija>

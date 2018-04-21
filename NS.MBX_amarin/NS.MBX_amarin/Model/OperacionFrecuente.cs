@@ -20,6 +20,7 @@ namespace NS.MBX_amarin.Model
         public Catalogo Moneda { get; set; }
 
         public Servicio Servicio { get; set; }
+        public string NumeroServicio { get; set; }//numero telf, etc
 
         public Tarjeta TcDestino { get; set; }
         public Catalogo OrigenTarjeta { get; set; } //es propio banco o de otro banco

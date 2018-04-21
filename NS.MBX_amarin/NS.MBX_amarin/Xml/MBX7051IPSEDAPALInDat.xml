@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<BFP7051IPSEDAPAL>
+  <InDat>
+    <IData>
+      <ICtaD Type="System.String" Length="12" Default="000280018591" Decimal="" />
+      <IConc Type="System.String" Length="7" Default="0000001" Decimal="" />
+      <IClie Type="System.String" Length="8" Default="" Decimal="" />
+      <IImpo Type="System.String" Length="14" Default="" Decimal="2" />
+      <INom1 Type="System.String" Length="15" Default="" Decimal="" />
+      <INom2 Type="System.String" Length="15" Default="" Decimal="" />
+      <IVcto Type="System.String" Length="8" Default="" Decimal="" />
+      <IGast Type="System.String" Length="14" Default="00000000000000" Decimal="2" />
+      <IRefC Type="System.String" Length="15" Default="" Decimal="" />
+      <IMone Type="System.String" Length="3" Default="PEN" Decimal="" />
+      <IAuto Type="System.String" Length="10" Default="0000000000" Decimal="" />
+      <ICtaG Type="System.String" Length="12" Default="" Decimal="" />
+      <IGlosaOp Type="System.String" Length="30" Default="" Decimal="" />
+      <Iproces Type="System.String" Length="1" Default="" Decimal="" />
+    </IData>
+  </InDat>
+</BFP7051IPSEDAPAL>

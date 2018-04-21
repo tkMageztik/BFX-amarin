@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<BFP7053>
+  <OutDat>
+    <OData>
+      <OCAbon Type="System.String" Length="10" Default="" Decimal="" />
+      <OCNombre Type="System.String" Length="30" Default="" Decimal="" />
+      <OCNroDoc Type="System.Double" Length="2" Default="" Decimal="0" />
+      <OCDoc01 Length="85" Size="10">
+        <CCodPro Type="System.String" Length="3" Default="" Decimal="" />
+        <CDesPro Type="System.String" Length="15" Default="" Decimal="" />
+        <CMonPro Type="System.Double" Length="3" Default="" Decimal="0" />
+        <CEstDeu Type="System.String" Length="2" Default="" Decimal="" />
+        <CTipDoc Type="System.String" Length="3" Default="" Decimal="" />
+        <CNroDoc Type="System.String" Length="16" Default="" Decimal="" />
+        <CFecEmi Type="System.String" Length="8" Default="" Decimal="" />
+        <CFecVen Type="System.String" Length="8" Default="" Decimal="" />
+        <CRefDeu Type="System.String" Length="16" Default="" Decimal="" />
+        <CTotPag Type="System.Double" Length="11" Default="" Decimal="2" />
+      </OCDoc01>
+    </OData>
+  </OutDat>
+</BFP7053>

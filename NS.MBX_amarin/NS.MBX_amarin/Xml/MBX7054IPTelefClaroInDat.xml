@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<BFP7054IPTelefClaro>
+  <InDat>
+    <IData>
+      <IDdlm01 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDTEntd Type="System.String" Length="3" Default="005" Decimal="" />
+      <IDdlm02 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDCEntd Type="System.String" Length="4" Default="0001" Decimal="" />
+      <IDdlm03 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDCServ Type="System.String" Length="7" Default="0000001" Decimal="" />
+      <IDdlm04 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDNroAbo Type="System.String" Length="10" Default="" Decimal="" />
+      <IDdlm05 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDCtaCar Type="System.String" Length="12" Default="" Decimal="" />
+      <IDdlm06 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDNomCli Type="System.String" Length="30" Default="" Decimal="" />
+      <IDdlm07 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDMedPag Type="System.String" Length="2" Default="05" Decimal="" />
+      <IDImpPag Type="System.String" Length="11" Default="" Decimal="2" />
+      <IDMoneda Type="System.String" Length="3" Default="" Decimal="" />
+      <IDCodPro Type="System.String" Length="3" Default="" Decimal="" />
+      <IDEstDeu Type="System.String" Length="2" Default="" Decimal="" />
+      <IDTipDoc Type="System.String" Length="3" Default="" Decimal="" />
+      <IDNroDoc Type="System.String" Length="16" Default="" Decimal="" />
+      <IDRefDeu Type="System.String" Length="16" Default="" Decimal="" />
+      <IDFecEmi Type="System.String" Length="8" Default="" Decimal="" />
+      <IDFecVen Type="System.String" Length="8" Default="" Decimal="" />
+      <DSRef1 Type="System.String" Length="12" Default="" Decimal="" />
+      <DSRef2 Type="System.String" Length="12" Default="" Decimal="" />
+      <DSTracReca Type="System.String" Length="6" Default="" Decimal="" />
+      <DSHoraReca Type="System.String" Length="6" Default="" Decimal="" />
+      <IDGlosa Type="System.String" Length="30" Default="" Decimal="" />
+      <IDProces Type="System.String" Length="1" Default="" Decimal="" />
+    </IData>
+  </InDat>
+</BFP7054IPTelefClaro>

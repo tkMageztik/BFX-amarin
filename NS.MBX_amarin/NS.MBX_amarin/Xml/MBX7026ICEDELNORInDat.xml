@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<BFP7026ICEDELNOR>
+  <InDat>
+    <IData>
+      <IDdlm01 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDtentd Type="System.String" Length="3" Default="002" Decimal="" />
+      <IDdlm02 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDcentd Type="System.String" Length="4" Default="0002" Decimal="" />
+      <IDdlm03 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDcserv Type="System.String" Length="7" Default="0000001" Decimal="" />
+      <IDdlm04 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDlocal Type="System.String" Length="3" Default="" Decimal="" />
+      <IDdlm05 Type="System.String" Length="1" Default="*" Decimal="" />
+      <IDnabon Type="System.String" Length="10" Default="" Decimal="" />
+      <IDdlm06 Type="System.String" Length="1" Default="*" Decimal="" />
+    </IData>
+  </InDat>
+</BFP7026ICEDELNOR>

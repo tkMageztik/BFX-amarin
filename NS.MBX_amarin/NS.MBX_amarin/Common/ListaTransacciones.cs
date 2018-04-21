@@ -29,5 +29,11 @@ namespace NS.MBX_amarin.Common
         public static string PagoTarjetaBancoFinanciero = "7020";
         public static string PagoTarjetaBancoFinancieroConsulta = "7027";
         public static string PagoTarjetaBancoFinancieroEjecuta = "7028";
+
+        //telefonia
+        public static string ConsultaTelefonica = "7026";
+        public static string PagoTelefonica = "7031";//aplica para fijo tambien
+        public static string ConsultaClaroCelular = "7053";
+        public static string PagoClaroCelular = "7054";
     }
 }
