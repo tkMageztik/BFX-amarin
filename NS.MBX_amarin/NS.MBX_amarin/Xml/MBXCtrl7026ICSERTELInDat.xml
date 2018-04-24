@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<BFP7026ICSERTEL>
+  <InDat>
+    <IData>
+      <IDlocal Type="System.String" Length="3" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDnabon Type="System.String" Length="10" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+    </IData>
+  </InDat>
+</BFP7026ICSERTEL>

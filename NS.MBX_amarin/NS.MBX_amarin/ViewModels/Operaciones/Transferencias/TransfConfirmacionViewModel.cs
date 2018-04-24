@@ -40,8 +40,13 @@ namespace NS.MBX_amarin.ViewModels
             string pageOrigen = parametros[Constantes.pageOrigen] as string;
             Cuenta ctaOrigen = parametros["CtaCargo"] as Cuenta;
             Cuenta ctaDestino = parametros["CtaDestino"] as Cuenta;
+            Catalogo moneda = parametros["Moneda"] as Catalogo;
+            string monto = parametros["Monto"] as string;
+
             LblNombreCta1 = ctaOrigen.NombreCta;
             LblCodCta1 = ctaOrigen.CodigoCta;
+
+            LblMonedaMonto = moneda.Descripcion + " " + monto;
 
             if (pageOrigen == Constantes.pageTransfCtaPropiaDatos)
             {
@@ -62,6 +67,13 @@ namespace NS.MBX_amarin.ViewModels
                 LblTipoOpe = "Transferencia";
             }
 
+        }
+
+        private string _lblMonedaMonto;
+        public string LblMonedaMonto
+        {
+            get { return _lblMonedaMonto; }
+            set { SetProperty(ref _lblMonedaMonto, value); }
         }
 
         private string _nomOpeFrec;

@@ -15,9 +15,14 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
 
-            <SearchBar Text="{Binding TxtBuscador}" SearchCommand="{Binding BuscarIC}"
+            <SearchBar Text="{Binding TxtBuscador}" 
             Placeholder="Ingrese empresa o institución" TextColor="Gray" FontSize="Small"
-            HorizontalOptions="FillAndExpand"/>
+            HorizontalOptions="FillAndExpand">
+                <SearchBar.Behaviors>
+                    <b:EventToCommandBehavior EventName="TextChanged" 
+                                      Command="{Binding BuscarIC}" />
+                </SearchBar.Behaviors>
+            </SearchBar>
 
             <ListView ItemsSource="{Binding ListaEmpresas}" SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}" >
                 <ListView.Behaviors>

@@ -86,12 +86,18 @@ namespace NS.MBX_amarin.Parser
         private XmlDocument LeerXMLControlsInput(string strNombreTransaccion, string strNombreMensaje)
         {
             XmlDocument xmlDom = new XmlDocument();
+            string fileName = string.Format("{0}MBXCtrl{1}{2}.xml", rutaXml, strNombreTransaccion, strNombreMensaje);
 
             //if (System.IO.File.Exists(System.Configuration.ConfigurationSettings.AppSettings.Get("XMLPATH") + "BFPCtrl" + strNombreTransaccion + strNombreMensaje + ".xml"))
-            if (System.IO.File.Exists(string.Format("{0}MBXCtrl{1}{2}.xml", rutaXml, strNombreTransaccion, strNombreMensaje)))
+            if (!System.IO.File.Exists(string.Format("{0}MBXCtrl{1}{2}.xml", rutaXml, strNombreTransaccion, strNombreMensaje)))
             {
                 //xmlDom.Load(System.Configuration.ConfigurationSettings.AppSettings.Get("XMLPATH") + "BFPCtrl" + strNombreTransaccion + strNombreMensaje + ".xml");
-                xmlDom.Load(string.Format("{0}MBXCtrl{1}{2}.xml", rutaXml, strNombreTransaccion, strNombreMensaje));
+                //xmlDom.Load(string.Format("{0}MBXCtrl{1}{2}.xml", rutaXml, strNombreTransaccion, strNombreMensaje));
+                Assembly asm = Assembly.GetExecutingAssembly();
+                using (Stream stream = asm.GetManifestResourceStream(fileName))
+                {
+                    xmlDom.Load(stream);
+                }
             }
             else
             {

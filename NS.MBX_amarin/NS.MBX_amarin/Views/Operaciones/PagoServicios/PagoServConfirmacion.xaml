@@ -18,7 +18,10 @@
 
                 <Label Text="Datos" Style="{StaticResource lblCont1BoldSm}" />
                 <Label Text="{Binding LblNomCliente}"  Style="{StaticResource lblCont1Sm}"  />
-                <Label Text="{Binding LblCodServicio}"  Style="{StaticResource lblCont1Sm}"  />                
+                <Label Text="{Binding LblCodServicio}"  Style="{StaticResource lblCont1Sm}"  />
+
+                <Label Text="Moneda y Monto" Style="{StaticResource lblCont1BoldSm}" />
+                <Label Text="{Binding LblMonedaMonto}"  Style="{StaticResource lblCont1Sm}"  />
 
                 <Label  Text="Clave SMS" Style="{StaticResource lblContCent1BoldSm}"  />
                 <Label  Text="Hemos enviado una Clave SMS al celular" Style="{StaticResource lblContCent1Sm}" />

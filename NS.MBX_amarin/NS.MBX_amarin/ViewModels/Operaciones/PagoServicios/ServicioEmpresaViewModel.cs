@@ -60,7 +60,7 @@ namespace NS.MBX_amarin.ViewModels
                 {
                     OperacionFrecuente opeFrec = RefNavParameters[Constantes.keyOperacionFrecuente] as OperacionFrecuente;
                     ServicioSelected = ListaServicios.Where(p => p.Codigo == opeFrec.Servicio.Codigo).First();
-                    Codigo = opeFrec.NumeroServicio;
+                    Codigo = opeFrec.CodigoServicio;
                 }
             }
             catch(Exception ex)
@@ -462,7 +462,7 @@ namespace NS.MBX_amarin.ViewModels
             CodigoServicioTemporal = empresa.Codigo + ServicioSelected.Codigo;//aniadido temporalmente
             if (CodigoServicioTemporal != "0")
             {
-                using (DataSet dsData = ObjPagoServicios.ConsultarTransaccion(250, int.Parse(CodigoServicioTemporal), out _strError, strSuministro, strImproteSoles, strNombreCliente, strFechaVencimiento, strReferencia, strCuenta, strDescripcion, "1"))
+                using (DataSet dsData = ObjPagoServicios.ConsultarTransaccion(250, CodigoServicioTemporal, out _strError, strSuministro, strImproteSoles, strNombreCliente, strFechaVencimiento, strReferencia, strCuenta, strDescripcion, "1"))
                 {
                     if (_strError == "0000")
                     {
@@ -546,7 +546,7 @@ namespace NS.MBX_amarin.ViewModels
             BL.PagoServicios ObjPagoServicios = new BL.PagoServicios();
             CodigoServicioTemporal = (int.Parse(CodigoServicio) == 0) ? CodigoServicioTemporal : CodigoServicio;
             CodigoServicioTemporal = empresa.Codigo + ServicioSelected.Codigo;//aniadido temporalmente
-            using (DataSet dsData = ObjPagoServicios.ConsultarTransaccion(115, int.Parse(CodigoServicioTemporal), out _strError, strMensaje))
+            using (DataSet dsData = ObjPagoServicios.ConsultarTransaccion(115, CodigoServicioTemporal, out _strError, strMensaje))
             {
                 if (_strError == "0000")
                 {

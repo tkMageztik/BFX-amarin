@@ -132,8 +132,10 @@ namespace NS.MBX_amarin.ViewModels
                 //((Label)Step2.ContentTemplateContainer.FindControl("lblTarjeta")).Text = ddlTarjetaPropia.SelectedItem.Text;
                 //((Label)Step2.ContentTemplateContainer.FindControl("lblEtiquetaDiaPago")).Text = "Ultimo día de pago";
                 UltimoDiaPago = drSalida["ODfepag"].ToString().Substring(6, 2) + '/' + drSalida["ODfepag"].ToString().Substring(4, 2) + '/' + drSalida["ODfepag"].ToString().Substring(0, 4);
-                PagoMinSol = "50";// Comunes.FormateaNumero(drSalida["ODfill9"].ToString() + drSalida["ODpmina"].ToString());
-                PagoTotSol = "150";// Comunes.FormateaNumero(drSalida["ODfill7"].ToString() + drSalida["ODpfula"].ToString());
+               // PagoMinSol = "50";// Comunes.FormateaNumero(drSalida["ODfill9"].ToString() + drSalida["ODpmina"].ToString());
+               // PagoTotSol = "150";// Comunes.FormateaNumero(drSalida["ODfill7"].ToString() + drSalida["ODpfula"].ToString());
+                PagoMinSol =  Comunes.FormateaNumero(drSalida["ODfill9"].ToString() + drSalida["ODpmina"].ToString());
+                PagoTotSol = Comunes.FormateaNumero(drSalida["ODfill7"].ToString() + drSalida["ODpfula"].ToString());
                 PagoDiaSol = Comunes.FormateaNumero(drSalida["ODfill2"].ToString() + drSalida["ODcreda"].ToString());
                 PagoMinDol = Comunes.FormateaNumero(drSalida["ODfill6"].ToString() + drSalida["ODpminb"].ToString());
                 PagoTotDol = Comunes.FormateaNumero(drSalida["ODfill4"].ToString() + drSalida["ODpfulb"].ToString());

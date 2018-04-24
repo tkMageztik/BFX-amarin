@@ -41,12 +41,15 @@ namespace NS.MBX_amarin.ViewModels
             Cuenta ctaOrigen = parametros[Constantes.keyCtaCargo] as Cuenta;
             Tarjeta tarDestino = parametros[Constantes.keyTCDestino] as Tarjeta;//cuando el objeto no existe, esto devuelve null
             Catalogo origenTarjeta = parametros[Constantes.keyOrigenTarjeta] as Catalogo;
+            Catalogo moneda = parametros["Moneda"] as Catalogo;
+            string monto = parametros["Monto"] as string;
 
             LblNombreCta1 = ctaOrigen.NombreCta;
             LblCodCta1 = ctaOrigen.CodigoCta;
             LblTipoOpe = "Pago de Tarjetas";
+            LblMonedaMonto = moneda.Descripcion + " " + monto;
 
-            if(origenTarjeta.Codigo == "0")
+            if (origenTarjeta.Codigo == "0")
             {
                 Catalogo tipoPropTarjeta = parametros[Constantes.keyTipoPropTarjeta] as Catalogo;
 
@@ -67,6 +70,13 @@ namespace NS.MBX_amarin.ViewModels
                 LblCodCta2 = tarDestino.NroTarjeta;
             }
             
+        }
+
+        private string _lblMonedaMonto;
+        public string LblMonedaMonto
+        {
+            get { return _lblMonedaMonto; }
+            set { SetProperty(ref _lblMonedaMonto, value); }
         }
 
         private string _nomOpeFrec;

@@ -190,7 +190,7 @@ namespace NS.MBX_amarin.Six
                 
                 else if (Trx == ListaTransacciones.PagoTarjetaBancoFinancieroConsulta)
                 {
-                    HResult = "**00000HB        000000000191520*** NESTOR  ELIAS                 MAXIMA MC DORADA INT00000000 0000000000000 0000000211879 0000000242400 0000000262400 0000000252400 0000000272400 0000000179266 0000000282400 0000000010324* ";
+                    HResult = "**00000HB        000000000191520*** NESTOR  ELIAS                 MAXIMA MC DORADA INT00000000 0000000000000 0000000211879 0000000242400 0000000262400 0000000252400 0000000272400 0000000009260 0000000282400 0000000004815* ";
                 }
                 else if (Trx == ListaTransacciones.PagoTarjetaBancoFinanciero)
                 {

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<BFP7031ICTELFCEL>
+  <InDat>
+    <IData>
+      <IDnabon Type="System.String" Length="10" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDrecib Type="System.String" Length="10" Default="" Decimal="0" Description="" Values="" Control="TextBox" />
+      <IDfecem Type="System.String" Length="8" Default="" Decimal="0" Description="" Values="" Control="TextBox" />
+      <IDmoned Type="System.String" Length="3" Default="" Decimal="0" Description="" Values="" Control="TextBox" />
+      <IDtotal Type="System.String" Length="14" Default="" Decimal="2" Description="" Values="" Control="TextBox" />
+      <IDcodct Type="System.String" Length="12" Default="" Decimal="0" Description="" Values="" Control="TextBox" />
+      <IDcsecc Type="System.String" Length="2" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDGlosa1 Type="System.String" Length="15" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDGlosa2 Type="System.String" Length="15" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDNomAbo Type="System.String" Length="30" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+      <IDProces Type="System.String" Length="1" Default="" Decimal="" Description="" Values="" Control="TextBox" />
+    </IData>
+  </InDat>
+</BFP7031ICTELFCEL>

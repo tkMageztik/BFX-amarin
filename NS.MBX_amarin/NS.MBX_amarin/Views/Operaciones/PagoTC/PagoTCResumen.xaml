@@ -19,9 +19,13 @@
             <Label Text="{Binding LblNombreCta1}" Style="{StaticResource lblCont1Sm}"  />
             <Label Text="{Binding LblCodCta1}" Style="{StaticResource lblCont1Sm}"  />
 
-            <Label Text="Tarjeta Destino" Style="{StaticResource lblCont1BoldSm}" />
-            <Label Text="{Binding LblNombreCta2}"  Style="{StaticResource lblCont1Sm}"  />
-            <Label Text="{Binding LblCodCta2}"  Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="Empresa" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblNomEmpresa}"  Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="{Binding LblNomServicio}"  Style="{StaticResource lblCont1Sm}"  />
+
+            <Label Text="Datos" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblNomCliente}"  Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="{Binding LblCodServicio}"  Style="{StaticResource lblCont1Sm}"  />
 
             <Label Text="Moneda y Monto" Style="{StaticResource lblCont1BoldSm}" />
             <Label Text="{Binding LblMonedaMonto}"  Style="{StaticResource lblCont1Sm}"  />

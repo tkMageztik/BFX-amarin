@@ -10,7 +10,7 @@ namespace NS.MBX_amarin.BusinessLogic
 {
     public class PagoServicios
     {
-        public DataSet ObtenerControlesInput(int intServicio, int TipoOperacion)
+        public DataSet ObtenerControlesInput(string intServicio, int TipoOperacion)
         {
             TransaccionesMBX tx = new TransaccionesMBX();
             DataSet dsData = new DataSet();
@@ -23,26 +23,35 @@ namespace NS.MBX_amarin.BusinessLogic
                 //{
                 //    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
                 //    {
-                //        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
-                //        string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
-                //        using (DataSet dsSalida = xml.ObtenerControlsInput(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
-                //        {
-                //            if (dsSalida != null)
-                //            {
-                //                dsData.Tables.Add(TablaInformacionControlesInput());
-                //                dsData.Tables[0].Rows.Add();
-                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlTrama"] = strDefaultValuesNemonico;
-                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlCantidad"] = dsSalida.Tables[0].Columns.Count;
-                //                string strColumnas = "";
-                //                foreach (DataColumn item in dsSalida.Tables[0].Columns)
-                //                {
-                //                    strColumnas += item + ";";
-                //                }
-                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlListaCampos"] = strColumnas;
-                //                dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlDelimitadorCampos"] = ";";
-                //            }
-                //            //dsData = dsSalida;
-                //        }
+                string strDefaultValuesNombre = ""; //dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                string strDefaultValuesNemonico = "";// dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                if(TipoOperacion == 2)
+                {
+                    MapearServicioEjecutar(intServicio.Substring(0, 1), intServicio.Substring(1, 1), out strDefaultValuesNemonico, out strDefaultValuesNombre);
+                }
+                else
+                {
+                    MapearServicioConsulta(intServicio.Substring(0, 1), intServicio.Substring(1, 1), out strDefaultValuesNemonico, out strDefaultValuesNombre);
+                }
+                
+                using (DataSet dsSalida = xml.ObtenerControlsInput(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
+                {
+                    if (dsSalida != null)
+                    {
+                        dsData.Tables.Add(TablaInformacionControlesInput());
+                        dsData.Tables[0].Rows.Add();
+                        dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlTrama"] = strDefaultValuesNemonico;
+                        dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlCantidad"] = dsSalida.Tables[0].Columns.Count;
+                        string strColumnas = "";
+                        foreach (DataColumn item in dsSalida.Tables[0].Columns)
+                        {
+                            strColumnas += item + ";";
+                        }
+                        dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlListaCampos"] = strColumnas;
+                        dsData.Tables[0].Rows[dsData.Tables[0].Rows.Count - 1]["CtrlDelimitadorCampos"] = ";";
+                    }
+                    
+                }
                 //    }
                 //}
                 return dsData;
@@ -316,7 +325,7 @@ namespace NS.MBX_amarin.BusinessLogic
             return dtSubDetalle;
         }
 
-        public DataSet EjecutarTransaccion(short intLongitudTrama, int intServicio, out string _strError, out string _strTrama, out DataSet _dsHeader, params object[] parameterValues)
+        public DataSet EjecutarTransaccion(short intLongitudTrama, string intServicio, out string _strError, out string _strTrama, out DataSet _dsHeader, params object[] parameterValues)
         {
 
             DataSet dsData = new DataSet();
@@ -330,24 +339,32 @@ namespace NS.MBX_amarin.BusinessLogic
                     Trama += parameterValues[i].ToString();
                 BP.DataLoader xml = new BP.DataLoader();
                 DA.PagoServicios ObjPagoServicio = new DA.PagoServicios();
-                using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, 2))
-                {
-                    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
-                    {
-                        string strDefaultValues = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
-                        string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
-                        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
-                        string strProgramaEjecutador = dsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
-                        string strNombreEmpresa = dsServicioTransaccion.Tables[0].Rows[0]["strNombreEmpresa"].ToString();
-                        using (DataSet dsSalida = xml.ObtenerInputTrama(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
-                        {
-                            if (dsSalida != null && dsSalida.Tables[0].Rows.Count == 1)
-                            {
-                                foreach (DataRow item in dsSalida.Tables[0].Rows)
-                                {
-                                    foreach (DataColumn item1 in dsSalida.Tables[0].Columns)
-                                        strTramaGenerada += item[item1.ColumnName].ToString();
-                                }
+                //using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, 2))
+                //{
+                //    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
+                //    {
+                string strDefaultValuesNemonico = "";
+                string strDefaultValuesNombre = "";
+                MapearServicioEjecutar(intServicio.Substring(0, 1), intServicio.Substring(1, 1), out strDefaultValuesNemonico, out strDefaultValuesNombre);
+                //string strDefaultValuesNemonico = ""; dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                //string strDefaultValuesNombre = ""; dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                string strProgramaEjecutador = "HomeBanking";// fdsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
+                string strNombreEmpresa = "";
+                string strDefaultValues = strDefaultValuesNemonico;// dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                strTramaGenerada = "";
+                //string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                        //string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                        //string strProgramaEjecutador = dsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
+                        //string strNombreEmpresa = dsServicioTransaccion.Tables[0].Rows[0]["strNombreEmpresa"].ToString();
+                        //using (DataSet dsSalida = xml.ObtenerInputTrama(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
+                        //{
+                        //    if (dsSalida != null && dsSalida.Tables[0].Rows.Count == 1)
+                        //    {
+                        //        foreach (DataRow item in dsSalida.Tables[0].Rows)
+                        //        {
+                        //            foreach (DataColumn item1 in dsSalida.Tables[0].Columns)
+                        //                strTramaGenerada += item[item1.ColumnName].ToString();
+                        //        }
                                 if (strProgramaEjecutador == "HomeBanking")
                                 {
                                     TransaccionesMBX tx = new TransaccionesMBX();
@@ -379,20 +396,20 @@ namespace NS.MBX_amarin.BusinessLogic
                                     }
                                 }
 
-                            }
-                            else
-                            {
-                                strMensajeError = "Aun no ha sido creado el XML  de entrada";
-                                dsData = null;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        strMensajeError = "Aun no ha registrado el XML de entrada";
-                        dsData = null;
-                    }
-                }
+                        //    }
+                        //    else
+                        //    {
+                        //        strMensajeError = "Aun no ha sido creado el XML  de entrada";
+                        //        dsData = null;
+                        //    }
+                        //}
+                    //}
+                    //else
+                    //{
+                    //    strMensajeError = "Aun no ha registrado el XML de entrada";
+                    //    dsData = null;
+                    //}
+                //}
                 _dsHeader = dsHeader;
                 _strError = strMensajeError;
                 _strTrama = strTramaGenerada;
@@ -421,7 +438,7 @@ namespace NS.MBX_amarin.BusinessLogic
             }
         }
 
-        public DataSet ConsultarTransaccion(short intLongitudTrama, int intServicio, out string _strError, params object[] parameterValues)
+        public DataSet ConsultarTransaccion(short intLongitudTrama, string intServicio, out string _strError, params object[] parameterValues)
         {
 
             DataSet dsData = new DataSet();
@@ -434,24 +451,33 @@ namespace NS.MBX_amarin.BusinessLogic
                 BP.DataLoader xml = new BP.DataLoader();
                 DA.PagoServicios ObjPagoServicio = new DA.PagoServicios();
                 string strTramaGenerada = "";
-                using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, 1))
-                {
-                    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
-                    {
-                        string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
-                        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
-                        string strProgramaEjecutador = dsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
-                        string strNombreEmpresa = dsServicioTransaccion.Tables[0].Rows[0]["strNombreEmpresa"].ToString();
+                //using (DataSet dsServicioTransaccion = ObjPagoServicio.ObtenerTransaccionesServicio(intServicio, 1))
+                //{
+                //    if (dsServicioTransaccion != null && dsServicioTransaccion.Tables[0].Rows.Count == 1)
+                //    {
+                string strDefaultValuesNemonico = "";
+                string strDefaultValuesNombre = "";
+                MapearServicioConsulta(intServicio.Substring(0, 1), intServicio.Substring(1, 1), out strDefaultValuesNemonico, out strDefaultValuesNombre);
+                //string strDefaultValuesNemonico = ""; dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                //string strDefaultValuesNombre = ""; dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                string strProgramaEjecutador = "HomeBanking";// fdsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
+                string strNombreEmpresa = "";
+                string strDefaultValues = strDefaultValuesNemonico;
 
-                        using (DataSet dsSalida = xml.ObtenerInputTrama(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
-                        {
-                            if (dsSalida != null && dsSalida.Tables[0].Rows.Count == 1)
-                            {
-                                foreach (DataRow item in dsSalida.Tables[0].Rows)
-                                {
-                                    foreach (DataColumn item1 in dsSalida.Tables[0].Columns)
-                                        strTramaGenerada += item[item1.ColumnName].ToString();
-                                }
+                //string strDefaultValuesNemonico = dsServicioTransaccion.Tables[0].Rows[0]["strNemonicoTransaccion"].ToString();
+                //        string strDefaultValuesNombre = dsServicioTransaccion.Tables[0].Rows[0]["strNombreTransaccion"].ToString();
+                //        string strProgramaEjecutador = dsServicioTransaccion.Tables[0].Rows[0]["strProgramaEjecutador"].ToString();
+                //        string strNombreEmpresa = dsServicioTransaccion.Tables[0].Rows[0]["strNombreEmpresa"].ToString();
+
+                        //using (DataSet dsSalida = xml.ObtenerInputTrama(Trama, BC.ListaTransacciones.NombreMensajeIn(), strDefaultValuesNombre, 0))
+                        //{
+                        //    if (dsSalida != null && dsSalida.Tables[0].Rows.Count == 1)
+                        //    {
+                        //        foreach (DataRow item in dsSalida.Tables[0].Rows)
+                        //        {
+                        //            foreach (DataColumn item1 in dsSalida.Tables[0].Columns)
+                        //                strTramaGenerada += item[item1.ColumnName].ToString();
+                        //        }
                                 if (strProgramaEjecutador == "HomeBanking")
                                 {
                                     TransaccionesMBX tx = new TransaccionesMBX();
@@ -532,20 +558,20 @@ namespace NS.MBX_amarin.BusinessLogic
                                 //    }
                                 //}
 
-                            }
-                            else
-                            {
-                                strMensajeError = "Aun no ha sido creado el XML  de entrada";
-                                dsData = null;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        strMensajeError = "Aun no ha registrado el XML de entrada";
-                        dsData = null;
-                    }
-                }
+                            //}
+                            //else
+                            //{
+                            //    strMensajeError = "Aun no ha sido creado el XML  de entrada";
+                            //    dsData = null;
+                            //}
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    strMensajeError = "Aun no ha registrado el XML de entrada";
+                    //    dsData = null;
+                    //}
+                //}
                 _strError = strMensajeError;
                 return dsData;
             }

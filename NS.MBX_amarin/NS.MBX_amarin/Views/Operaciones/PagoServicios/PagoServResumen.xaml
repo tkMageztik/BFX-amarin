@@ -3,6 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="NS.MBX_amarin.Views.PagoServResumen">
-  
+             x:Class="NS.MBX_amarin.Views.PagoServResumen"
+             Title="Constancia">
+    <ScrollView>
+    <StackLayout Style="{StaticResource stackContainer}">
+        <StackLayout Style="{StaticResource stackTitulo1}" >
+            <Label Text="¡Transferencia Exitosa!" FontSize="Large" Style="{StaticResource lblTitulo1Sm}"  />
+        </StackLayout>
+        <StackLayout Style="{StaticResource stackContent1MarSup20}" >
+            <Label Text="{Binding LblCodOpe}" HorizontalOptions="Center" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblFechaHora}" HorizontalOptions="Center"  Style="{StaticResource lblCont1Sm}" />
+
+            <Label Text="" Style="{StaticResource lblCont1Sm}" />
+
+            <Label Text="Cuenta Cargo" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblNombreCta1}" Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="{Binding LblCodCta1}" Style="{StaticResource lblCont1Sm}"  />
+
+            <Label Text="Empresa" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblNomEmpresa}"  Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="{Binding LblNomServicio}"  Style="{StaticResource lblCont1Sm}"  />
+
+            <Label Text="Datos" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblNomCliente}"  Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="{Binding LblCodServicio}"  Style="{StaticResource lblCont1Sm}"  />
+
+            <Label Text="Moneda y Monto" Style="{StaticResource lblCont1BoldSm}" />
+            <Label Text="{Binding LblMonedaMonto}"  Style="{StaticResource lblCont1Sm}"  />
+            <Label Text="" Style="{StaticResource lblCont1Sm}" />
+
+            <Label Text="" Style="{StaticResource lblCont1Sm}" />
+
+        </StackLayout>
+    </StackLayout>
+    </ScrollView>
 </ContentPage>
